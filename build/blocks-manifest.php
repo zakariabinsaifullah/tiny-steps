@@ -5,7 +5,7 @@ return array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'core-theme/icon',
-		'version' => '0.2.0',
+		'version' => '0.3.0',
 		'title' => 'Icon',
 		'category' => 'core-theme',
 		'description' => 'Display SVG icons from library or upload custom SVGs.',
@@ -204,7 +204,7 @@ return array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'core-theme/social-share',
-		'version' => '0.2.0',
+		'version' => '0.3.0',
 		'title' => 'Social Share',
 		'category' => 'core-theme',
 		'icon' => 'share',
@@ -311,6 +311,14 @@ return array(
 		'title' => 'Iconic Button Extension',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
+	),
+	'kadence-row-overlay' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'core-theme/kadence-row-overlay-extension',
+		'title' => 'Kadence Row Overlay Extension',
+		'editorScript' => 'file:./index.js',
 		'style' => 'file:./style-index.css'
 	),
 	'read-more-button' => array(

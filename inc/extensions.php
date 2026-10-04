@@ -893,3 +893,107 @@ if ( ! function_exists( 'core_theme_register_read_more_arrow_attribute' ) ) :
 	}
 endif;
 add_filter( 'register_block_type_args', 'core_theme_register_read_more_arrow_attribute', 10, 2 );
+
+
+// =============================================================================
+// Kadence RowLayout — Add Overlay Extension
+// =============================================================================
+
+if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_editor_assets' ) ) :
+	/**
+	 * Enqueues the kadence-row-overlay extension script and editor stylesheet.
+	 * Runs on `enqueue_block_editor_assets` (editor only).
+	 */
+	function core_theme_enqueue_kadence_row_overlay_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'core-theme-kadence-row-overlay-extension',
+			get_theme_file_uri( 'build/extensions/kadence-row-overlay/index.js' ),
+			$assets['dependencies'],
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'core-theme-kadence-row-overlay-extension',
+				get_theme_file_uri( 'build/extensions/kadence-row-overlay/index.css' ),
+				array(),
+				wp_get_theme()->get( 'Version' )
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_kadence_row_overlay_editor_assets' );
+
+
+if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_frontend_assets' ) ) :
+	/**
+	 * Enqueues the kadence-row-overlay extension frontend stylesheet.
+	 * Runs on `enqueue_block_assets` (editor + front end).
+	 */
+	function core_theme_enqueue_kadence_row_overlay_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'core-theme-kadence-row-overlay-extension-style',
+			get_theme_file_uri( 'build/extensions/kadence-row-overlay/style-index.css' ),
+			array(),
+			wp_get_theme()->get( 'Version' )
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'core_theme_enqueue_kadence_row_overlay_frontend_assets' );
+
+
+if ( ! function_exists( 'core_theme_render_kadence_row_overlay' ) ) :
+	/**
+	 * Injects the `core-overlay` class into kadence/rowlayout blocks on the
+	 * frontend when the `addOverlay` attribute is enabled.
+	 *
+	 * The editor applies the class via the JS `editor.BlockListBlock` filter,
+	 * which has no effect on saved frontend markup, so this PHP `render_block`
+	 * filter replicates it for the rendered HTML.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function core_theme_render_kadence_row_overlay( $block_content, $block ) {
+		if ( 'kadence/rowlayout' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		if ( empty( $block['attrs']['addOverlay'] ) ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'core-overlay' );
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'core_theme_render_kadence_row_overlay', 10, 2 );
