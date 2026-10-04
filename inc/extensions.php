@@ -44,7 +44,6 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_editor_assets' ) ) :
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_hover_color_editor_assets' );
 
-
 if ( ! function_exists( 'core_theme_enqueue_hover_color_frontend_assets' ) ) :
 	/**
 	 * Enqueues the hover-color extension frontend stylesheet.
@@ -69,7 +68,6 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_frontend_assets' ) ) :
 	}
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_hover_color_frontend_assets' );
-
 
 if ( ! function_exists( 'core_theme_render_hover_color_attributes' ) ) :
 	/**
@@ -167,7 +165,6 @@ if ( ! function_exists( 'core_theme_render_hover_color_attributes' ) ) :
 endif;
 add_filter( 'render_block', 'core_theme_render_hover_color_attributes', 10, 2 );
 
-
 // =============================================================================
 // Group – Force Full Height Extension
 // =============================================================================
@@ -207,7 +204,6 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_editor_assets' ) )
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_group_full_height_editor_assets' );
 
-
 if ( ! function_exists( 'core_theme_enqueue_group_full_height_frontend_assets' ) ) :
 	/**
 	 * Enqueues the group-full-height frontend stylesheet.
@@ -232,7 +228,6 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_frontend_assets' )
 	}
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_group_full_height_frontend_assets' );
-
 
 if ( ! function_exists( 'core_theme_render_group_full_height' ) ) :
 	/**
@@ -266,262 +261,6 @@ if ( ! function_exists( 'core_theme_render_group_full_height' ) ) :
 	}
 endif;
 add_filter( 'render_block', 'core_theme_render_group_full_height', 10, 2 );
-
-// =============================================================================
-// Group – Overlay Background Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_group_overlay_bg_editor_assets' ) ) :
-	/**
-	 * Enqueues the group-overlay-bg extension script and editor stylesheet.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_group_overlay_bg_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/group-overlay-bg/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-group-overlay-bg-extension',
-			get_theme_file_uri( 'build/extensions/group-overlay-bg/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/group-overlay-bg/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-group-overlay-bg-extension',
-				get_theme_file_uri( 'build/extensions/group-overlay-bg/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_group_overlay_bg_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_group_overlay_bg_frontend_assets' ) ) :
-	/**
-	 * Enqueues the group-overlay-bg frontend stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_group_overlay_bg_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/group-overlay-bg/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/group-overlay-bg/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_style(
-			'core-theme-group-overlay-bg-extension-style',
-			get_theme_file_uri( 'build/extensions/group-overlay-bg/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_group_overlay_bg_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_group_overlay_bg' ) ) :
-	/**
-	 * Injects the `core-theme-overlay-bg` class and `--core-theme-overlay-bg` CSS custom property
-	 * into core/group blocks on the frontend when an overlay background is set.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_group_overlay_bg( $block_content, $block ) {
-		if ( 'core/group' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		$attrs                   = $block['attrs'] ?? array();
-		$overlay_bg_color        = $attrs['overlayBgColor'] ?? '';
-		$custom_overlay_bg_color = $attrs['customOverlayBgColor'] ?? '';
-		$overlay_bg_gradient     = $attrs['overlayBgGradient'] ?? '';
-
-		if ( ! $overlay_bg_color && ! $custom_overlay_bg_color && ! $overlay_bg_gradient ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		// Gradient wins; otherwise a preset slug resolves to its CSS var, else the custom value.
-		if ( $overlay_bg_gradient ) {
-			$bg_value = $overlay_bg_gradient;
-		} elseif ( $overlay_bg_color ) {
-			$bg_value = 'var(--wp--preset--color--' . $overlay_bg_color . ')';
-		} else {
-			$bg_value = $custom_overlay_bg_color;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'core-theme-overlay-bg' );
-
-			$existing_style = $processor->get_attribute( 'style' ) ?? '';
-			$new_style      = rtrim( $existing_style, '; ' );
-			if ( $new_style ) {
-				$new_style .= ';';
-			}
-			$new_style .= '--core-theme-overlay-bg:' . $bg_value;
-			$processor->set_attribute( 'style', $new_style );
-
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_group_overlay_bg', 10, 2 );
-
-
-// =============================================================================
-// Group – Global Hover Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_group_global_hover_editor_assets' ) ) :
-	/**
-	 * Enqueues the group-global-hover extension script and editor stylesheet.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_group_global_hover_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/group-global-hover/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-group-global-hover-extension',
-			get_theme_file_uri( 'build/extensions/group-global-hover/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/group-global-hover/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-group-global-hover-extension',
-				get_theme_file_uri( 'build/extensions/group-global-hover/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_group_global_hover_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_group_global_hover_frontend_assets' ) ) :
-	/**
-	 * Enqueues the group-global-hover frontend stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_group_global_hover_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/group-global-hover/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/group-global-hover/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_style(
-			'core-theme-group-global-hover-extension-style',
-			get_theme_file_uri( 'build/extensions/group-global-hover/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_group_global_hover_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_group_global_hover' ) ) :
-	/**
-	 * Injects `core-theme-global-hover` class + CSS variables into core/group blocks on the
-	 * frontend when the global hover feature is enabled.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_group_global_hover( $block_content, $block ) {
-		if ( 'core/group' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		$attrs = $block['attrs'] ?? array();
-
-		if ( empty( $attrs['globalHoverEnabled'] ) ) {
-			return $block_content;
-		}
-
-		// Colors use the WordPress preset-slug + custom-value pair (withColors model).
-		$bg_color        = $attrs['globalHoverBgColor'] ?? '';
-		$custom_bg_color = $attrs['customGlobalHoverBgColor'] ?? '';
-		$color           = $attrs['globalHoverColor'] ?? '';
-		$custom_color    = $attrs['customGlobalHoverColor'] ?? '';
-
-		$has_bg    = $bg_color || $custom_bg_color;
-		$has_color = $color || $custom_color;
-
-		if ( ! $has_bg && ! $has_color ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$css_vars = array();
-
-		if ( $has_bg ) {
-			$css_vars[] = '--core-theme-ghover-bg:' . ( $bg_color ? 'var(--wp--preset--color--' . $bg_color . ')' : $custom_bg_color );
-		}
-
-		if ( $has_color ) {
-			$css_vars[] = '--core-theme-ghover-color:' . ( $color ? 'var(--wp--preset--color--' . $color . ')' : $custom_color );
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'core-theme-global-hover' );
-
-			$existing_style = $processor->get_attribute( 'style' ) ?? '';
-			$new_style      = rtrim( $existing_style, '; ' );
-			if ( $new_style ) {
-				$new_style .= ';';
-			}
-			$new_style .= implode( ';', $css_vars );
-			$processor->set_attribute( 'style', $new_style );
-
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_group_global_hover', 10, 2 );
 
 // =============================================================================
 // Heading & Paragraph – Max Width Extension
@@ -562,7 +301,6 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_editor_assets' ) ) :
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_text_max_width_editor_assets' );
 
-
 if ( ! function_exists( 'core_theme_enqueue_text_max_width_frontend_assets' ) ) :
 	/**
 	 * Enqueues the text-max-width frontend stylesheet.
@@ -587,7 +325,6 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_frontend_assets' ) ) 
 	}
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_text_max_width_frontend_assets' );
-
 
 if ( ! function_exists( 'core_theme_render_text_max_width' ) ) :
 	/**
@@ -635,228 +372,6 @@ if ( ! function_exists( 'core_theme_render_text_max_width' ) ) :
 endif;
 add_filter( 'render_block', 'core_theme_render_text_max_width', 10, 2 );
 
-
-// =============================================================================
-// Heading & Paragraph – Responsive Alignment Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_text_responsive_align_editor_assets' ) ) :
-	/**
-	 * Enqueues the text-responsive-align extension script and editor stylesheet.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_text_responsive_align_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/text-responsive-align/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-text-responsive-align-extension',
-			get_theme_file_uri( 'build/extensions/text-responsive-align/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/text-responsive-align/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-text-responsive-align-extension',
-				get_theme_file_uri( 'build/extensions/text-responsive-align/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_text_responsive_align_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_text_responsive_align_frontend_assets' ) ) :
-	/**
-	 * Enqueues the text-responsive-align frontend stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_text_responsive_align_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/text-responsive-align/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/text-responsive-align/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		wp_enqueue_style(
-			'core-theme-text-responsive-align-extension-style',
-			get_theme_file_uri( 'build/extensions/text-responsive-align/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_text_responsive_align_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_text_responsive_align' ) ) :
-	/**
-	 * Injects the tablet/mobile alignment classes into supported blocks on the frontend.
-	 *
-	 * Desktop alignment is left to core's own `has-text-align-*` class; only the
-	 * breakpoints that were given their own alignment get a class here, so an unset
-	 * breakpoint keeps whatever the larger one resolved to.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_text_responsive_align( $block_content, $block ) {
-		$supported = array( 'core/heading', 'core/paragraph' );
-
-		if ( ! in_array( $block['blockName'], $supported, true ) ) {
-			return $block_content;
-		}
-
-		$aligns = $block['attrs']['responsiveTextAlign'] ?? array();
-
-		if ( empty( $aligns ) || empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$prefixes  = array(
-			'Tablet' => 'has-text-align-tablet-',
-			'Mobile' => 'has-text-align-mobile-',
-		);
-		$allowed   = array( 'left', 'center', 'right' );
-		$new_classes = array();
-
-		foreach ( $prefixes as $device => $prefix ) {
-			$align = $aligns[ $device ] ?? '';
-			if ( in_array( $align, $allowed, true ) ) {
-				$new_classes[] = $prefix . $align;
-			}
-		}
-
-		if ( empty( $new_classes ) ) {
-			return $block_content;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			foreach ( $new_classes as $class ) {
-				$processor->add_class( $class );
-			}
-
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_text_responsive_align', 10, 2 );
-
-
-// =============================================================================
-// Button – Full Width Mobile Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_button_full_width_mobile_editor_assets' ) ) :
-	/**
-	 * Enqueues the button-full-width-mobile extension script and editor stylesheet.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_button_full_width_mobile_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-button-full-width-mobile-extension',
-			get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-button-full-width-mobile-extension',
-				get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_button_full_width_mobile_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_button_full_width_mobile_frontend_assets' ) ) :
-	/**
-	 * Enqueues the button-full-width-mobile frontend stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_button_full_width_mobile_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_style(
-			'core-theme-button-full-width-mobile-extension-style',
-			get_theme_file_uri( 'build/extensions/button-full-width-mobile/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_button_full_width_mobile_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_button_full_width_mobile' ) ) :
-	/**
-	 * Injects the `has-full-width-mobile` class into core/button blocks on the frontend
-	 * when the `fullWidthMobile` attribute is enabled.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_button_full_width_mobile( $block_content, $block ) {
-		if ( 'core/button' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		if ( empty( $block['attrs']['fullWidthMobile'] ) ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'has-full-width-mobile' );
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_button_full_width_mobile', 10, 2 );
-
 // =============================================================================
 // Button – Iconic Button Extension
 // =============================================================================
@@ -896,7 +411,6 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_editor_assets' ) ) :
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_iconic_button_editor_assets' );
 
-
 if ( ! function_exists( 'core_theme_enqueue_iconic_button_frontend_assets' ) ) :
 	/**
 	 * Enqueues the iconic-button extension frontend stylesheet.
@@ -921,7 +435,6 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_frontend_assets' ) ) :
 	}
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_iconic_button_frontend_assets' );
-
 
 if ( ! function_exists( 'core_theme_iconic_button_svg_kses_args' ) ) :
 	/**
@@ -1037,7 +550,6 @@ if ( ! function_exists( 'core_theme_iconic_button_svg_kses_args' ) ) :
 	}
 endif;
 
-
 if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
 	/**
 	 * Injects the icon SVG markup and size/gap/padding/background CSS custom
@@ -1118,337 +630,6 @@ endif;
 add_filter( 'render_block', 'core_theme_render_iconic_button', 10, 2 );
 
 // =============================================================================
-// Kadence RowLayout — Featured Image as Background Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_featured_bg_editor_assets' ) ) :
-	/**
-	 * Enqueues the kadence-featured-bg extension script and editor stylesheet.
-	 */
-	function core_theme_enqueue_kadence_featured_bg_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/kadence-featured-bg/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-kadence-featured-bg-extension',
-			get_theme_file_uri( 'build/extensions/kadence-featured-bg/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/kadence-featured-bg/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-kadence-featured-bg-extension',
-				get_theme_file_uri( 'build/extensions/kadence-featured-bg/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_kadence_featured_bg_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_featured_bg_frontend_assets' ) ) :
-	/**
-	 * Enqueues the kadence-featured-bg frontend stylesheet.
-	 */
-	function core_theme_enqueue_kadence_featured_bg_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/kadence-featured-bg/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/kadence-featured-bg/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_style(
-			'core-theme-kadence-featured-bg-extension-style',
-			get_theme_file_uri( 'build/extensions/kadence-featured-bg/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_kadence_featured_bg_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_kadence_featured_bg' ) ) :
-	/**
-	 * Injects the featured image as background on kadence/rowlayout blocks
-	 * on the frontend when the useFeaturedImageAsBg attribute is enabled.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_kadence_featured_bg( $block_content, $block ) {
-		if ( 'kadence/rowlayout' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		$attrs = $block['attrs'] ?? array();
-
-		if ( empty( $attrs['useFeaturedImageAsBg'] ) ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		// Get the current post's featured image.
-		$post_id = get_the_ID();
-		if ( ! $post_id ) {
-			return $block_content;
-		}
-
-		$thumbnail_id = get_post_thumbnail_id( $post_id );
-		if ( ! $thumbnail_id ) {
-			return $block_content;
-		}
-
-		$image_url = wp_get_attachment_image_url( $thumbnail_id, 'full' );
-		if ( ! $image_url ) {
-			return $block_content;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'has-featured-image-bg' );
-
-			$existing_style = $processor->get_attribute( 'style' ) ?? '';
-			$new_style      = rtrim( $existing_style, '; ' );
-			if ( $new_style ) {
-				$new_style .= ';';
-			}
-			$new_style .= '--core-theme-featured-bg-image:url(' . esc_url( $image_url ) . ')';
-			$processor->set_attribute( 'style', $new_style );
-
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_kadence_featured_bg', 10, 2 );
-
-// =============================================================================
-// Kadence Column — Global Hover Effect Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_global_hover_editor_assets' ) ) :
-	/**
-	 * Enqueues the kadence-global-hover extension script and editor stylesheet.
-	 */
-	function core_theme_enqueue_kadence_global_hover_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/kadence-global-hover/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-kadence-global-hover-extension',
-			get_theme_file_uri( 'build/extensions/kadence-global-hover/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/kadence-global-hover/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-kadence-global-hover-extension',
-				get_theme_file_uri( 'build/extensions/kadence-global-hover/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_kadence_global_hover_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_global_hover_frontend_assets' ) ) :
-	/**
-	 * Enqueues the kadence-global-hover frontend stylesheet.
-	 */
-	function core_theme_enqueue_kadence_global_hover_frontend_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/kadence-global-hover/index.asset.php' );
-		$style_file = get_theme_file_path( 'build/extensions/kadence-global-hover/style-index.css' );
-
-		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_style(
-			'core-theme-kadence-global-hover-extension-style',
-			get_theme_file_uri( 'build/extensions/kadence-global-hover/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_kadence_global_hover_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_kadence_global_hover' ) ) :
-	/**
-	 * Injects the `global-hover` class into kadence/column blocks on the frontend
-	 * when the globalHoverEffect attribute is enabled.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_kadence_global_hover( $block_content, $block ) {
-		if ( 'kadence/column' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		if ( empty( $block['attrs']['globalHoverEffect'] ) ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'global-hover' );
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_kadence_global_hover', 10, 2 );
-
-
-// =============================================================================
-// Image – Scaled Image Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_enqueue_image_scale_editor_assets' ) ) :
-	/**
-	 * Enqueues the image-scale extension script and editor stylesheet.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_image_scale_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/image-scale/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-image-scale-extension',
-			get_theme_file_uri( 'build/extensions/image-scale/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		$editor_css = get_theme_file_path( 'build/extensions/image-scale/index.css' );
-		if ( file_exists( $editor_css ) ) {
-			wp_enqueue_style(
-				'core-theme-image-scale-extension',
-				get_theme_file_uri( 'build/extensions/image-scale/index.css' ),
-				array(),
-				wp_get_theme()->get( 'Version' )
-			);
-		}
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_image_scale_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_image_scale_frontend_assets' ) ) :
-	/**
-	 * Enqueues the image-scale frontend stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_image_scale_frontend_assets() {
-		$style_file = get_theme_file_path( 'build/extensions/image-scale/style-index.css' );
-
-		if ( ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		wp_enqueue_style(
-			'core-theme-image-scale-extension-style',
-			get_theme_file_uri( 'build/extensions/image-scale/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_image_scale_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_image_scale' ) ) :
-	/**
-	 * Injects the `has-scaled-image` class and `--core-theme-image-scale` custom
-	 * property into core/image blocks on the frontend when the `isScaled`
-	 * attribute is enabled.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_image_scale( $block_content, $block ) {
-		if ( 'core/image' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
-		if ( empty( $block['attrs']['isScaled'] ) ) {
-			return $block_content;
-		}
-
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$scale = isset( $block['attrs']['imageScale'] ) ? (float) $block['attrs']['imageScale'] : 1.1;
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'has-scaled-image' );
-
-			$existing_style = $processor->get_attribute( 'style' ) ?? '';
-			$new_style      = rtrim( $existing_style, '; ' );
-			if ( $new_style ) {
-				$new_style .= ';';
-			}
-			$new_style .= '--core-theme-image-scale:' . $scale;
-			$processor->set_attribute( 'style', $new_style );
-
-			return $processor->get_updated_html();
-		}
-
-		return $block_content;
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_image_scale', 10, 2 );
-
-
-// =============================================================================
 // Heading & Paragraph – Highlight Format
 // =============================================================================
 
@@ -1487,7 +668,6 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_editor_assets' ) ) :
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_highlight_editor_assets' );
 
-
 if ( ! function_exists( 'core_theme_enqueue_highlight_frontend_assets' ) ) :
 	/**
 	 * Enqueues the highlight format stylesheet.
@@ -1510,7 +690,6 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_frontend_assets' ) ) :
 	}
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_highlight_frontend_assets' );
-
 
 if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
 	/**
@@ -1574,154 +753,6 @@ if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
 endif;
 add_filter( 'render_block', 'core_theme_render_highlight_attributes', 10, 2 );
 
-
-// =============================================================================
-// Kadence RowLayout — Torn Paper Dividers Extension
-// =============================================================================
-
-if ( ! function_exists( 'core_theme_kadence_row_divider_image_uri' ) ) :
-	/**
-	 * URL of the torn paper divider artwork.
-	 *
-	 * The source asset was an SVG, but it carried no vector path — it was a
-	 * base64 PNG inside an SVG wrapper (a Figma export), so the PNG is stored
-	 * directly: same pixels, ~25% smaller, and cacheable as a normal image.
-	 *
-	 * @return string Image URL, or '' when the file is missing.
-	 */
-	function core_theme_kadence_row_divider_image_uri() {
-		$path = get_theme_file_path( 'assets/images/dividers/paper-tear.png' );
-
-		if ( ! file_exists( $path ) ) {
-			return '';
-		}
-
-		return get_theme_file_uri( 'assets/images/dividers/paper-tear.png' );
-	}
-endif;
-
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_row_divider_editor_assets' ) ) :
-	/**
-	 * Enqueues the kadence-row-divider extension script.
-	 * Runs on `enqueue_block_editor_assets` (editor only).
-	 */
-	function core_theme_enqueue_kadence_row_divider_editor_assets() {
-		$asset_file = get_theme_file_path( 'build/extensions/kadence-row-divider/index.asset.php' );
-
-		if ( ! file_exists( $asset_file ) ) {
-			return;
-		}
-
-		$assets = require $asset_file;
-
-		wp_enqueue_script(
-			'core-theme-kadence-row-divider-extension',
-			get_theme_file_uri( 'build/extensions/kadence-row-divider/index.js' ),
-			$assets['dependencies'],
-			wp_get_theme()->get( 'Version' ),
-			true
-		);
-
-		// The editor preview needs the artwork URL; PHP owns the asset path so
-		// the bundle never has to resolve it.
-		wp_add_inline_script(
-			'core-theme-kadence-row-divider-extension',
-			'window.coreThemeRowDivider = ' . wp_json_encode( array( 'image' => core_theme_kadence_row_divider_image_uri() ) ) . ';',
-			'before'
-		);
-	}
-endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_kadence_row_divider_editor_assets' );
-
-
-if ( ! function_exists( 'core_theme_enqueue_kadence_row_divider_frontend_assets' ) ) :
-	/**
-	 * Enqueues the kadence-row-divider stylesheet.
-	 * Runs on `enqueue_block_assets` (editor + front end).
-	 */
-	function core_theme_enqueue_kadence_row_divider_frontend_assets() {
-		$style_file = get_theme_file_path( 'build/extensions/kadence-row-divider/style-index.css' );
-
-		if ( ! file_exists( $style_file ) ) {
-			return;
-		}
-
-		wp_enqueue_style(
-			'core-theme-kadence-row-divider-extension-style',
-			get_theme_file_uri( 'build/extensions/kadence-row-divider/style-index.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_kadence_row_divider_frontend_assets' );
-
-
-if ( ! function_exists( 'core_theme_render_kadence_row_divider' ) ) :
-	/**
-	 * Adds the divider classes and artwork URL to kadence/rowlayout blocks on
-	 * the front end when either divider toggle is enabled.
-	 *
-	 * The editor applies the same classes through the JS
-	 * `editor.BlockListBlock` filter, which has no effect on rendered markup,
-	 * so this replicates it for the front end.
-	 *
-	 * @param string $block_content The rendered block HTML.
-	 * @param array  $block         The block data including name and attributes.
-	 * @return string Modified block HTML.
-	 */
-	function core_theme_render_kadence_row_divider( $block_content, $block ) {
-		if ( 'kadence/rowlayout' !== ( $block['blockName'] ?? '' ) || empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		$attrs      = $block['attrs'] ?? array();
-		$has_top    = ! empty( $attrs['enableTopDivider'] );
-		$has_bottom = ! empty( $attrs['enableBottomDivider'] );
-
-		if ( ! $has_top && ! $has_bottom ) {
-			return $block_content;
-		}
-
-		$image_url = core_theme_kadence_row_divider_image_uri();
-
-		if ( '' === $image_url ) {
-			return $block_content;
-		}
-
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-
-		if ( ! $processor->next_tag() ) {
-			return $block_content;
-		}
-
-		if ( $has_top ) {
-			$processor->add_class( 'core-theme-has-top-divider' );
-		}
-
-		if ( $has_bottom ) {
-			$processor->add_class( 'core-theme-has-bottom-divider' );
-		}
-
-		// Values are passed raw: WP_HTML_Tag_Processor::set_attribute() escapes
-		// attribute values itself, so pre-escaping would double-encode.
-		$existing_style = $processor->get_attribute( 'style' ) ?? '';
-		$new_style      = rtrim( $existing_style, '; ' );
-
-		if ( $new_style ) {
-			$new_style .= ';';
-		}
-
-		$new_style .= '--core-theme-divider-image:url(' . esc_url_raw( $image_url ) . ')';
-		$processor->set_attribute( 'style', $new_style );
-
-		return $processor->get_updated_html();
-	}
-endif;
-add_filter( 'render_block', 'core_theme_render_kadence_row_divider', 10, 2 );
-
-
 // =============================================================================
 // core/read-more — Theme Button Styling Extension
 // =============================================================================
@@ -1750,7 +781,6 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_editor_assets' ) ) 
 	}
 endif;
 add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_read_more_button_editor_assets' );
-
 
 if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
 	/**
@@ -1792,7 +822,6 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
 endif;
 add_action( 'enqueue_block_assets', 'core_theme_enqueue_read_more_button_assets' );
 
-
 if ( ! function_exists( 'core_theme_render_read_more_button' ) ) :
 	/**
 	 * Styles core/read-more as the theme's default button.
@@ -1830,7 +859,6 @@ if ( ! function_exists( 'core_theme_render_read_more_button' ) ) :
 	}
 endif;
 add_filter( 'render_block', 'core_theme_render_read_more_button', 10, 2 );
-
 
 if ( ! function_exists( 'core_theme_register_read_more_arrow_attribute' ) ) :
 	/**

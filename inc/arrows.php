@@ -15,9 +15,6 @@
  * Only its sweep angle is worth adding below, and it falls back to a sensible
  * default without one.
  *
- * Mirrors the registry in inc/annotations.php, which solves the same problem
- * for heading strokes.
- *
  * @package Core
  */
 
