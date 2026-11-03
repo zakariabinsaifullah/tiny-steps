@@ -21,6 +21,12 @@
     white-space: nowrap;
 }
 
+/* blocks.css clips every Group's overflow, which would cut off the dropdowns. */
+.tnys-header-bar,
+.tnys-header-actions {
+    overflow: visible;
+}
+
 /* The 1px rule between the menu and the call button; a flex item this narrow
    would otherwise shrink to nothing. */
 .tnys-header-divider {
