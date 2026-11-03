@@ -362,6 +362,11 @@
                     "name": "Card Shadow",
                     "shadow": "0 20px 25px 0 rgba(14, 28, 52, 0.25)",
                     "slug": "tnys-shadow-card"
+                },
+                {
+                    "name": "Float Shadow",
+                    "shadow": "0 10px 15px 0 rgba(14, 28, 52, 0.16)",
+                    "slug": "tnys-shadow-float"
                 }
             ]
         },
