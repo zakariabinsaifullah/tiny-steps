@@ -352,6 +352,16 @@
                     "name": "Soft Shadow",
                     "shadow": "0 4px 20px 0 rgba(123, 123, 123, 0.25)",
                     "slug": "tnys-shadow-soft"
+                },
+                {
+                    "name": "Pill Shadow",
+                    "shadow": "0 10px 12px 0 rgba(52, 86, 86, 0.25)",
+                    "slug": "tnys-shadow-pill"
+                },
+                {
+                    "name": "Card Shadow",
+                    "shadow": "0 20px 25px 0 rgba(14, 28, 52, 0.25)",
+                    "slug": "tnys-shadow-card"
                 }
             ]
         },
