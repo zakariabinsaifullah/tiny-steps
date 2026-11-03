@@ -15,7 +15,7 @@
    Header: keep every label on one line
    -------------------------------------------------------------------------- */
 
-.tnys-primary-nav .wp-block-navigation-item__label,
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation-item__label,
 .tnys-header-call .wp-block-button__link,
 .tnys-utility-bar .icon-heading {
     white-space: nowrap;
@@ -41,13 +41,13 @@
 }
 
 /* Top-level submenu arrow: 18px, 4px from the label. */
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
     width: 18px;
     height: 18px;
     margin-left: 4px;
 }
 
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon svg {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon svg {
     width: 12px;
     height: 12px;
 }
@@ -64,12 +64,12 @@
  * open them to the right instead. The extra classes outrank core's
  * `.items-justified-right` rule.
  */
-.wp-block-navigation.tnys-primary-nav.items-justified-right .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
+.wp-block-navigation.tnys-primary-nav.items-justified-right .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
     left: -12px;
     right: auto;
 }
 
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
     top: calc(100% + 12px);
     min-width: 320px;
     padding: 16px;
@@ -81,7 +81,7 @@
 }
 
 /* Hover bridge across the 12px gap so the panel doesn't close on the way down. */
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container::before {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container::before {
     content: '';
     position: absolute;
     left: 0;
@@ -91,7 +91,7 @@
 }
 
 /* Services: two columns, "Conditions We Treat" fills the first. */
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container:has(> .has-child) {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container:has(> .has-child) {
     display: grid;
     grid-template-columns: 320px 288px;
     grid-auto-rows: min-content;
@@ -99,22 +99,22 @@
     row-gap: 4px;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container:has(> .has-child) > .has-child {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container:has(> .has-child) > .has-child {
     grid-column: 1;
     grid-row: 1 / span 3;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container:has(> .has-child) > :not(.has-child) {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container:has(> .has-child) > :not(.has-child) {
     grid-column: 2;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container > .wp-block-navigation-item {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container > .wp-block-navigation-item {
     flex-direction: column;
     align-items: stretch;
 }
 
 /* First-level dropdown links. */
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,7 +125,7 @@
     color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
-.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
     content: '';
     width: 18px;
     height: 18px;
@@ -137,17 +137,17 @@
         no-repeat center / contain;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
-.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content:focus-visible {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation-item__content:focus-visible {
     background-color: var(--wp--preset--color--tnys-bermuda-lightest);
 }
 
 /* Nested list ("Conditions We Treat" children): always open, on a rail. */
-.tnys-primary-nav .wp-block-navigation__submenu-container .has-child > .wp-block-navigation__submenu-icon {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .has-child > .wp-block-navigation__submenu-icon {
     display: none;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
     position: static;
     visibility: visible;
     opacity: 1;
@@ -164,7 +164,7 @@
     background: transparent;
 }
 
-.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
     padding: 8px 12px 8px 16px;
     border-radius: 8px;
     font-weight: 500;
@@ -233,7 +233,7 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 370px) {
     .tnys-header-logo img {
         width: 80px !important;
     }
@@ -325,10 +325,17 @@
         no-repeat center / contain;
 }
 
-/* Open item: teal label, filled circle, minus sign. */
-.tnys-mobile-nav .wp-block-navigation__container > .has-child:has(> [aria-expanded='true']) > .wp-block-navigation-item__content {
-    color: var(--wp--preset--color--tnys-bermuda-dark);
+/*
+ * Core reports every submenu inside an open overlay as expanded
+ * (`state.isSubmenuOpen` in the navigation view script), so these toggles
+ * can't collapse anything. Until the menu gets its own accordion behaviour,
+ * the sub-items stay open and the toggles are hidden.
+ */
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
+    display: none;
 }
+
+/* Open item: filled circle, minus sign. */
 
 .tnys-mobile-nav .wp-block-navigation__container > .has-child > [aria-expanded='true'] {
     background-color: var(--wp--preset--color--tnys-bermuda);
