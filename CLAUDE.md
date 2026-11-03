@@ -3,6 +3,15 @@
 Role: Read figma design, then make the exact design in WordPress (Use Figma MCP server and Verify each design using claude browser extension)
 Follow these rules whenever you design or build a section, pattern, template or page for this theme.
 
+## 0. Where to work: live site vs local site
+
+-   **Live site — build every Figma page here:** https://tinysteps.1wp.site (admin: https://tinysteps.1wp.site/wp-admin/). Pages, posts, patterns, menus, media and site settings from the Figma design are always created on the live site, through the block editor in the browser (Claude in Chrome) or the `wp-tiny-steps` MCP server.
+-   **Local site — testing only:** the WordPress Studio site this theme folder lives in. Use it to try out and check theme code changes before they go live. Content built here doesn't carry over to the live site, so never build Figma pages here as the real thing. `studio wp …` commands only reach the local site.
+-   **Theme code (this repo):** always edit it locally, never in the live site's theme editor or over FTP. Ship it like this:
+    1. Edit the files and run `npm run build` (the live site doesn't build, so the compiled `build/` folder must be committed).
+    2. Test on the local site.
+    3. Commit and push to `main` on https://github.com/zakariabinsaifullah/tiny-steps. **Deployer for Git** on the live site deploys `main` automatically through the push-to-deploy webhook. Release tags trigger a deploy of `main` too, so push the commit to `main` before tagging it.
+
 ## 1. Container: Kadence Row Layout
 
 -   Wrap every section in a **Kadence Row Layout** block (`kadence/rowlayout`).
@@ -57,7 +66,7 @@ Style blocks through the options they already have, in this order:
 
 1. **Block settings in the editor sidebar:** typography, colour, spacing, border, layout.
 2. **The theme's presets from `theme.json`.** Never hard-code values that a preset already covers.
-    - **Colours:** `tnys-*`. Bay of Many is the primary, Bermuda the accent, and Neutral Dark the text colour.
+    - **Colours:** `tnys-*`. Bay of Many is the primary and the heading colour, Bermuda the accent, and Bermuda Gray Dark the body text colour.
     - **Font sizes:** `tnys-heading-one` … `tnys-heading-six`, then `-extra-large`, `-large`, `-medium` (body default), `-small` and `-extra-small`.
     - **Fonts:** DM Sans for headings, Manrope for everything else.
     - **Spacing:** the `tnys-*` spacing presets.
@@ -83,12 +92,13 @@ Style blocks through the options they already have, in this order:
 -   for each page, you will find its corresponding images at another page of its right side, take them from there, Like: Assets • Homepage
 -   for Icons, always use SVG codes
 -   **Uploading images (global rule):** the site uses **BinsOptimizer**, which converts images to WebP and compresses them **in the browser**, before the upload reaches the server. It hooks the block editor's `mediaUpload` setting. So:
+    -   Upload images to the **live site's** media library, because that's where the pages are built (section 0).
     -   **Never** upload images with `studio wp media import`, the REST API directly, or by copying files into `uploads/`. Those skip BinsOptimizer and leave JPEG/PNG files unconverted.
     -   Upload through the block editor in the browser (Claude in Chrome), using the wrapped `mediaUpload` function:
-        1. Put the source file in a temporary folder under `wp-content/uploads/` (e.g. `claude-upload-tmp/`) so the browser can fetch it.
-        2. Open any post or page in the editor and wait until `wp.data.select('core/block-editor').getSettings().mediaUpload.__biioWrapped` is `true`.
+        1. Give the browser a URL it can fetch the source file from. On the local site that can be a temporary folder under `wp-content/uploads/` (e.g. `claude-upload-tmp/`). On the live site you can't drop files into `uploads/`, so first confirm that a fetch from the live editor page works (e.g. the Figma asset URL). If nothing works, stop and ask the user.
+        2. Open any post or page in the live site's editor and wait until `wp.data.select('core/block-editor').getSettings().mediaUpload.__biioWrapped` is `true`.
         3. Fetch the file as a blob, wrap it in a `File` with the right name and type, and call `mediaUpload({ filesList: [file], allowedTypes: ['image'], onFileChange, onError })`. Use the returned `id` and `url` (they end in `.webp`) in the blocks.
-        4. Delete the temporary folder afterwards.
+        4. Delete any temporary folder or file afterwards.
     -   Check the result: the attachment's file should be `.webp` and it should have `_biio_savings` / `_biio_optimized_at` meta.
 -   Icon (SVG) size is always **24px** on every device. Set only the desktop size (`"sizes":{"Desktop":24},"iconSize":24`); tablet and mobile inherit it.
 -   **Icon + title gap (global rule):** when an Icon block shows a title next to the icon, the gap between them is always **16px** (`"listGap":"16px"`). If you set it by script, also set `blockStyle["--list-gap"]` to `"16px"`: the block only recalculates `blockStyle` when it renders in the editor, so changing `listGap` alone can leave the old gap in the saved markup.
