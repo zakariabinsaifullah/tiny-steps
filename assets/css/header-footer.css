@@ -27,6 +27,12 @@
     overflow: visible;
 }
 
+/* Keep the open dropdowns above the page content and footer that follow. */
+.tnys-main-row {
+    position: relative;
+    z-index: 100;
+}
+
 /* The 1px rule between the menu and the call button; a flex item this narrow
    would otherwise shrink to nothing. */
 .tnys-header-divider {
@@ -53,8 +59,11 @@
    it on a 2px rail, and the Services panel splits into two columns.
    -------------------------------------------------------------------------- */
 
+/* The menu is right-aligned, so core opens panels to the left; open them to the right of their item. */
 .tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
     top: calc(100% + 12px);
+    left: -12px;
+    right: auto;
     min-width: 320px;
     padding: 16px;
     gap: 4px;
