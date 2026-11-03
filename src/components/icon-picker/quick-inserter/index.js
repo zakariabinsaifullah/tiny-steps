@@ -45,7 +45,7 @@ export default function QuickInserter({ setIcon, onClose, openModal, withCustomS
     shownIcons = shownIcons.slice(0, 8);
 
     const searchResults = (
-        <div className="core-theme-icon-settings__icons">
+        <div className="tnys-icon-settings__icons">
             {shownIcons.map(icon => {
                 let renderedIcon = icon.icon;
 
@@ -53,7 +53,7 @@ export default function QuickInserter({ setIcon, onClose, openModal, withCustomS
                     <Button
                         key={`icon-${icon.name}`}
                         label={__(icon.title)}
-                        className={`core-theme-icon-settings__icons-button`}
+                        className={`tnys-icon-settings__icons-button`}
                         onClick={() => {
                             setIcon(icon);
                             onClose();
@@ -70,7 +70,7 @@ export default function QuickInserter({ setIcon, onClose, openModal, withCustomS
     const noResults = <p>{__('No results found.')}</p>;
 
     return (
-        <div className="core-theme-icon-settings__quick-inserter" style={{ width: '280px', padding: '8px' }}>
+        <div className="tnys-icon-settings__quick-inserter" style={{ width: '280px', padding: '8px' }}>
             <SearchControl
                 label={__('Search icons')}
                 hideLabelFromVision={true}
@@ -78,7 +78,7 @@ export default function QuickInserter({ setIcon, onClose, openModal, withCustomS
                 onChange={value => setSearchInput(value)}
                 __nextHasNoMarginBottom
             />
-            <div className="core-theme-icon-settings__quick-inserter-results">
+            <div className="tnys-icon-settings__quick-inserter-results">
                 {[isEmpty(shownIcons) && noResults, !isEmpty(shownIcons) && searchResults]}
             </div>
             <Flex gap={1}>

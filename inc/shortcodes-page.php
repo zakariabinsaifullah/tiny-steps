@@ -1,11 +1,11 @@
 <?php
 /**
- * Core — Shortcodes Reference Page
+ * Tiny Steps — Shortcodes Reference Page
  *
  * Adds an admin page under Appearance that showcases the shortcodes
  * bundled with this theme, each with a one-click copy button.
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // ── Register the shortcode catalogue ──────────────────────────────────────────
 
-if ( ! function_exists( 'core_theme_get_shortcodes' ) ) :
+if ( ! function_exists( 'tnys_get_shortcodes' ) ) :
 	/**
 	 * Returns the list of theme shortcodes to display on the reference page.
 	 *
@@ -24,156 +24,156 @@ if ( ! function_exists( 'core_theme_get_shortcodes' ) ) :
 	 * Examples run from the bare tag — every attribute is optional on both
 	 * shortcodes — to a form spelling out each attribute at its default.
 	 */
-	function core_theme_get_shortcodes() {
+	function tnys_get_shortcodes() {
 		return array(
 			array(
-				'title'       => __( 'Opening Roles', 'core' ),
+				'title'       => __( 'Opening Roles', 'tiny-steps' ),
 				'tag'         => 'opening_roles',
-				'description' => __( 'Lists open roles as cards: job type, number of open positions, the role title and an Apply now link. Only roles switched on in the Active column of All Open Roles are listed. Add roles under <code>Open Roles</code> (each has Active, Vacancies and Apply Link) and their categories under <code>Open Roles &rarr; Job Types</code>.', 'core' ),
+				'description' => __( 'Lists open roles as cards: job type, number of open positions, the role title and an Apply now link. Only roles switched on in the Active column of All Open Roles are listed. Add roles under <code>Open Roles</code> (each has Active, Vacancies and Apply Link) and their categories under <code>Open Roles &rarr; Job Types</code>.', 'tiny-steps' ),
 				'examples'    => array(
 					array(
-						'label' => __( 'Basic usage', 'core' ),
-						'note'  => __( 'Every attribute is optional — this shows every active role, newest first, three per row.', 'core' ),
+						'label' => __( 'Basic usage', 'tiny-steps' ),
+						'note'  => __( 'Every attribute is optional — this shows every active role, newest first, three per row.', 'tiny-steps' ),
 						'code'  => '[opening_roles]',
 					),
 					array(
-						'label' => __( 'One team only', 'core' ),
-						'note'  => __( 'Limit to one or more Job Types by slug or ID.', 'core' ),
+						'label' => __( 'One team only', 'tiny-steps' ),
+						'note'  => __( 'Limit to one or more Job Types by slug or ID.', 'tiny-steps' ),
 						'code'  => '[opening_roles job_type="tax"]',
 					),
 					array(
-						'label' => __( 'In the order you set', 'core' ),
-						'note'  => __( 'Sort by title, or by date with <code>order="ASC"</code> for oldest first.', 'core' ),
+						'label' => __( 'In the order you set', 'tiny-steps' ),
+						'note'  => __( 'Sort by title, or by date with <code>order="ASC"</code> for oldest first.', 'tiny-steps' ),
 						'code'  => '[opening_roles orderby="title" order="ASC"]',
 					),
 					array(
-						'label' => __( 'All optional attributes', 'core' ),
-						'note'  => __( 'Each attribute shown at its default value.', 'core' ),
+						'label' => __( 'All optional attributes', 'tiny-steps' ),
+						'note'  => __( 'Each attribute shown at its default value.', 'tiny-steps' ),
 						'code'  => '[opening_roles columns="3" count="-1" job_type="" orderby="date" order="DESC" empty="There are no open roles right now."]',
 					),
 				),
 				'attrs'       => array(
-					array( 'name' => 'columns',  'default' => '3',    'desc' => __( 'Cards per row on desktop, 1&ndash;4. Tablet and mobile always show one per row.', 'core' ) ),
-					array( 'name' => 'count',    'default' => '-1',   'desc' => __( 'How many roles to show. <code>-1</code> shows every active one.', 'core' ) ),
-					array( 'name' => 'job_type', 'default' => '',     'desc' => __( 'Comma-separated Job Type slugs or IDs. Empty shows every type.', 'core' ) ),
-					array( 'name' => 'orderby',  'default' => 'date', 'desc' => __( '<code>date</code> or <code>title</code>.', 'core' ) ),
-					array( 'name' => 'order',    'default' => 'DESC', 'desc' => __( 'Sort direction &mdash; <code>ASC</code> or <code>DESC</code>.', 'core' ) ),
-					array( 'name' => 'empty',    'default' => '',     'desc' => __( 'Message shown when no role is open. Set it to an empty value to show nothing.', 'core' ) ),
+					array( 'name' => 'columns',  'default' => '3',    'desc' => __( 'Cards per row on desktop, 1&ndash;4. Tablet and mobile always show one per row.', 'tiny-steps' ) ),
+					array( 'name' => 'count',    'default' => '-1',   'desc' => __( 'How many roles to show. <code>-1</code> shows every active one.', 'tiny-steps' ) ),
+					array( 'name' => 'job_type', 'default' => '',     'desc' => __( 'Comma-separated Job Type slugs or IDs. Empty shows every type.', 'tiny-steps' ) ),
+					array( 'name' => 'orderby',  'default' => 'date', 'desc' => __( '<code>date</code> or <code>title</code>.', 'tiny-steps' ) ),
+					array( 'name' => 'order',    'default' => 'DESC', 'desc' => __( 'Sort direction &mdash; <code>ASC</code> or <code>DESC</code>.', 'tiny-steps' ) ),
+					array( 'name' => 'empty',    'default' => '',     'desc' => __( 'Message shown when no role is open. Set it to an empty value to show nothing.', 'tiny-steps' ) ),
 				),
 			),
 			array(
-				'title'       => __( 'Featured Post', 'core' ),
-				'tag'         => 'core_theme_featured_post',
-				'description' => __( 'One post as a wide card for the top of the blog: featured image on the left; a Featured tag, category and date, title, excerpt and a Read more button on the right. Without an <code>id</code> it shows the newest <strong>sticky</strong> post (Post settings &rarr; Stick to the top of the blog), or the newest post when none is sticky.', 'core' ),
+				'title'       => __( 'Featured Post', 'tiny-steps' ),
+				'tag'         => 'tnys_featured_post',
+				'description' => __( 'One post as a wide card for the top of the blog: featured image on the left; a Featured tag, category and date, title, excerpt and a Read more button on the right. Without an <code>id</code> it shows the newest <strong>sticky</strong> post (Post settings &rarr; Stick to the top of the blog), or the newest post when none is sticky.', 'tiny-steps' ),
 				'examples'    => array(
 					array(
-						'label' => __( 'Basic usage', 'core' ),
-						'note'  => __( 'Shows the newest sticky post. Make a post sticky to feature it.', 'core' ),
-						'code'  => '[core_theme_featured_post]',
+						'label' => __( 'Basic usage', 'tiny-steps' ),
+						'note'  => __( 'Shows the newest sticky post. Make a post sticky to feature it.', 'tiny-steps' ),
+						'code'  => '[tnys_featured_post]',
 					),
 					array(
-						'label' => __( 'A specific post', 'core' ),
-						'note'  => __( 'Pick the post by ID (shown in the URL when editing it).', 'core' ),
-						'code'  => '[core_theme_featured_post id="123"]',
+						'label' => __( 'A specific post', 'tiny-steps' ),
+						'note'  => __( 'Pick the post by ID (shown in the URL when editing it).', 'tiny-steps' ),
+						'code'  => '[tnys_featured_post id="123"]',
 					),
 					array(
-						'label' => __( 'Paired with the grid', 'core' ),
-						'note'  => __( 'Put the grid after it with <code>exclude="featured"</code> so the featured post is not repeated in the grid. If you set an <code>id</code> here, use the same ID in the grid&rsquo;s <code>exclude</code>.', 'core' ),
-						'code'  => "[core_theme_featured_post]\n[core_theme_posts_grid per_page=\"9\" exclude=\"featured\"]",
+						'label' => __( 'Paired with the grid', 'tiny-steps' ),
+						'note'  => __( 'Put the grid after it with <code>exclude="featured"</code> so the featured post is not repeated in the grid. If you set an <code>id</code> here, use the same ID in the grid&rsquo;s <code>exclude</code>.', 'tiny-steps' ),
+						'code'  => "[tnys_featured_post]\n[tnys_posts_grid per_page=\"9\" exclude=\"featured\"]",
 					),
 					array(
-						'label' => __( 'All optional attributes', 'core' ),
-						'note'  => __( 'Each attribute shown at its default value.', 'core' ),
-						'code'  => '[core_theme_featured_post id="" post_type="post" label="Featured" button="Read more"]',
+						'label' => __( 'All optional attributes', 'tiny-steps' ),
+						'note'  => __( 'Each attribute shown at its default value.', 'tiny-steps' ),
+						'code'  => '[tnys_featured_post id="" post_type="post" label="Featured" button="Read more"]',
 					),
 				),
 				'attrs'       => array(
-					array( 'name' => 'id',        'default' => '',          'desc' => __( 'Post ID to feature. Empty uses the newest sticky post, then the newest post.', 'core' ) ),
-					array( 'name' => 'post_type', 'default' => 'post',      'desc' => __( 'Which post type to pick from.', 'core' ) ),
-					array( 'name' => 'label',     'default' => 'Featured',  'desc' => __( 'Text of the small tag above the title. Empty hides the tag.', 'core' ) ),
-					array( 'name' => 'button',    'default' => 'Read more', 'desc' => __( 'Button label.', 'core' ) ),
+					array( 'name' => 'id',        'default' => '',          'desc' => __( 'Post ID to feature. Empty uses the newest sticky post, then the newest post.', 'tiny-steps' ) ),
+					array( 'name' => 'post_type', 'default' => 'post',      'desc' => __( 'Which post type to pick from.', 'tiny-steps' ) ),
+					array( 'name' => 'label',     'default' => 'Featured',  'desc' => __( 'Text of the small tag above the title. Empty hides the tag.', 'tiny-steps' ) ),
+					array( 'name' => 'button',    'default' => 'Read more', 'desc' => __( 'Button label.', 'tiny-steps' ) ),
 				),
 			),
 			array(
-				'title'       => __( 'Posts Grid', 'core' ),
-				'tag'         => 'core_theme_posts_grid',
-				'description' => __( 'Renders posts as white cards in a three-column grid (one column on tablet and mobile): featured image, category and date, title, excerpt and a Read more link. Category pills and pagination filter the grid in place, without reloading the page. Designed for a light section.', 'core' ),
+				'title'       => __( 'Posts Grid', 'tiny-steps' ),
+				'tag'         => 'tnys_posts_grid',
+				'description' => __( 'Renders posts as white cards in a three-column grid (one column on tablet and mobile): featured image, category and date, title, excerpt and a Read more link. Category pills and pagination filter the grid in place, without reloading the page. Designed for a light section.', 'tiny-steps' ),
 				'examples'    => array(
 					array(
-						'label' => __( 'Basic usage', 'core' ),
-						'note'  => __( 'Every attribute is optional — this shows the 9 newest posts with a pill for every category that has posts in it.', 'core' ),
-						'code'  => '[core_theme_posts_grid]',
+						'label' => __( 'Basic usage', 'tiny-steps' ),
+						'note'  => __( 'Every attribute is optional — this shows the 9 newest posts with a pill for every category that has posts in it.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_grid]',
 					),
 					array(
-						'label' => __( 'Blog page, under the featured post', 'core' ),
-						'note'  => __( 'Leaves out the post [core_theme_featured_post] is showing, so it is not listed twice.', 'core' ),
-						'code'  => '[core_theme_posts_grid per_page="9" exclude="featured"]',
+						'label' => __( 'Blog page, under the featured post', 'tiny-steps' ),
+						'note'  => __( 'Leaves out the post [tnys_featured_post] is showing, so it is not listed twice.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_grid per_page="9" exclude="featured"]',
 					),
 					array(
-						'label' => __( 'Only certain categories', 'core' ),
-						'note'  => __( 'Limits both the posts and the pills to the categories you name, by slug or by ID.', 'core' ),
-						'code'  => '[core_theme_posts_grid per_page="6" categories="business-tax,outsourced-cfo"]',
+						'label' => __( 'Only certain categories', 'tiny-steps' ),
+						'note'  => __( 'Limits both the posts and the pills to the categories you name, by slug or by ID.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_grid per_page="6" categories="business-tax,outsourced-cfo"]',
 					),
 					array(
-						'label' => __( 'Pills somewhere else on the page', 'core' ),
-						'note'  => __( 'Give the grid an <code>id</code> and it renders without pills; a separate [core_theme_posts_tabs] block with a matching <code>for</code> then drives it.', 'core' ),
-						'code'  => '[core_theme_posts_grid id="blog" per_page="9"]',
+						'label' => __( 'Pills somewhere else on the page', 'tiny-steps' ),
+						'note'  => __( 'Give the grid an <code>id</code> and it renders without pills; a separate [tnys_posts_tabs] block with a matching <code>for</code> then drives it.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_grid id="blog" per_page="9"]',
 					),
 					array(
-						'label' => __( 'All optional attributes', 'core' ),
-						'note'  => __( 'Each attribute shown at its default value.', 'core' ),
-						'code'  => '[core_theme_posts_grid per_page="9" post_type="post" categories="" exclude="" id=""]',
+						'label' => __( 'All optional attributes', 'tiny-steps' ),
+						'note'  => __( 'Each attribute shown at its default value.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_grid per_page="9" post_type="post" categories="" exclude="" id=""]',
 					),
 				),
 				'attrs'       => array(
-					array( 'name' => 'per_page',   'default' => '9',    'desc' => __( 'Posts per page, up to 50. The rest are reached through the pagination beneath the grid.', 'core' ) ),
-					array( 'name' => 'post_type',  'default' => 'post', 'desc' => __( 'Which post type to list. The pills follow that type&rsquo;s own hierarchical taxonomy.', 'core' ) ),
-					array( 'name' => 'categories', 'default' => '',     'desc' => __( 'Comma-separated term slugs or IDs. Leave empty for every category that has posts in it.', 'core' ) ),
-					array( 'name' => 'exclude',    'default' => '',     'desc' => __( 'Comma-separated post IDs to leave out. The word <code>featured</code> stands for the post [core_theme_featured_post] shows without an id.', 'core' ) ),
-					array( 'name' => 'id',         'default' => '',     'desc' => __( 'Set this to move the pills out of the grid and into a [core_theme_posts_tabs] block with the same value in its <code>for</code> attribute.', 'core' ) ),
+					array( 'name' => 'per_page',   'default' => '9',    'desc' => __( 'Posts per page, up to 50. The rest are reached through the pagination beneath the grid.', 'tiny-steps' ) ),
+					array( 'name' => 'post_type',  'default' => 'post', 'desc' => __( 'Which post type to list. The pills follow that type&rsquo;s own hierarchical taxonomy.', 'tiny-steps' ) ),
+					array( 'name' => 'categories', 'default' => '',     'desc' => __( 'Comma-separated term slugs or IDs. Leave empty for every category that has posts in it.', 'tiny-steps' ) ),
+					array( 'name' => 'exclude',    'default' => '',     'desc' => __( 'Comma-separated post IDs to leave out. The word <code>featured</code> stands for the post [tnys_featured_post] shows without an id.', 'tiny-steps' ) ),
+					array( 'name' => 'id',         'default' => '',     'desc' => __( 'Set this to move the pills out of the grid and into a [tnys_posts_tabs] block with the same value in its <code>for</code> attribute.', 'tiny-steps' ) ),
 				),
 			),
 			array(
-				'title'       => __( 'Posts Tabs', 'core' ),
-				'tag'         => 'core_theme_posts_tabs',
-				'description' => __( 'The category pills on their own, for driving a [core_theme_posts_grid] placed elsewhere on the page. Only needed when the two have to sit in separate blocks &mdash; a grid without an <code>id</code> already draws its own tabs.', 'core' ),
+				'title'       => __( 'Posts Tabs', 'tiny-steps' ),
+				'tag'         => 'tnys_posts_tabs',
+				'description' => __( 'The category pills on their own, for driving a [tnys_posts_grid] placed elsewhere on the page. Only needed when the two have to sit in separate blocks &mdash; a grid without an <code>id</code> already draws its own tabs.', 'tiny-steps' ),
 				'examples'    => array(
 					array(
-						'label' => __( 'Paired with a grid', 'core' ),
-						'note'  => __( 'The <code>for</code> here must match the <code>id</code> on the grid, and <code>categories</code> and <code>post_type</code> must match what the grid was given.', 'core' ),
-						'code'  => '[core_theme_posts_tabs for="blog"]',
+						'label' => __( 'Paired with a grid', 'tiny-steps' ),
+						'note'  => __( 'The <code>for</code> here must match the <code>id</code> on the grid, and <code>categories</code> and <code>post_type</code> must match what the grid was given.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_tabs for="blog"]',
 					),
 					array(
-						'label' => __( 'All optional attributes', 'core' ),
-						'note'  => __( 'Only <code>for</code> is required — without it nothing renders.', 'core' ),
-						'code'  => '[core_theme_posts_tabs for="blog" post_type="post" categories=""]',
+						'label' => __( 'All optional attributes', 'tiny-steps' ),
+						'note'  => __( 'Only <code>for</code> is required — without it nothing renders.', 'tiny-steps' ),
+						'code'  => '[tnys_posts_tabs for="blog" post_type="post" categories=""]',
 					),
 				),
 				'attrs'       => array(
-					array( 'name' => 'for',        'default' => '',     'desc' => __( 'Required. The <code>id</code> of the grid these tabs control.', 'core' ) ),
-					array( 'name' => 'post_type',  'default' => 'post', 'desc' => __( 'Must match the grid&rsquo;s <code>post_type</code>.', 'core' ) ),
-					array( 'name' => 'categories', 'default' => '',     'desc' => __( 'Must match the grid&rsquo;s <code>categories</code>, so both show the same set of tabs.', 'core' ) ),
+					array( 'name' => 'for',        'default' => '',     'desc' => __( 'Required. The <code>id</code> of the grid these tabs control.', 'tiny-steps' ) ),
+					array( 'name' => 'post_type',  'default' => 'post', 'desc' => __( 'Must match the grid&rsquo;s <code>post_type</code>.', 'tiny-steps' ) ),
+					array( 'name' => 'categories', 'default' => '',     'desc' => __( 'Must match the grid&rsquo;s <code>categories</code>, so both show the same set of tabs.', 'tiny-steps' ) ),
 				),
 			),
 			array(
-				'title'       => __( 'Related Posts', 'core' ),
-				'tag'         => 'core_theme_related_posts',
-				'description' => __( 'A row of blog cards for the single post template: posts that share a category with the post being read, newest first, topped up with the newest other posts when there are not enough. Same card as the Posts Grid. Used in the Single Posts template under &ldquo;Related Articles&rdquo;.', 'core' ),
+				'title'       => __( 'Related Posts', 'tiny-steps' ),
+				'tag'         => 'tnys_related_posts',
+				'description' => __( 'A row of blog cards for the single post template: posts that share a category with the post being read, newest first, topped up with the newest other posts when there are not enough. Same card as the Posts Grid. Used in the Single Posts template under &ldquo;Related Articles&rdquo;.', 'tiny-steps' ),
 				'examples'    => array(
 					array(
-						'label' => __( 'Basic usage', 'core' ),
-						'note'  => __( 'Three related cards. Place it in the single post template.', 'core' ),
-						'code'  => '[core_theme_related_posts]',
+						'label' => __( 'Basic usage', 'tiny-steps' ),
+						'note'  => __( 'Three related cards. Place it in the single post template.', 'tiny-steps' ),
+						'code'  => '[tnys_related_posts]',
 					),
 					array(
-						'label' => __( 'All optional attributes', 'core' ),
-						'note'  => __( 'Each attribute shown at its default value.', 'core' ),
-						'code'  => '[core_theme_related_posts count="3" post_type="post"]',
+						'label' => __( 'All optional attributes', 'tiny-steps' ),
+						'note'  => __( 'Each attribute shown at its default value.', 'tiny-steps' ),
+						'code'  => '[tnys_related_posts count="3" post_type="post"]',
 					),
 				),
 				'attrs'       => array(
-					array( 'name' => 'count',     'default' => '3',    'desc' => __( 'How many cards, up to 12. Laid out three per row on desktop, one per row on tablet and mobile.', 'core' ) ),
-					array( 'name' => 'post_type', 'default' => 'post', 'desc' => __( 'Which post type to pick from.', 'core' ) ),
+					array( 'name' => 'count',     'default' => '3',    'desc' => __( 'How many cards, up to 12. Laid out three per row on desktop, one per row on tablet and mobile.', 'tiny-steps' ) ),
+					array( 'name' => 'post_type', 'default' => 'post', 'desc' => __( 'Which post type to pick from.', 'tiny-steps' ) ),
 				),
 			),
 		);
@@ -182,32 +182,32 @@ endif;
 
 // ── Add page under Appearance ─────────────────────────────────────────────────
 
-add_action( 'admin_menu', 'core_theme_shortcodes_add_menu' );
+add_action( 'admin_menu', 'tnys_shortcodes_add_menu' );
 
-if ( ! function_exists( 'core_theme_shortcodes_add_menu' ) ) :
-	function core_theme_shortcodes_add_menu() {
+if ( ! function_exists( 'tnys_shortcodes_add_menu' ) ) :
+	function tnys_shortcodes_add_menu() {
 		add_theme_page(
-			__( 'Core Shortcodes', 'core' ),
-			__( 'Core', 'core' ),
+			__( 'Tiny Steps Shortcodes', 'tiny-steps' ),
+			__( 'Tiny Steps', 'tiny-steps' ),
 			'edit_theme_options',
-			'core-theme-shortcodes',
-			'core_theme_shortcodes_render_page'
+			'tnys-shortcodes',
+			'tnys_shortcodes_render_page'
 		);
 	}
 endif;
 
 // ── Enqueue admin assets on the Shortcodes page ────────────────────────────────
 
-add_action( 'admin_enqueue_scripts', 'core_theme_shortcodes_admin_assets' );
+add_action( 'admin_enqueue_scripts', 'tnys_shortcodes_admin_assets' );
 
-if ( ! function_exists( 'core_theme_shortcodes_admin_assets' ) ) :
-	function core_theme_shortcodes_admin_assets( $hook ) {
-		if ( 'appearance_page_core-theme-shortcodes' !== $hook ) {
+if ( ! function_exists( 'tnys_shortcodes_admin_assets' ) ) :
+	function tnys_shortcodes_admin_assets( $hook ) {
+		if ( 'appearance_page_tnys-shortcodes' !== $hook ) {
 			return;
 		}
 
 		wp_enqueue_script(
-			'core-theme-shortcodes-copy',
+			'tnys-shortcodes-copy',
 			get_theme_file_uri( 'assets/js/shortcodes-copy.js' ),
 			array(),
 			wp_get_theme()->get( 'Version' ),
@@ -218,13 +218,13 @@ endif;
 
 // ── Render the page ───────────────────────────────────────────────────────────
 
-if ( ! function_exists( 'core_theme_shortcodes_render_page' ) ) :
-	function core_theme_shortcodes_render_page() {
+if ( ! function_exists( 'tnys_shortcodes_render_page' ) ) :
+	function tnys_shortcodes_render_page() {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			return;
 		}
 
-		$shortcodes = core_theme_get_shortcodes();
+		$shortcodes = tnys_get_shortcodes();
 		?>
 		<div class="wrap psr-wrap">
 
@@ -465,8 +465,8 @@ if ( ! function_exists( 'core_theme_shortcodes_render_page' ) ) :
 					</svg>
 				</div>
 				<div class="psr-header__text">
-					<h1><?php esc_html_e( 'Core Shortcodes', 'core' ); ?></h1>
-					<p><?php esc_html_e( 'All shortcodes available in this theme. Click Copy to grab the code.', 'core' ); ?></p>
+					<h1><?php esc_html_e( 'Tiny Steps Shortcodes', 'tiny-steps' ); ?></h1>
+					<p><?php esc_html_e( 'All shortcodes available in this theme. Click Copy to grab the code.', 'tiny-steps' ); ?></p>
 				</div>
 			</div>
 
@@ -498,18 +498,18 @@ if ( ! function_exists( 'core_theme_shortcodes_render_page' ) ) :
 									<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
 									<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 								</svg>
-								<?php esc_html_e( 'Copy', 'core' ); ?>
+								<?php esc_html_e( 'Copy', 'tiny-steps' ); ?>
 							</button>
 						</div>
 						<?php endforeach; ?>
 
 						<?php if ( ! empty( $sc['attrs'] ) ) : ?>
-						<p class="psr-attrs-label"><?php esc_html_e( 'Attributes', 'core' ); ?></p>
+						<p class="psr-attrs-label"><?php esc_html_e( 'Attributes', 'tiny-steps' ); ?></p>
 						<div class="psr-attrs">
 							<div class="psr-attr-head">
-								<span><?php esc_html_e( 'Attribute', 'core' ); ?></span>
-								<span><?php esc_html_e( 'Default', 'core' ); ?></span>
-								<span><?php esc_html_e( 'Description', 'core' ); ?></span>
+								<span><?php esc_html_e( 'Attribute', 'tiny-steps' ); ?></span>
+								<span><?php esc_html_e( 'Default', 'tiny-steps' ); ?></span>
+								<span><?php esc_html_e( 'Description', 'tiny-steps' ); ?></span>
 							</div>
 							<?php foreach ( $sc['attrs'] as $attr ) : ?>
 							<div class="psr-attr">
@@ -526,8 +526,8 @@ if ( ! function_exists( 'core_theme_shortcodes_render_page' ) ) :
 			</div>
 
 			<div class="psr-footer">
-				<strong><?php esc_html_e( 'Tip:', 'core' ); ?></strong>
-				<?php esc_html_e( 'Shortcodes can be placed in any post, page, or widget that supports shortcodes. In the block editor, use the Shortcode block.', 'core' ); ?>
+				<strong><?php esc_html_e( 'Tip:', 'tiny-steps' ); ?></strong>
+				<?php esc_html_e( 'Shortcodes can be placed in any post, page, or widget that supports shortcodes. In the block editor, use the Shortcode block.', 'tiny-steps' ); ?>
 			</div>
 
 		</div>

@@ -32,41 +32,41 @@ export default function Inspector(props) {
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Platforms', 'core')}>
+                <PanelBody title={__('Platforms', 'tiny-steps')}>
                     <NativeToggleControl
-                        label={__('Copy Link', 'core')}
+                        label={__('Copy Link', 'tiny-steps')}
                         checked={showCopyLink}
                         onChange={value => setAttributes({ showCopyLink: value })}
                     />
                     <NativeToggleControl
-                        label={__('LinkedIn', 'core')}
+                        label={__('LinkedIn', 'tiny-steps')}
                         checked={showLinkedIn}
                         onChange={value => setAttributes({ showLinkedIn: value })}
                     />
                     <NativeToggleControl
-                        label={__('X (Twitter)', 'core')}
+                        label={__('X (Twitter)', 'tiny-steps')}
                         checked={showTwitter}
                         onChange={value => setAttributes({ showTwitter: value })}
                     />
                     <NativeToggleControl
-                        label={__('Facebook', 'core')}
+                        label={__('Facebook', 'tiny-steps')}
                         checked={showFacebook}
                         onChange={value => setAttributes({ showFacebook: value })}
                     />
                 </PanelBody>
-                <PanelBody title={__('Layout', 'core')} initialOpen={false}>
+                <PanelBody title={__('Layout', 'tiny-steps')} initialOpen={false}>
                     <NativeUnitControl
-                        label={__('Icon Size', 'core')}
+                        label={__('Icon Size', 'tiny-steps')}
                         value={iconSize}
                         onChange={value => setAttributes({ iconSize: value })}
                         mb={16}
                     />
-                    <NativeUnitControl label={__('Gap', 'core')} value={gap} onChange={value => setAttributes({ gap: value })} />
+                    <NativeUnitControl label={__('Gap', 'tiny-steps')} value={gap} onChange={value => setAttributes({ gap: value })} />
                 </PanelBody>
             </InspectorControls>
             <InspectorControls group="styles">
                 <ToolsPanel
-                    label={__('Icon Style', 'core')}
+                    label={__('Icon Style', 'tiny-steps')}
                     resetAll={() =>
                         setAttributes({
                             iconColor: undefined,
@@ -78,22 +78,22 @@ export default function Inspector(props) {
                 >
                     <ToolsPanelItem
                         hasValue={() => !!iconBgColor || !!iconColor}
-                        label={__('Colors', 'core')}
+                        label={__('Colors', 'tiny-steps')}
                         onDeselect={() => setAttributes({ iconBgColor: undefined })}
                         onSelect={() => {}}
                     >
                         <PanelColorControl
-                            label={__('Colors', 'core')}
+                            label={__('Colors', 'tiny-steps')}
                             colorSettings={[
                                 {
                                     value: iconColor,
                                     onChange: color => setAttributes({ iconColor: color }),
-                                    label: __('Color', 'core')
+                                    label: __('Color', 'tiny-steps')
                                 },
                                 {
                                     value: iconBgColor,
                                     onChange: color => setAttributes({ iconBgColor: color }),
-                                    label: __('Background', 'core')
+                                    label: __('Background', 'tiny-steps')
                                 }
                             ]}
                         />
@@ -101,12 +101,12 @@ export default function Inspector(props) {
 
                     <ToolsPanelItem
                         hasValue={() => !!iconRadius}
-                        label={__('Radius', 'core')}
+                        label={__('Radius', 'tiny-steps')}
                         onDeselect={() => setAttributes({ iconRadius: undefined })}
                         onSelect={() => {}}
                     >
                         <NativeUnitControl
-                            label={__('Radius', 'core')}
+                            label={__('Radius', 'tiny-steps')}
                             value={iconRadius}
                             onChange={value => setAttributes({ iconRadius: value })}
                         />
@@ -114,12 +114,12 @@ export default function Inspector(props) {
 
                     <ToolsPanelItem
                         hasValue={() => !!iconPadding}
-                        label={__('Padding', 'core')}
+                        label={__('Padding', 'tiny-steps')}
                         onDeselect={() => setAttributes({ iconPadding: undefined })}
                         onSelect={() => {}}
                     >
                         <NativeUnitControl
-                            label={__('Padding', 'core')}
+                            label={__('Padding', 'tiny-steps')}
                             value={iconPadding}
                             onChange={value => setAttributes({ iconPadding: value })}
                         />

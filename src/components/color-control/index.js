@@ -136,15 +136,15 @@ function ColorControlDropdown({ label, colorValue = {}, onChangeColor, hasHover 
                         tabs={[
                             {
                                 name: 'default',
-                                title: __('Default', 'core')
+                                title: __('Default', 'tiny-steps')
                             },
                             {
                                 name: 'hover',
-                                title: __('Hover', 'core')
+                                title: __('Hover', 'tiny-steps')
                             },
                             {
                                 name: 'active',
-                                title: __('Active', 'core')
+                                title: __('Active', 'tiny-steps')
                             }
                         ]}
                     >

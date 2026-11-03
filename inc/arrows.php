@@ -15,7 +15,7 @@
  * Only its sweep angle is worth adding below, and it falls back to a sensible
  * default without one.
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Directory holding the arrow artwork, relative to the theme root.
  */
-const CORE_THEME_ARROW_DIR = 'assets/svg/arrows';
+const TNYS_ARROW_DIR = 'assets/svg/arrows';
 
 /**
  * Fallback sweep angle for an arrow with no entry in the map below.
  */
-const CORE_THEME_ARROW_DEFAULT_ANGLE = 180;
+const TNYS_ARROW_DEFAULT_ANGLE = 180;
 
-if ( ! function_exists( 'core_theme_arrow_sweep_angles' ) ) :
+if ( ! function_exists( 'tnys_arrow_sweep_angles' ) ) :
 	/**
 	 * Direction each arrow's stroke travels, as a CSS gradient angle.
 	 *
@@ -43,9 +43,9 @@ if ( ! function_exists( 'core_theme_arrow_sweep_angles' ) ) :
 	 *
 	 * @return array<string,int> Slug => angle in degrees.
 	 */
-	function core_theme_arrow_sweep_angles() {
+	function tnys_arrow_sweep_angles() {
 		return apply_filters(
-			'core_theme_arrow_sweep_angles',
+			'tnys_arrow_sweep_angles',
 			array(
 				'hook-down'     => 215, // Starts top right, hooks down and left.
 				'squiggle-down' => 190, // Broken stroke running downward.
@@ -57,7 +57,7 @@ if ( ! function_exists( 'core_theme_arrow_sweep_angles' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
+if ( ! function_exists( 'tnys_arrow_variants' ) ) :
 	/**
 	 * Every arrow available to the Story Card block.
 	 *
@@ -65,7 +65,7 @@ if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
 	 *
 	 * @return array<string,array{label:string,path:string,angle:int}>
 	 */
-	function core_theme_arrow_variants() {
+	function tnys_arrow_variants() {
 		static $variants = null;
 
 		if ( null !== $variants ) {
@@ -73,7 +73,7 @@ if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
 		}
 
 		$variants = array();
-		$files    = glob( get_theme_file_path( CORE_THEME_ARROW_DIR ) . '/*.svg' );
+		$files    = glob( get_theme_file_path( TNYS_ARROW_DIR ) . '/*.svg' );
 
 		if ( empty( $files ) ) {
 			return $variants;
@@ -81,7 +81,7 @@ if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
 
 		sort( $files );
 
-		$angles = core_theme_arrow_sweep_angles();
+		$angles = tnys_arrow_sweep_angles();
 
 		foreach ( $files as $file ) {
 			$base = basename( $file, '.svg' );
@@ -96,7 +96,7 @@ if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
 			$variants[ $slug ] = array(
 				'label' => ucwords( str_replace( array( '-', '_' ), ' ', $slug ) ),
 				'path'  => $file,
-				'angle' => isset( $angles[ $slug ] ) ? (int) $angles[ $slug ] : CORE_THEME_ARROW_DEFAULT_ANGLE,
+				'angle' => isset( $angles[ $slug ] ) ? (int) $angles[ $slug ] : TNYS_ARROW_DEFAULT_ANGLE,
 			);
 		}
 
@@ -104,7 +104,7 @@ if ( ! function_exists( 'core_theme_arrow_variants' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'core_theme_arrow_svg' ) ) :
+if ( ! function_exists( 'tnys_arrow_svg' ) ) :
 	/**
 	 * The inline SVG markup for one arrow.
 	 *
@@ -115,7 +115,7 @@ if ( ! function_exists( 'core_theme_arrow_svg' ) ) :
 	 * @param string $slug Arrow slug.
 	 * @return string SVG markup, or '' when the slug is unknown.
 	 */
-	function core_theme_arrow_svg( $slug ) {
+	function tnys_arrow_svg( $slug ) {
 		static $cache = array();
 
 		$slug = sanitize_key( (string) $slug );
@@ -124,7 +124,7 @@ if ( ! function_exists( 'core_theme_arrow_svg' ) ) :
 			return $cache[ $slug ];
 		}
 
-		$variants = core_theme_arrow_variants();
+		$variants = tnys_arrow_variants();
 
 		if ( ! isset( $variants[ $slug ] ) ) {
 			return '';
@@ -136,22 +136,22 @@ if ( ! function_exists( 'core_theme_arrow_svg' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'core_theme_arrow_angle' ) ) :
+if ( ! function_exists( 'tnys_arrow_angle' ) ) :
 	/**
 	 * Sweep angle for one arrow, in degrees.
 	 *
 	 * @param string $slug Arrow slug.
 	 * @return int
 	 */
-	function core_theme_arrow_angle( $slug ) {
-		$variants = core_theme_arrow_variants();
+	function tnys_arrow_angle( $slug ) {
+		$variants = tnys_arrow_variants();
 		$slug     = sanitize_key( (string) $slug );
 
-		return isset( $variants[ $slug ] ) ? (int) $variants[ $slug ]['angle'] : CORE_THEME_ARROW_DEFAULT_ANGLE;
+		return isset( $variants[ $slug ] ) ? (int) $variants[ $slug ]['angle'] : TNYS_ARROW_DEFAULT_ANGLE;
 	}
 endif;
 
-if ( ! function_exists( 'core_theme_arrow_editor_data' ) ) :
+if ( ! function_exists( 'tnys_arrow_editor_data' ) ) :
 	/**
 	 * Hands the arrow registry to the editor so the picker can preview the real
 	 * artwork rather than a hardcoded copy of it.
@@ -159,8 +159,8 @@ if ( ! function_exists( 'core_theme_arrow_editor_data' ) ) :
 	 * The markup travels with it — five files of a few KB — because the picker
 	 * renders each arrow inline, exactly as the frontend does.
 	 */
-	function core_theme_arrow_editor_data() {
-		$variants = core_theme_arrow_variants();
+	function tnys_arrow_editor_data() {
+		$variants = tnys_arrow_variants();
 
 		if ( empty( $variants ) ) {
 			return;
@@ -173,15 +173,15 @@ if ( ! function_exists( 'core_theme_arrow_editor_data' ) ) :
 				'slug'  => $slug,
 				'label' => $variant['label'],
 				'angle' => $variant['angle'],
-				'svg'   => core_theme_arrow_svg( $slug ),
+				'svg'   => tnys_arrow_svg( $slug ),
 			);
 		}
 
 		wp_add_inline_script(
-			'core-theme-story-card-editor-script',
-			'window.coreThemeArrows = ' . wp_json_encode( $payload ) . ';',
+			'tnys-story-card-editor-script',
+			'window.tnysArrows = ' . wp_json_encode( $payload ) . ';',
 			'before'
 		);
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_arrow_editor_data' );
+add_action( 'enqueue_block_editor_assets', 'tnys_arrow_editor_data' );

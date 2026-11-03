@@ -5,23 +5,23 @@
  * Registers custom block categories and block pattern categories
  * used throughout this theme.
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
-if ( ! function_exists( 'core_theme_block_categories' ) ) :
+if ( ! function_exists( 'tnys_block_categories' ) ) :
 	/**
-	 * Adds the "Core" category to the block inserter.
+	 * Adds the "Tiny Steps" category to the block inserter.
 	 *
 	 * @param  array                   $block_categories     Existing block categories.
 	 * @param  WP_Block_Editor_Context $block_editor_context Current editor context.
 	 * @return array
 	 */
-	function core_theme_block_categories( $block_categories, $block_editor_context ) {
+	function tnys_block_categories( $block_categories, $block_editor_context ) {
 		return array_merge(
 			array(
 				array(
-					'slug'  => 'core-theme',
-					'title' => __( 'Core', 'core' ),
+					'slug'  => 'tnys',
+					'title' => __( 'Tiny Steps', 'tiny-steps' ),
 				),
 			),
 			$block_categories
@@ -29,59 +29,59 @@ if ( ! function_exists( 'core_theme_block_categories' ) ) :
 		);
 	}
 endif;
-add_filter( 'block_categories_all', 'core_theme_block_categories', 10, 2 );
+add_filter( 'block_categories_all', 'tnys_block_categories', 10, 2 );
 
 
-if ( ! function_exists( 'core_theme_pattern_categories' ) ) :
+if ( ! function_exists( 'tnys_pattern_categories' ) ) :
 	/**
-	 * Registers the "Core" block pattern category.
+	 * Registers the "Tiny Steps" block pattern category.
 	 */
-	function core_theme_pattern_categories() {
+	function tnys_pattern_categories() {
 		register_block_pattern_category(
-			'core-theme',
+			'tnys',
 			array(
-				'label'       => __( 'Core', 'core' ),
-				'description' => __( 'A collection of Core patterns.', 'core' ),
+				'label'       => __( 'Tiny Steps', 'tiny-steps' ),
+				'description' => __( 'A collection of Tiny Steps patterns.', 'tiny-steps' ),
 			)
 		);
 	}
 endif;
-add_action( 'init', 'core_theme_pattern_categories' );
+add_action( 'init', 'tnys_pattern_categories' );
 
 
 // ── ID column on the Categories admin screen ──────────────────────────────────
 
-if ( ! function_exists( 'core_theme_category_columns' ) ) :
+if ( ! function_exists( 'tnys_category_columns' ) ) :
 	/**
 	 * Adds an "ID" column to the Categories list table.
 	 *
 	 * @param  array $columns Existing column definitions.
 	 * @return array
 	 */
-	function core_theme_category_columns( $columns ) {
-		$columns['core_theme_id'] = __( 'ID', 'core' );
+	function tnys_category_columns( $columns ) {
+		$columns['tnys_id'] = __( 'ID', 'tiny-steps' );
 		return $columns;
 	}
 endif;
-add_filter( 'manage_edit-category_columns', 'core_theme_category_columns' );
+add_filter( 'manage_edit-category_columns', 'tnys_category_columns' );
 
 /**
  * Caps the ID column width on the Categories list table.
  */
-function core_theme_category_column_width() {
+function tnys_category_column_width() {
 	?>
 	<style>
-		.wp-list-table .column-core_theme_id {
+		.wp-list-table .column-tnys_id {
 			width: 100px;
 			max-width: 100px;
 		}
 	</style>
 	<?php
 }
-add_action( 'admin_head-edit-tags.php', 'core_theme_category_column_width' );
+add_action( 'admin_head-edit-tags.php', 'tnys_category_column_width' );
 
 
-if ( ! function_exists( 'core_theme_category_column_content' ) ) :
+if ( ! function_exists( 'tnys_category_column_content' ) ) :
 	/**
 	 * Outputs the term ID for the custom column.
 	 *
@@ -90,11 +90,11 @@ if ( ! function_exists( 'core_theme_category_column_content' ) ) :
 	 * @param  int    $term_id      Term ID.
 	 * @return string
 	 */
-	function core_theme_category_column_content( $content, $column_name, $term_id ) {
-		if ( 'core_theme_id' === $column_name ) {
+	function tnys_category_column_content( $content, $column_name, $term_id ) {
+		if ( 'tnys_id' === $column_name ) {
 			return (string) $term_id;
 		}
 		return $content;
 	}
 endif;
-add_filter( 'manage_category_custom_column', 'core_theme_category_column_content', 10, 3 );
+add_filter( 'manage_category_custom_column', 'tnys_category_column_content', 10, 3 );

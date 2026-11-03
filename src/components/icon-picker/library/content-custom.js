@@ -62,14 +62,14 @@ export const ContentCustom = ({
                 status: 'success',
                 message: sprintf(
                     /* translators: %s: icon name. */
-                    __('“%s” was added to My Icons.', 'core'),
+                    __('“%s” was added to My Icons.', 'tiny-steps'),
                     saved.label
                 )
             });
         } catch (error) {
             setNotice({
                 status: 'error',
-                message: error?.message || __('The icon could not be saved.', 'core')
+                message: error?.message || __('The icon could not be saved.', 'tiny-steps')
             });
         }
     };
@@ -88,7 +88,7 @@ export const ContentCustom = ({
 
             return (
                 <div
-                    className="core-theme-custom-svg-container"
+                    className="tnys-custom-svg-container"
                     dangerouslySetInnerHTML={{ __html: finalSvgCode }}
                     style={{ width: `${size}px`, height: `${size}px` }}
                 />
@@ -104,30 +104,30 @@ export const ContentCustom = ({
     };
 
     return (
-        <div className="core-theme-modal__custom-svg">
-            <div className="core-theme-modal__custom-svg-editor">
+        <div className="tnys-modal__custom-svg">
+            <div className="tnys-modal__custom-svg-editor">
                 <TextareaControl
-                    label={__('Custom SVG code', 'core')}
+                    label={__('Custom SVG code', 'tiny-steps')}
                     value={tempCustomSvgCode}
                     onChange={setTempCustomSvgCode}
-                    help={__('Paste your custom SVG code here. It will override the selected icon.', 'core')}
+                    help={__('Paste your custom SVG code here. It will override the selected icon.', 'tiny-steps')}
                     rows={15}
                 />
             </div>
 
-            <div className="core-theme-modal__custom-svg-preview">
-                <h3>{__('Preview', 'core')}</h3>
-                <div className="core-theme-icon-preview-container">
+            <div className="tnys-modal__custom-svg-preview">
+                <h3>{__('Preview', 'tiny-steps')}</h3>
+                <div className="tnys-icon-preview-container">
                     {tempCustomSvgCode ? (
                         renderCurrentIcon(previewIconSize, tempCustomSvgCode, previewStrokeWidth)
                     ) : (
-                        <div className="core-theme-empty-preview">{__('Enter SVG code to see preview', 'core')}</div>
+                        <div className="tnys-empty-preview">{__('Enter SVG code to see preview', 'tiny-steps')}</div>
                     )}
                 </div>
 
-                <div className="core-theme-modal__custom-svg-controls">
+                <div className="tnys-modal__custom-svg-controls">
                     <RangeControl
-                        label={__('Icon Size', 'core')}
+                        label={__('Icon Size', 'tiny-steps')}
                         value={previewIconSize}
                         onChange={setPreviewIconSize}
                         min={16}
@@ -137,7 +137,7 @@ export const ContentCustom = ({
 
                     {tempIconType === 'line' && (
                         <RangeControl
-                            label={__('Stroke Width', 'core')}
+                            label={__('Stroke Width', 'tiny-steps')}
                             value={previewStrokeWidth}
                             onChange={setPreviewStrokeWidth}
                             min={0.5}
@@ -148,13 +148,13 @@ export const ContentCustom = ({
                     )}
                 </div>
 
-                <div className="core-theme-modal__custom-svg-save">
+                <div className="tnys-modal__custom-svg-save">
                     <TextControl
-                        label={__('Icon name', 'core')}
+                        label={__('Icon name', 'tiny-steps')}
                         value={iconLabel}
                         onChange={setIconLabel}
-                        placeholder={__('e.g. Arrow Badge', 'core')}
-                        help={__('Name this icon to save it to My Icons and reuse it anywhere on the site.', 'core')}
+                        placeholder={__('e.g. Arrow Badge', 'tiny-steps')}
+                        help={__('Name this icon to save it to My Icons and reuse it anywhere on the site.', 'tiny-steps')}
                         __next40pxDefaultSize
                         __nextHasNoMarginBottom
                     />
@@ -166,7 +166,7 @@ export const ContentCustom = ({
                     )}
                 </div>
 
-                <div className="core-theme-modal__custom-svg-buttons">
+                <div className="tnys-modal__custom-svg-buttons">
                     <Flex>
                         <Button
                             __next40pxDefaultSize
@@ -175,7 +175,7 @@ export const ContentCustom = ({
                             isDestructive
                             style={{ flex: '1', justifyContent: 'center' }}
                         >
-                            {__('Clear', 'core')}
+                            {__('Clear', 'tiny-steps')}
                         </Button>
                         <Button
                             __next40pxDefaultSize
@@ -185,7 +185,7 @@ export const ContentCustom = ({
                             disabled={!tempCustomSvgCode || !iconLabel.trim() || isSaving}
                             style={{ flex: '1', justifyContent: 'center' }}
                         >
-                            {__('Add to My Icons', 'core')}
+                            {__('Add to My Icons', 'tiny-steps')}
                         </Button>
                     </Flex>
                     <Button
@@ -195,7 +195,7 @@ export const ContentCustom = ({
                         disabled={!tempCustomSvgCode}
                         style={{ width: '100%', justifyContent: 'center', marginTop: '8px' }}
                     >
-                        {__('Insert Custom Icon', 'core')}
+                        {__('Insert Custom Icon', 'tiny-steps')}
                     </Button>
                 </div>
             </div>

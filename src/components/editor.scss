@@ -7,7 +7,7 @@
     border-top: 1px solid #e0e0e0;
 }
 
-.core-theme-icon-settings__indicator .core-theme-custom-svg-container {
+.tnys-icon-settings__indicator .tnys-custom-svg-container {
     svg {
         width: 24px !important;
         height: 24px !important;
@@ -139,19 +139,19 @@ button.native-responsive-device-button span::before {
 }
 
 // SVG Icons Modal
-.core-theme-modal__overlay {
+.tnys-modal__overlay {
     .components-modal__header-heading-container {
         min-width: fit-content;
     }
 
-    .core-theme-modal__tabs {
+    .tnys-modal__tabs {
         display: flex;
         align-items: center;
         gap: 8px;
         margin-left: 20px;
     }
 
-    .core-theme-modal__tabs-button {
+    .tnys-modal__tabs-button {
         border: 1px solid #949494;
         height: 36px !important;
         padding: 6px 20px;
@@ -165,13 +165,13 @@ button.native-responsive-device-button span::before {
         }
     }
 
-    .core-theme-modal__tabs-button.is-selected {
+    .tnys-modal__tabs-button.is-selected {
         background: #000;
         color: #fff;
         border-color: #000;
     }
 
-    .core-theme-modal__container {
+    .tnys-modal__container {
         display: flex;
         gap: 30px;
         margin-top: 30px;
@@ -182,22 +182,22 @@ button.native-responsive-device-button span::before {
         font-size: 18px;
     }
 
-    .core-theme-modal__sidebar {
+    .tnys-modal__sidebar {
         min-width: 230px;
         width: 230px;
     }
 
-    .core-theme-modal__content {
+    .tnys-modal__content {
         flex-grow: 1;
     }
 
-    .core-theme-modal__sidebar-buttons {
+    .tnys-modal__sidebar-buttons {
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
 
-    .core-theme-modal__sidebar-button.is-selected {
+    .tnys-modal__sidebar-button.is-selected {
         color: #ffffff;
         background: #145cd1;
     }
@@ -214,14 +214,14 @@ button.native-responsive-device-button span::before {
         height: 40px !important;
     }
 
-    .core-theme-modal__icons {
+    .tnys-modal__icons {
         margin-top: 15px;
         display: grid;
         grid-template-columns: repeat(10, 1fr);
         gap: 15px;
     }
 
-    .core-theme-modal__icons-button {
+    .tnys-modal__icons-button {
         gap: 8px;
         border: 1px solid #949494;
         padding: 20px;
@@ -232,13 +232,13 @@ button.native-responsive-device-button span::before {
         }
     }
 
-    .core-theme-modal__icons-button.is-selected {
+    .tnys-modal__icons-button.is-selected {
         border-color: #145cd1;
         background: #145cd1;
         color: #fff;
     }
 
-    .core-theme-modal__icons-button:hover {
+    .tnys-modal__icons-button:hover {
         border-color: #145cd1;
         background: #145cd1;
         color: #fff !important;

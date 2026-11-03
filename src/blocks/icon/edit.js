@@ -49,18 +49,18 @@ import { RenderIcon } from '../../helpers';
 import './editor.scss';
 
 /*
- * The theme ships Titling Gothic FB Wide (300-700) and Instrument Sans
- * (400-700), so those are the weights offered. "Default" writes nothing,
+ * The theme ships DM Sans (100-1000) and Manrope (200-800) as variable
+ * fonts; these are the common weights offered. "Default" writes nothing,
  * leaving the title at whatever its tag gives it — bold for a heading,
  * regular for a paragraph.
  */
 const TITLE_FONT_WEIGHTS = [
-    { label: __('Default', 'core'), value: '' },
-    { label: __('Light (300)', 'core'), value: '300' },
-    { label: __('Regular (400)', 'core'), value: '400' },
-    { label: __('Medium (500)', 'core'), value: '500' },
-    { label: __('Semi Bold (600)', 'core'), value: '600' },
-    { label: __('Bold (700)', 'core'), value: '700' }
+    { label: __('Default', 'tiny-steps'), value: '' },
+    { label: __('Light (300)', 'tiny-steps'), value: '300' },
+    { label: __('Regular (400)', 'tiny-steps'), value: '400' },
+    { label: __('Medium (500)', 'tiny-steps'), value: '500' },
+    { label: __('Semi Bold (600)', 'tiny-steps'), value: '600' },
+    { label: __('Bold (700)', 'tiny-steps'), value: '700' }
 ];
 
 export default function Edit(props) {
@@ -132,11 +132,11 @@ export default function Edit(props) {
     }, []);
 
     const fontFamilyOptions = [
-        { label: __('Default', 'core'), value: '' },
+        { label: __('Default', 'tiny-steps'), value: '' },
         ...fontFamilies.map(f => {
             const value = f.fontFamily || (f.slug ? `var(--wp--preset--font-family--${f.slug})` : f.slug);
             return {
-                label: f.name || f.slug || __('Unknown', 'core'),
+                label: f.name || f.slug || __('Unknown', 'tiny-steps'),
                 value: value
             };
         })
@@ -227,7 +227,7 @@ export default function Edit(props) {
                     ref={setPopoverAnchor}
                     name="link"
                     icon={link}
-                    title={__('Link', 'core')}
+                    title={__('Link', 'tiny-steps')}
                     onClick={() => setIsEditingURL(true)}
                     isActive={!!href || isEditingURL}
                 />
@@ -238,7 +238,7 @@ export default function Edit(props) {
                         placement="bottom"
                         focusOnMount={true}
                         offset={12}
-                        className="core-theme-icon__link-popover"
+                        className="tnys-icon__link-popover"
                         variant="alternate"
                     >
                         <LinkControl
@@ -267,19 +267,19 @@ export default function Edit(props) {
                 )} */}
             </BlockControls>
             <InspectorControls>
-                <PanelBody title={__('Settings', 'core')}>
+                <PanelBody title={__('Settings', 'tiny-steps')}>
                     <NativeToggleControl
-                        label={__('Add List Title', 'core')}
+                        label={__('Add List Title', 'tiny-steps')}
                         checked={showTitle}
                         onChange={value => setAttributes({ showTitle: value })}
                     />
                     <NativeToggleControl
-                        label={__('Add Description', 'core')}
+                        label={__('Add Description', 'tiny-steps')}
                         checked={showDesc}
                         onChange={value => setAttributes({ showDesc: value })}
                     />
                     <NativeToggleControl
-                        label={__('Add Button', 'core')}
+                        label={__('Add Button', 'tiny-steps')}
                         checked={showButton}
                         onChange={value => setAttributes({ showButton: value })}
                     />
@@ -295,7 +295,7 @@ export default function Edit(props) {
                         iconSize={iconSize}
                         strokeWidth={strokeWidth}
                     />
-                    <NativeResponsiveControl label={__('Icon Size (px)', 'core')} props={props}>
+                    <NativeResponsiveControl label={__('Icon Size (px)', 'tiny-steps')} props={props}>
                         <RangeControl
                             value={resolvedSizes[resMode]}
                             onChange={value => setAttributes({ sizes: { ...sizes, [resMode]: value } })}
@@ -306,7 +306,7 @@ export default function Edit(props) {
                                 'Desktop' !== resMode && isInheritedSize
                                     ? __(
                                           'Inherited from the larger screen size. Change it to set a size just for this device.',
-                                          'core'
+                                          'tiny-steps'
                                       )
                                     : undefined
                             }
@@ -315,91 +315,91 @@ export default function Edit(props) {
                     </NativeResponsiveControl>
                     {/* Nudges the icon down — mainly for top-aligned icons beside multi-line text. */}
                     <NativeUnitControl
-                        label={__('Icon Top Margin', 'core')}
+                        label={__('Icon Top Margin', 'tiny-steps')}
                         value={iconMarginTop}
                         onChange={value => setAttributes({ iconMarginTop: value })}
                     />
                 </PanelBody>
                 {hasContent && (
-                    <PanelBody title={__('Title & Description', 'core')} initialOpen={false}>
+                    <PanelBody title={__('Title & Description', 'tiny-steps')} initialOpen={false}>
                         <NativeUnitControl
-                            label={__('Gap ', 'core')}
+                            label={__('Gap ', 'tiny-steps')}
                             value={listGap}
                             onChange={value => setAttributes({ listGap: value })}
                         />
                         <NativeSelectControl
-                            label={__('Vertical Alignment', 'core')}
+                            label={__('Vertical Alignment', 'tiny-steps')}
                             value={iconVerticalAlign}
                             onChange={value => setAttributes({ iconVerticalAlign: value })}
                             options={[
-                                { label: __('Top', 'core'), value: 'top' },
-                                { label: __('Center', 'core'), value: 'center' },
-                                { label: __('Bottom', 'core'), value: 'bottom' }
+                                { label: __('Top', 'tiny-steps'), value: 'top' },
+                                { label: __('Center', 'tiny-steps'), value: 'center' },
+                                { label: __('Bottom', 'tiny-steps'), value: 'bottom' }
                             ]}
                         />
                         {showTitle && (
                             <>
                                 <NativeSelectControl
-                                    label={__('Title Tag', 'core')}
+                                    label={__('Title Tag', 'tiny-steps')}
                                     value={headingTag}
                                     onChange={value => setAttributes({ headingTag: value })}
                                     options={[
-                                        { label: __('H1', 'core'), value: 'h1' },
-                                        { label: __('H2', 'core'), value: 'h2' },
-                                        { label: __('H3', 'core'), value: 'h3' },
-                                        { label: __('H4', 'core'), value: 'h4' },
-                                        { label: __('H5', 'core'), value: 'h5' },
-                                        { label: __('H6', 'core'), value: 'h6' },
-                                        { label: __('Paragraph', 'core'), value: 'p' },
-                                        { label: __('Div', 'core'), value: 'div' }
+                                        { label: __('H1', 'tiny-steps'), value: 'h1' },
+                                        { label: __('H2', 'tiny-steps'), value: 'h2' },
+                                        { label: __('H3', 'tiny-steps'), value: 'h3' },
+                                        { label: __('H4', 'tiny-steps'), value: 'h4' },
+                                        { label: __('H5', 'tiny-steps'), value: 'h5' },
+                                        { label: __('H6', 'tiny-steps'), value: 'h6' },
+                                        { label: __('Paragraph', 'tiny-steps'), value: 'p' },
+                                        { label: __('Div', 'tiny-steps'), value: 'div' }
                                     ]}
                                 />
                                 <NativeTextControl
-                                    label={__('Title Text', 'core')}
+                                    label={__('Title Text', 'tiny-steps')}
                                     value={heading}
                                     onChange={value => setAttributes({ heading: value })}
-                                    placeholder={__('List title...', 'core')}
+                                    placeholder={__('List title...', 'tiny-steps')}
                                 />
                             </>
                         )}
                         {showDesc && (
                             <>
                                 <NativeSelectControl
-                                    label={__('Description Tag', 'core')}
+                                    label={__('Description Tag', 'tiny-steps')}
                                     value={descTag}
                                     onChange={value => setAttributes({ descTag: value })}
                                     options={[
-                                        { label: __('Paragraph', 'core'), value: 'p' },
-                                        { label: __('Div', 'core'), value: 'div' },
-                                        { label: __('Span', 'core'), value: 'span' }
+                                        { label: __('Paragraph', 'tiny-steps'), value: 'p' },
+                                        { label: __('Div', 'tiny-steps'), value: 'div' },
+                                        { label: __('Span', 'tiny-steps'), value: 'span' }
                                     ]}
                                 />
                                 <NativeTextareaControl
-                                    label={__('Description Text', 'core')}
+                                    label={__('Description Text', 'tiny-steps')}
                                     value={description}
                                     onChange={value => setAttributes({ description: value })}
-                                    placeholder={__('Description...', 'core')}
+                                    placeholder={__('Description...', 'tiny-steps')}
                                 />
                             </>
                         )}
                     </PanelBody>
                 )}
                 {showButton && (
-                    <PanelBody title={__('Button', 'core')} initialOpen={false}>
+                    <PanelBody title={__('Button', 'tiny-steps')} initialOpen={false}>
                         <NativeTextControl
-                            label={__('Button Text', 'core')}
+                            label={__('Button Text', 'tiny-steps')}
                             value={buttonText}
                             onChange={value => setAttributes({ buttonText: value })}
-                            placeholder={__('Learn more', 'core')}
+                            placeholder={__('Learn more', 'tiny-steps')}
                         />
                         <NativeTextControl
-                            label={__('Button URL', 'core')}
+                            label={__('Button URL', 'tiny-steps')}
                             value={buttonUrl}
                             onChange={value => setAttributes({ buttonUrl: value })}
-                            placeholder={__('https://…', 'core')}
+                            placeholder={__('https://…', 'tiny-steps')}
                         />
                         <NativeToggleControl
-                            label={__('Open in New Tab', 'core')}
+                            label={__('Open in New Tab', 'tiny-steps')}
                             checked={'_blank' === buttonLinkTarget}
                             onChange={value =>
                                 setAttributes({
@@ -411,7 +411,7 @@ export default function Edit(props) {
                         />
                         {/* Same picker the block's main icon uses, so the icon sets match. */}
                         <NativeIconPicker
-                            label={__('Button Icon', 'core')}
+                            label={__('Button Icon', 'tiny-steps')}
                             onIconSelect={(iconName, iconType) => {
                                 setAttributes({
                                     buttonIconName: iconName,
@@ -444,11 +444,11 @@ export default function Edit(props) {
                                     })
                                 }
                             >
-                                {__('Remove Button Icon', 'core')}
+                                {__('Remove Button Icon', 'tiny-steps')}
                             </Button>
                         )}
                         <NativeUnitControl
-                            label={__('Top Margin', 'core')}
+                            label={__('Top Margin', 'tiny-steps')}
                             value={buttonMarginTop}
                             onChange={value => setAttributes({ buttonMarginTop: value })}
                         />
@@ -458,7 +458,7 @@ export default function Edit(props) {
             <InspectorControls group="styles">
                 {showTitle && (
                     <ToolsPanel
-                        label={__('Title', 'core')}
+                        label={__('Title', 'tiny-steps')}
                         resetAll={() =>
                             setAttributes({
                                 titleSize: undefined,
@@ -471,7 +471,7 @@ export default function Edit(props) {
                     >
                         <ToolsPanelItem
                             hasValue={() => !!titleSize}
-                            label={__('Size', 'core')}
+                            label={__('Size', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     titleSize: undefined
@@ -480,7 +480,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeUnitControl
-                                label={__('Font Size', 'core')}
+                                label={__('Font Size', 'tiny-steps')}
                                 value={titleSize}
                                 onChange={value => setAttributes({ titleSize: value })}
                             />
@@ -488,7 +488,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!titleColor}
-                            label={__('Color', 'core')}
+                            label={__('Color', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     titleColor: undefined
@@ -497,12 +497,12 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <PanelColorControl
-                                label={__('Color', 'core')}
+                                label={__('Color', 'tiny-steps')}
                                 colorSettings={[
                                     {
                                         value: titleColor,
                                         onChange: color => setAttributes({ titleColor: color }),
-                                        label: __('Color', 'core')
+                                        label: __('Color', 'tiny-steps')
                                     }
                                 ]}
                             />
@@ -510,7 +510,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!titleFontFamily}
-                            label={__('Font', 'core')}
+                            label={__('Font', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     titleFontFamily: undefined
@@ -519,7 +519,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeSelectControl
-                                label={__('Font', 'core')}
+                                label={__('Font', 'tiny-steps')}
                                 value={titleFontFamily}
                                 onChange={value => setAttributes({ titleFontFamily: value })}
                                 options={fontFamilyOptions}
@@ -528,7 +528,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!titleFontWeight}
-                            label={__('Weight', 'core')}
+                            label={__('Weight', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     titleFontWeight: undefined
@@ -537,7 +537,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeSelectControl
-                                label={__('Weight', 'core')}
+                                label={__('Weight', 'tiny-steps')}
                                 value={titleFontWeight}
                                 onChange={value => setAttributes({ titleFontWeight: value })}
                                 options={TITLE_FONT_WEIGHTS}
@@ -546,7 +546,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!titleMarginBottom}
-                            label={__('Bottom Margin', 'core')}
+                            label={__('Bottom Margin', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     titleMarginBottom: undefined
@@ -555,7 +555,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeUnitControl
-                                label={__('Bottom Margin', 'core')}
+                                label={__('Bottom Margin', 'tiny-steps')}
                                 value={titleMarginBottom}
                                 onChange={value => setAttributes({ titleMarginBottom: value })}
                             />
@@ -564,7 +564,7 @@ export default function Edit(props) {
                 )}
                 {showDesc && (
                     <ToolsPanel
-                        label={__('Description', 'core')}
+                        label={__('Description', 'tiny-steps')}
                         resetAll={() =>
                             setAttributes({
                                 descSize: undefined,
@@ -575,7 +575,7 @@ export default function Edit(props) {
                     >
                         <ToolsPanelItem
                             hasValue={() => !!descSize}
-                            label={__('Size', 'core')}
+                            label={__('Size', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     descSize: undefined
@@ -584,7 +584,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeUnitControl
-                                label={__('Font Size', 'core')}
+                                label={__('Font Size', 'tiny-steps')}
                                 value={descSize}
                                 onChange={value => setAttributes({ descSize: value })}
                             />
@@ -592,7 +592,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!descColor}
-                            label={__('Color', 'core')}
+                            label={__('Color', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     descColor: undefined
@@ -601,12 +601,12 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <PanelColorControl
-                                label={__('Color', 'core')}
+                                label={__('Color', 'tiny-steps')}
                                 colorSettings={[
                                     {
                                         value: descColor,
                                         onChange: color => setAttributes({ descColor: color }),
-                                        label: __('Color', 'core')
+                                        label: __('Color', 'tiny-steps')
                                     }
                                 ]}
                             />
@@ -614,7 +614,7 @@ export default function Edit(props) {
 
                         <ToolsPanelItem
                             hasValue={() => !!descFontFamily}
-                            label={__('Font', 'core')}
+                            label={__('Font', 'tiny-steps')}
                             onDeselect={() => {
                                 setAttributes({
                                     descFontFamily: undefined
@@ -623,7 +623,7 @@ export default function Edit(props) {
                             onSelect={() => {}}
                         >
                             <NativeSelectControl
-                                label={__('Font', 'core')}
+                                label={__('Font', 'tiny-steps')}
                                 value={descFontFamily}
                                 onChange={value => setAttributes({ descFontFamily: value })}
                                 options={fontFamilyOptions}
@@ -634,7 +634,7 @@ export default function Edit(props) {
             </InspectorControls>
             <div {...blockProps}>
                 <div
-                    className={classNames('core-theme-icon-block-wrapper', {
+                    className={classNames('tnys-icon-block-wrapper', {
                         [`icon-valign-${iconVerticalAlign}`]: iconVerticalAlign
                     })}
                 >
@@ -657,7 +657,7 @@ export default function Edit(props) {
                                     tagName={headingTag}
                                     value={heading}
                                     onChange={value => setAttributes({ heading: value })}
-                                    placeholder={__('List title...', 'core')}
+                                    placeholder={__('List title...', 'tiny-steps')}
                                     className="icon-heading"
                                     withoutInteractiveFormatting
                                 />
@@ -667,7 +667,7 @@ export default function Edit(props) {
                                     tagName={descTag}
                                     value={description}
                                     onChange={value => setAttributes({ description: value })}
-                                    placeholder={__('Description...', 'core')}
+                                    placeholder={__('Description...', 'tiny-steps')}
                                     className="icon-description"
                                     withoutInteractiveFormatting
                                 />
@@ -679,7 +679,7 @@ export default function Edit(props) {
                                         tagName="span"
                                         value={buttonText}
                                         onChange={value => setAttributes({ buttonText: value })}
-                                        placeholder={__('Learn more', 'core')}
+                                        placeholder={__('Learn more', 'tiny-steps')}
                                         className="icon-button__text"
                                         withoutInteractiveFormatting
                                     />

@@ -28,7 +28,7 @@ const HoverColorsControls = ( {
             colorValue: hoverTextColor?.color,
             onColorChange: setHoverTextColor,
             isShownByDefault: false,
-            label: __( 'Hover Text', 'core' ),
+            label: __( 'Hover Text', 'tiny-steps' ),
             resetAllFilter: () => ( {
                 hoverTextColor: undefined,
                 customHoverTextColor: undefined
@@ -38,7 +38,7 @@ const HoverColorsControls = ( {
             colorValue: hoverBackgroundColor?.color,
             onColorChange: setHoverBackgroundColor,
             isShownByDefault: false,
-            label: __( 'Hover Background', 'core' ),
+            label: __( 'Hover Background', 'tiny-steps' ),
             resetAllFilter: () => ( {
                 hoverBackgroundColor: undefined,
                 customHoverBackgroundColor: undefined
@@ -48,7 +48,7 @@ const HoverColorsControls = ( {
             colorValue: hoverBorderColor?.color,
             onColorChange: setHoverBorderColor,
             isShownByDefault: false,
-            label: __( 'Hover Border', 'core' ),
+            label: __( 'Hover Border', 'tiny-steps' ),
             resetAllFilter: () => ( {
                 hoverBorderColor: undefined,
                 customHoverBorderColor: undefined

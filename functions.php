@@ -1,12 +1,12 @@
 <?php
 /**
- * Core — Theme Functions
+ * Tiny Steps — Theme Functions
  *
  * This file is intentionally kept as a loader only.
  * All feature logic lives in the files under inc/.
  *
  * @link    https://developer.wordpress.org/themes/basics/theme-functions/
- * @package Core
+ * @package Tiny_Steps
  * @since   1.0
  */
 
@@ -40,21 +40,21 @@ require_once get_theme_file_path( 'inc/form.php' );       // Slide-in form panel
 // ── Shortcodes ─────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/shortcode.php' );         // Posts grid shortcode
 require_once get_theme_file_path( 'inc/shortcode-roles.php' );   // Opening roles shortcode
-require_once get_theme_file_path( 'inc/shortcodes-page.php' );  // Appearance → Core reference page
+require_once get_theme_file_path( 'inc/shortcodes-page.php' );  // Appearance → Tiny Steps reference page
 
 
 /**
  * Set WordPress excerpt length to 25 words.
  */
-function core_theme_excerpt_length( $length ) {
+function tnys_excerpt_length( $length ) {
     return 25;
 }
-add_filter( 'excerpt_length', 'core_theme_excerpt_length' );
+add_filter( 'excerpt_length', 'tnys_excerpt_length' );
 
 /**
  * Customize excerpt more text.
  */
-function core_theme_excerpt_more( $more ) {
+function tnys_excerpt_more( $more ) {
     return '...';
 }
-add_filter( 'excerpt_more', 'core_theme_excerpt_more' );
+add_filter( 'excerpt_more', 'tnys_excerpt_more' );

@@ -1,4 +1,4 @@
-# Core Theme — Section Design Rules
+# Tiny Steps Theme — Section Design Rules
 
 Role: Read figma design, then make the exact design in WordPress (Use Figma MCP server and Verify each design using claude browser extension)
 Follow these rules whenever you design or build a section, pattern, template or page for this theme.
@@ -14,14 +14,14 @@ Follow these rules whenever you design or build a section, pattern, template or 
 Pick blocks in this order, and move down a level only when the level above can't do the job:
 
 1. **Core WordPress blocks.** These are strongly preferred for all content: headings, paragraphs, buttons, images, lists, query loops and so on.
-2. **Custom blocks in the Core inserter category** (`core-theme/*`):
+2. **Custom blocks in the Tiny Steps inserter category** (`tnys/*`):
     - Icon
     - Carousel (with Slide)
     - Image Accordion (with Image Accordion Item)
     - Story Cards (with Story Card)
     - Ticker Gallery
     - Social Share
-3. Always use Core Theme **Icon** block where icon is used, always use SVG code and saved them under **My Icons** for future use.
+3. Always use Tiny Steps **Icon** block where icon is used, always use SVG code and saved them under **My Icons** for future use.
 4. **Other Kadence blocks.** Use these only when neither core blocks nor the theme's custom blocks can do the job.
 
 ## 3. Row Layout spacing
@@ -41,7 +41,7 @@ Pick blocks in this order, and move down a level only when the level above can't
 -   Build card grids as a nested Row Layout (`kadence/rowlayout`) with one **Section** (`kadence/column`) per card.
 -   Columns gap is always **24px**, both between columns and between rows: `"columnGutter":"custom","customGutter":[24,24,24],"collapseGutter":"custom","customRowGutter":[24,24,24]`.
 -   On tablet and mobile, cards are always **1 column**: `"tabletLayout":"row","mobileLayout":"row"`.
--   For image cards, don't use `core/cover`. Use the Section's own **Background Image + Overlay** settings (`backgroundImg`, `overlay` with a `core-theme-*` colour, `overlayOpacity`).
+-   For image cards, don't use `core/cover`. Use the Section's own **Background Image + Overlay** settings (`backgroundImg`, `overlay` with a `tnys-*` colour, `overlayOpacity`).
 -   Cards in the same row are always **equal height**. If the design gives a card height, set it as the Section's min height. Kadence adds padding on top of min height, so enter the design height minus the top and bottom padding (for example, 443px card − 48px padding = `"height":[395]`).
 -   Card content is vertically aligned to the **bottom** (`"verticalAlignment":"bottom"`).
 -   Card inner padding is an equal **24px** on all sides (`"padding":[24,24,24,24]`).
@@ -61,10 +61,10 @@ Style blocks through the options they already have, in this order:
 
 1. **Block settings in the editor sidebar:** typography, colour, spacing, border, layout.
 2. **The theme's presets from `theme.json`.** Never hard-code values that a preset already covers.
-    - **Colours:** `core-theme-*`. Tiber is the primary, Mantis the accent, and Neutral Dark the text colour.
-    - **Font sizes:** `core-theme-display`, `core-theme-heading-one` … `core-theme-heading-six`, then `-extra-large`, `-large`, `-medium` and `-small`.
-    - **Fonts:** Titling Gothic FB Wide for headings, Instrument Sans for everything else.
-    - **Spacing:** the `core-theme-*` spacing presets.
+    - **Colours:** `tnys-*`. Bay of Many is the primary, Bermuda the accent, and Neutral Dark the text colour.
+    - **Font sizes:** `tnys-heading-one` … `tnys-heading-six`, then `-extra-large`, `-large`, `-medium` (body default), `-small` and `-extra-small`.
+    - **Fonts:** DM Sans for headings, Manrope for everything else.
+    - **Spacing:** the `tnys-*` spacing presets.
 3. **Registered block styles**, for example the button styles Alternative, Outline and Link.
 4. **The theme's editor extensions:**
     - Highlight
@@ -100,6 +100,6 @@ Style blocks through the options they already have, in this order:
 
 ## 7. Color, Typography
 
--   always use Core theme color and typography
+-   always use Tiny Steps theme color and typography
 -   never use custom color and typography without permission
 -   never use letter spacing without permisson

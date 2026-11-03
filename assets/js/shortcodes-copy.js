@@ -61,6 +61,6 @@
 	}
 
 	document.addEventListener( 'DOMContentLoaded', function () {
-		document.querySelectorAll( '.psr-copy-btn, .core-theme-copy__btn' ).forEach( bindButton );
+		document.querySelectorAll( '.psr-copy-btn, .tnys-copy__btn' ).forEach( bindButton );
 	} );
 }() );

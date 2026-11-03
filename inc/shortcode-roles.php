@@ -8,20 +8,20 @@
  * Usage: [opening_roles]
  *        [opening_roles columns="3" count="-1" job_type="tax,accounting"]
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'core_theme_roles_grid_enqueue_assets' ) ) :
+if ( ! function_exists( 'tnys_roles_grid_enqueue_assets' ) ) :
 	/**
 	 * Enqueues the role card styles.
 	 */
-	function core_theme_roles_grid_enqueue_assets() {
+	function tnys_roles_grid_enqueue_assets() {
 		wp_enqueue_style(
-			'core-theme-roles-grid',
+			'tnys-roles-grid',
 			get_theme_file_uri( 'assets/css/roles-grid.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
@@ -30,7 +30,7 @@ if ( ! function_exists( 'core_theme_roles_grid_enqueue_assets' ) ) :
 endif;
 
 
-if ( ! function_exists( 'core_theme_roles_active_ids' ) ) :
+if ( ! function_exists( 'tnys_roles_active_ids' ) ) :
 	/**
 	 * IDs of the roles that should be listed: published and switched on in
 	 * the Active column. Roles created before that toggle existed have no
@@ -42,7 +42,7 @@ if ( ! function_exists( 'core_theme_roles_active_ids' ) ) :
 	 * @param int[]  $type_ids  Job Type term IDs to limit to; empty for all.
 	 * @return int[] Post IDs.
 	 */
-	function core_theme_roles_active_ids( $limit, $order, $orderby, $type_ids = array() ) {
+	function tnys_roles_active_ids( $limit, $order, $orderby, $type_ids = array() ) {
 		$args = array(
 			'post_type'        => 'open-role',
 			'post_status'      => 'publish',
@@ -57,14 +57,14 @@ if ( ! function_exists( 'core_theme_roles_active_ids' ) ) :
 		if ( $type_ids ) {
 			$args['tax_query'] = array(
 				array(
-					'taxonomy' => 'core-theme-job-type',
+					'taxonomy' => 'tnys-job-type',
 					'field'    => 'term_id',
 					'terms'    => $type_ids,
 				),
 			);
 		}
 
-		$ids = array_values( array_filter( get_posts( $args ), 'core_theme_open_role_is_active' ) );
+		$ids = array_values( array_filter( get_posts( $args ), 'tnys_open_role_is_active' ) );
 
 		// Limit after the active filter, so inactive roles never use up slots.
 		return $limit > 0 ? array_slice( $ids, 0, $limit ) : $ids;
@@ -72,18 +72,18 @@ if ( ! function_exists( 'core_theme_roles_active_ids' ) ) :
 endif;
 
 
-if ( ! function_exists( 'core_theme_roles_render_card' ) ) :
+if ( ! function_exists( 'tnys_roles_render_card' ) ) :
 	/**
 	 * Renders one role card.
 	 *
 	 * @param int $post_id Role ID.
 	 * @return string Markup.
 	 */
-	function core_theme_roles_render_card( $post_id ) {
-		$types      = get_the_terms( $post_id, 'core-theme-job-type' );
+	function tnys_roles_render_card( $post_id ) {
+		$types      = get_the_terms( $post_id, 'tnys-job-type' );
 		$type_label = is_array( $types ) ? implode( ', ', wp_list_pluck( $types, 'name' ) ) : '';
-		$vacancies  = (int) get_post_meta( $post_id, 'core_theme_role_vacancies', true );
-		$apply      = (string) get_post_meta( $post_id, 'core_theme_role_apply_link', true );
+		$vacancies  = (int) get_post_meta( $post_id, 'tnys_role_vacancies', true );
+		$apply      = (string) get_post_meta( $post_id, 'tnys_role_apply_link', true );
 		$title      = get_the_title( $post_id );
 
 		/*
@@ -98,33 +98,33 @@ if ( ! function_exists( 'core_theme_roles_render_card' ) ) :
 
 		ob_start();
 		?>
-		<article class="core-role">
+		<article class="tnys-role">
 			<?php if ( '' !== $type_label || $vacancies > 0 ) : ?>
-				<div class="core-role__meta">
+				<div class="tnys-role__meta">
 					<?php if ( '' !== $type_label ) : ?>
-						<span class="core-role__type"><?php echo esc_html( $type_label ); ?></span>
+						<span class="tnys-role__type"><?php echo esc_html( $type_label ); ?></span>
 					<?php endif; ?>
 					<?php if ( $vacancies > 0 ) : ?>
-						<span class="core-role__count">
+						<span class="tnys-role__count">
 							<?php
 							/* translators: %d: number of open positions. */
-							echo esc_html( sprintf( _n( '%d open', '%d open', $vacancies, 'core' ), $vacancies ) );
+							echo esc_html( sprintf( _n( '%d open', '%d open', $vacancies, 'tiny-steps' ), $vacancies ) );
 							?>
 						</span>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 
-			<h3 class="core-role__title"><?php echo esc_html( $title ); ?></h3>
+			<h3 class="tnys-role__title"><?php echo esc_html( $title ); ?></h3>
 
 			<?php if ( '' !== $apply_url ) : ?>
 				<a
-					class="core-role__apply"
+					class="tnys-role__apply"
 					href="<?php echo $apply_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?>"
-					aria-label="<?php echo esc_attr( sprintf( /* translators: %s: role title */ __( 'Apply for %s', 'core' ), $title ) ); ?>"
+					aria-label="<?php echo esc_attr( sprintf( /* translators: %s: role title */ __( 'Apply for %s', 'tiny-steps' ), $title ) ); ?>"
 					<?php echo $external ? 'target="_blank" rel="noopener"' : ''; ?>
 				>
-					<span><?php esc_html_e( 'Apply now', 'core' ); ?></span>
+					<span><?php esc_html_e( 'Apply now', 'tiny-steps' ); ?></span>
 					<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false"><path d="M3.6 9H14.4M9.9 13.5L14.4 9L9.9 4.5" stroke="currentColor" stroke-width="1.575" stroke-linecap="round" stroke-linejoin="round"/></svg>
 				</a>
 			<?php endif; ?>
@@ -135,14 +135,14 @@ if ( ! function_exists( 'core_theme_roles_render_card' ) ) :
 endif;
 
 
-if ( ! function_exists( 'core_theme_opening_roles_shortcode' ) ) :
+if ( ! function_exists( 'tnys_opening_roles_shortcode' ) ) :
 	/**
 	 * [opening_roles columns="3" count="-1" job_type="" order="DESC" orderby="date"]
 	 *
 	 * @param array $atts Shortcode attributes.
 	 * @return string Markup, or a short note when no role is open.
 	 */
-	function core_theme_opening_roles_shortcode( $atts ) {
+	function tnys_opening_roles_shortcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
 				'columns'  => 3,
@@ -151,7 +151,7 @@ if ( ! function_exists( 'core_theme_opening_roles_shortcode' ) ) :
 				'job_type' => '',
 				'order'    => 'DESC',
 				'orderby'  => 'date',
-				'empty'    => __( 'There are no open roles right now.', 'core' ),
+				'empty'    => __( 'There are no open roles right now.', 'tiny-steps' ),
 			),
 			$atts,
 			'opening_roles'
@@ -165,28 +165,28 @@ if ( ! function_exists( 'core_theme_opening_roles_shortcode' ) ) :
 		$type_ids = array();
 		foreach ( array_filter( array_map( 'trim', explode( ',', (string) $atts['job_type'] ) ), 'strlen' ) as $token ) {
 			$term = is_numeric( $token )
-				? get_term_by( 'id', (int) $token, 'core-theme-job-type' )
-				: get_term_by( 'slug', sanitize_title( $token ), 'core-theme-job-type' );
+				? get_term_by( 'id', (int) $token, 'tnys-job-type' )
+				: get_term_by( 'slug', sanitize_title( $token ), 'tnys-job-type' );
 			if ( $term && ! is_wp_error( $term ) ) {
 				$type_ids[] = (int) $term->term_id;
 			}
 		}
 
-		$ids = core_theme_roles_active_ids( $count, $order, $orderby, $type_ids );
+		$ids = tnys_roles_active_ids( $count, $order, $orderby, $type_ids );
 
-		core_theme_roles_grid_enqueue_assets();
+		tnys_roles_grid_enqueue_assets();
 
 		if ( ! $ids ) {
-			return '' !== trim( $atts['empty'] ) ? '<p class="core-roles__empty">' . esc_html( $atts['empty'] ) . '</p>' : '';
+			return '' !== trim( $atts['empty'] ) ? '<p class="tnys-roles__empty">' . esc_html( $atts['empty'] ) . '</p>' : '';
 		}
 
-		$html = '<div class="core-roles" style="--core-roles-columns:' . (int) $columns . '">';
+		$html = '<div class="tnys-roles" style="--tnys-roles-columns:' . (int) $columns . '">';
 		foreach ( $ids as $id ) {
-			$html .= core_theme_roles_render_card( $id );
+			$html .= tnys_roles_render_card( $id );
 		}
 		$html .= '</div>';
 
 		return $html;
 	}
 endif;
-add_shortcode( 'opening_roles', 'core_theme_opening_roles_shortcode' );
+add_shortcode( 'opening_roles', 'tnys_opening_roles_shortcode' );

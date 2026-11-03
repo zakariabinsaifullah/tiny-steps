@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "core-theme/hover-color-extension",
+    "name": "tnys/hover-color-extension",
     "title": "Hover Color Extension",
     "editorScript": "file:./index.js",
     "style": "file:./style-index.css"

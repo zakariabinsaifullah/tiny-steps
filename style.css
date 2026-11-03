@@ -1,13 +1,13 @@
 /*
-Theme Name: Core
+Theme Name: Tiny Steps
 Theme URI: 
 Author: binsaifullah
-Description: Core is a Full Site Editing block theme with custom blocks, block extensions and patterns, designed to provide a seamless and intuitive user experience.
+Description: Tiny Steps is a Full Site Editing block theme with custom blocks, block extensions and patterns, designed to provide a seamless and intuitive user experience.
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 7.4
 Version: 0.3.0
-Text Domain: core
+Text Domain: tiny-steps
 Update URI: false
 */
 
@@ -92,17 +92,17 @@ p {
     margin-block-end: 0 !important;
 }
 
-.core-theme-footer a,
-.core-theme-footer p {
+.tnys-footer a,
+.tnys-footer p {
     font-size: 14px !important;
-    font-family: var(--wp--preset--font-family--instrument-sans) !important;
+    font-family: var(--wp--preset--font-family--manrope) !important;
 }
 
 footer .wp-block-paragraph a {
-    font-family: var(--wp--preset--font-family--instrument-sans) !important;
+    font-family: var(--wp--preset--font-family--manrope) !important;
 }
 
-.core-theme-footer .wp-block-gallery.has-nested-images figure.wp-block-image {
+.tnys-footer .wp-block-gallery.has-nested-images figure.wp-block-image {
     max-width: 60px !important;
 }
 
@@ -122,13 +122,13 @@ footer .wp-block-paragraph a {
 
 .kt-blocks-accordion-header .kt-blocks-accordion-title,
 a.kb-nav-link-content {
-    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-family: var(--wp--preset--font-family--manrope);
 }
 
 .taxonomy-category a {
     margin: 0 !important;
     padding: 0 !important;
-    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-family: var(--wp--preset--font-family--manrope);
 }
 
 @media screen and (max-width: 767px) {

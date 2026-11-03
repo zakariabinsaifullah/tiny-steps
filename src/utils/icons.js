@@ -265,59 +265,59 @@ import {
 const categories = [
     {
         slug: 'all',
-        name: __('All Icons', 'core')
+        name: __('All Icons', 'tiny-steps')
     },
     {
         slug: 'arrows',
-        name: __('Arrows', 'core')
+        name: __('Arrows', 'tiny-steps')
     },
     {
         slug: 'editor',
-        name: __('Editor', 'core')
+        name: __('Editor', 'tiny-steps')
     },
     {
         slug: 'actions',
-        name: __('Actions', 'core')
+        name: __('Actions', 'tiny-steps')
     },
     {
         slug: 'devices',
-        name: __('Devices', 'core')
+        name: __('Devices', 'tiny-steps')
     },
     {
         slug: 'interface',
-        name: __('Interface', 'core')
+        name: __('Interface', 'tiny-steps')
     },
     {
         slug: 'media',
-        name: __('Media', 'core')
+        name: __('Media', 'tiny-steps')
     },
     {
         slug: 'format',
-        name: __('Formatting', 'core')
+        name: __('Formatting', 'tiny-steps')
     },
     {
         slug: 'layout',
-        name: __('Layout', 'core')
+        name: __('Layout', 'tiny-steps')
     },
     {
         slug: 'tables',
-        name: __('Tables', 'core')
+        name: __('Tables', 'tiny-steps')
     },
     {
         slug: 'posts',
-        name: __('Posts & Pages', 'core')
+        name: __('Posts & Pages', 'tiny-steps')
     },
     {
         slug: 'comments',
-        name: __('Comments', 'core')
+        name: __('Comments', 'tiny-steps')
     },
     {
         slug: 'ecommerce',
-        name: __('E-Commerce', 'core')
+        name: __('E-Commerce', 'tiny-steps')
     },
     {
         slug: 'misc',
-        name: __('Miscellaneous', 'core')
+        name: __('Miscellaneous', 'tiny-steps')
     }
 ];
 
@@ -328,209 +328,209 @@ const icons = [
     // Original icons
     {
         name: 'wordpress',
-        title: __('WordPress', 'core'),
+        title: __('WordPress', 'tiny-steps'),
         icon: wordpress,
         categories: ['misc'],
         isDefault: true
     },
     {
         name: 'paragraph',
-        title: __('Paragraph', 'core'),
+        title: __('Paragraph', 'tiny-steps'),
         icon: paragraph,
         categories: ['editor']
     },
     {
         name: 'share',
-        title: __('Share', 'core'),
+        title: __('Share', 'tiny-steps'),
         icon: share,
         categories: ['actions']
     },
     {
         name: 'star-filled',
-        title: __('Star Filled', 'core'),
+        title: __('Star Filled', 'tiny-steps'),
         icon: starFilled,
         categories: ['interface'],
         isDefault: true
     },
     {
         name: 'star-empty',
-        title: __('Star Empty', 'core'),
+        title: __('Star Empty', 'tiny-steps'),
         icon: starEmpty,
         categories: ['interface']
     },
     {
         name: 'check',
-        title: __('Check', 'core'),
+        title: __('Check', 'tiny-steps'),
         icon: check,
         categories: ['interface'],
         isDefault: true
     },
     {
         name: 'menu',
-        title: __('Menu', 'core'),
+        title: __('Menu', 'tiny-steps'),
         icon: menu,
         categories: ['interface']
     },
     {
         name: 'help',
-        title: __('Help', 'core'),
+        title: __('Help', 'tiny-steps'),
         icon: help,
         categories: ['interface']
     },
     {
         name: 'globe',
-        title: __('Globe', 'core'),
+        title: __('Globe', 'tiny-steps'),
         icon: globe,
         categories: ['misc']
     },
     {
         name: 'gallery',
-        title: __('Gallery', 'core'),
+        title: __('Gallery', 'tiny-steps'),
         icon: gallery,
         categories: ['editor', 'media']
     },
     // {
     //     name: 'edit',
-    //     title: __('Edit', 'core'),
+    //     title: __('Edit', 'tiny-steps'),
     //     icon: edit,
     //     categories: ['actions']
     // },
     {
         name: 'cloud',
-        title: __('Cloud', 'core'),
+        title: __('Cloud', 'tiny-steps'),
         icon: cloud,
         categories: ['misc']
     },
     {
         name: 'archive',
-        title: __('Archive', 'core'),
+        title: __('Archive', 'tiny-steps'),
         icon: archive,
         categories: ['misc']
     },
     {
         name: 'settings',
-        title: __('Settings', 'core'),
+        title: __('Settings', 'tiny-steps'),
         icon: settings,
         categories: ['interface']
     },
     {
         name: 'home',
-        title: __('Home', 'core'),
+        title: __('Home', 'tiny-steps'),
         icon: home,
         categories: ['misc']
     },
     // {
     //     name: 'warning',
-    //     title: __('Warning', 'core'),
+    //     title: __('Warning', 'tiny-steps'),
     //     icon: warning,
     //     categories: ['interface']
     // },
     {
         name: 'info',
-        title: __('Info', 'core'),
+        title: __('Info', 'tiny-steps'),
         icon: info,
         categories: ['interface']
     },
     {
         name: 'search',
-        title: __('Search', 'core'),
+        title: __('Search', 'tiny-steps'),
         icon: search,
         categories: ['actions']
     },
     {
         name: 'calendar',
-        title: __('Calendar', 'core'),
+        title: __('Calendar', 'tiny-steps'),
         icon: calendar,
         categories: ['misc']
     },
     {
         name: 'desktop',
-        title: __('Desktop', 'core'),
+        title: __('Desktop', 'tiny-steps'),
         icon: desktop,
         categories: ['devices']
     },
     {
         name: 'mobile',
-        title: __('Mobile', 'core'),
+        title: __('Mobile', 'tiny-steps'),
         icon: mobile,
         categories: ['devices']
     },
     {
         name: 'tablet',
-        title: __('Tablet', 'core'),
+        title: __('Tablet', 'tiny-steps'),
         icon: tablet,
         categories: ['devices']
     },
     {
         name: 'download',
-        title: __('Download', 'core'),
+        title: __('Download', 'tiny-steps'),
         icon: download,
         categories: ['actions'],
         isDefault: true
     },
     {
         name: 'pencil',
-        title: __('Pencil', 'core'),
+        title: __('Pencil', 'tiny-steps'),
         icon: pencil,
         categories: ['actions']
     },
     {
         name: 'external',
-        title: __('External', 'core'),
+        title: __('External', 'tiny-steps'),
         icon: external,
         categories: ['interface']
     },
     {
         name: 'trash',
-        title: __('Trash', 'core'),
+        title: __('Trash', 'tiny-steps'),
         icon: trash,
         categories: ['actions']
     },
     {
         name: 'upload',
-        title: __('Upload', 'core'),
+        title: __('Upload', 'tiny-steps'),
         icon: upload,
         categories: ['actions']
     },
     {
         name: 'plus',
-        title: __('Plus', 'core'),
+        title: __('Plus', 'tiny-steps'),
         icon: plus,
         categories: ['interface']
     },
     {
         name: 'close',
-        title: __('Close', 'core'),
+        title: __('Close', 'tiny-steps'),
         icon: close,
         categories: ['interface']
     },
     {
         name: 'update',
-        title: __('Update', 'core'),
+        title: __('Update', 'tiny-steps'),
         icon: update,
         categories: ['actions']
     },
     {
         name: 'arrow-up',
-        title: __('Arrow Up', 'core'),
+        title: __('Arrow Up', 'tiny-steps'),
         icon: arrowUp,
         categories: ['arrows']
     },
     {
         name: 'arrow-down',
-        title: __('Arrow Down', 'core'),
+        title: __('Arrow Down', 'tiny-steps'),
         icon: arrowDown,
         categories: ['arrows']
     },
     {
         name: 'arrow-left',
-        title: __('Arrow Left', 'core'),
+        title: __('Arrow Left', 'tiny-steps'),
         icon: arrowLeft,
         categories: ['arrows']
     },
     {
         name: 'arrow-right',
-        title: __('Arrow Right', 'core'),
+        title: __('Arrow Right', 'tiny-steps'),
         icon: arrowRight,
         categories: ['arrows'],
         isDefault: true
@@ -539,50 +539,50 @@ const icons = [
     // Additional icons - Arrows
     {
         name: 'chevron-down',
-        title: __('Chevron Down', 'core'),
+        title: __('Chevron Down', 'tiny-steps'),
         icon: chevronDown,
         categories: ['arrows']
     },
     {
         name: 'chevron-up',
-        title: __('Chevron Up', 'core'),
+        title: __('Chevron Up', 'tiny-steps'),
         icon: chevronUp,
         categories: ['arrows']
     },
     {
         name: 'chevron-left',
-        title: __('Chevron Left', 'core'),
+        title: __('Chevron Left', 'tiny-steps'),
         icon: chevronLeft,
         categories: ['arrows']
     },
     {
         name: 'chevron-right',
-        title: __('Chevron Right', 'core'),
+        title: __('Chevron Right', 'tiny-steps'),
         icon: chevronRight,
         categories: ['arrows'],
         isDefault: true
     },
     {
         name: 'chevron-right-small',
-        title: __('Chevron Right Small', 'core'),
+        title: __('Chevron Right Small', 'tiny-steps'),
         icon: chevronRightSmall,
         categories: ['arrows']
     },
     {
         name: 'chevron-up-down',
-        title: __('Chevron Up Down', 'core'),
+        title: __('Chevron Up Down', 'tiny-steps'),
         icon: chevronUpDown,
         categories: ['arrows']
     },
     {
         name: 'previous',
-        title: __('Previous', 'core'),
+        title: __('Previous', 'tiny-steps'),
         icon: previous,
         categories: ['arrows']
     },
     {
         name: 'next',
-        title: __('Next', 'core'),
+        title: __('Next', 'tiny-steps'),
         icon: next,
         categories: ['arrows']
     },
@@ -590,109 +590,109 @@ const icons = [
     // Editor
     {
         name: 'heading',
-        title: __('Heading', 'core'),
+        title: __('Heading', 'tiny-steps'),
         icon: heading,
         categories: ['editor']
     },
     {
         name: 'quote',
-        title: __('Quote', 'core'),
+        title: __('Quote', 'tiny-steps'),
         icon: quote,
         categories: ['editor']
     },
     {
         name: 'list',
-        title: __('List', 'core'),
+        title: __('List', 'tiny-steps'),
         icon: list,
         categories: ['editor']
     },
     {
         name: 'list-item',
-        title: __('List Item', 'core'),
+        title: __('List Item', 'tiny-steps'),
         icon: listItem,
         categories: ['editor']
     },
     {
         name: 'code',
-        title: __('Code', 'core'),
+        title: __('Code', 'tiny-steps'),
         icon: code,
         categories: ['editor']
     },
     {
         name: 'image',
-        title: __('Image', 'core'),
+        title: __('Image', 'tiny-steps'),
         icon: image,
         categories: ['editor', 'media']
     },
     {
         name: 'video',
-        title: __('Video', 'core'),
+        title: __('Video', 'tiny-steps'),
         icon: video,
         categories: ['editor', 'media']
     },
     {
         name: 'audio',
-        title: __('Audio', 'core'),
+        title: __('Audio', 'tiny-steps'),
         icon: audio,
         categories: ['editor', 'media']
     },
     {
         name: 'media',
-        title: __('Media', 'core'),
+        title: __('Media', 'tiny-steps'),
         icon: media,
         categories: ['editor', 'media']
     },
     {
         name: 'cover',
-        title: __('Cover', 'core'),
+        title: __('Cover', 'tiny-steps'),
         icon: cover,
         categories: ['editor']
     },
     {
         name: 'verse',
-        title: __('Verse', 'core'),
+        title: __('Verse', 'tiny-steps'),
         icon: verse,
         categories: ['editor']
     },
     {
         name: 'preformatted',
-        title: __('Preformatted', 'core'),
+        title: __('Preformatted', 'tiny-steps'),
         icon: preformatted,
         categories: ['editor']
     },
     {
         name: 'shortcode',
-        title: __('Shortcode', 'core'),
+        title: __('Shortcode', 'tiny-steps'),
         icon: shortcode,
         categories: ['editor']
     },
     {
         name: 'html',
-        title: __('HTML', 'core'),
+        title: __('HTML', 'tiny-steps'),
         icon: html,
         categories: ['editor']
     },
     {
         name: 'pullquote',
-        title: __('Pullquote', 'core'),
+        title: __('Pullquote', 'tiny-steps'),
         icon: pullquote,
         categories: ['editor']
     },
     {
         name: 'button',
-        title: __('Button', 'core'),
+        title: __('Button', 'tiny-steps'),
         icon: button,
         categories: ['editor']
     },
     {
         name: 'buttons',
-        title: __('Buttons', 'core'),
+        title: __('Buttons', 'tiny-steps'),
         icon: buttons,
         categories: ['editor']
     },
     {
         name: 'media-and-text',
-        title: __('Media & Text', 'core'),
+        title: __('Media & Text', 'tiny-steps'),
         icon: mediaAndText,
         categories: ['editor', 'layout']
     },
@@ -700,121 +700,121 @@ const icons = [
     // Format
     {
         name: 'format-bold',
-        title: __('Format Bold', 'core'),
+        title: __('Format Bold', 'tiny-steps'),
         icon: formatBold,
         categories: ['format']
     },
     {
         name: 'format-italic',
-        title: __('Format Italic', 'core'),
+        title: __('Format Italic', 'tiny-steps'),
         icon: formatItalic,
         categories: ['format']
     },
     {
         name: 'format-strikethrough',
-        title: __('Format Strikethrough', 'core'),
+        title: __('Format Strikethrough', 'tiny-steps'),
         icon: formatStrikethrough,
         categories: ['format']
     },
     {
         name: 'format-underline',
-        title: __('Format Underline', 'core'),
+        title: __('Format Underline', 'tiny-steps'),
         icon: formatUnderline,
         categories: ['format']
     },
     {
         name: 'format-capitalize',
-        title: __('Format Capitalize', 'core'),
+        title: __('Format Capitalize', 'tiny-steps'),
         icon: formatCapitalize,
         categories: ['format']
     },
     {
         name: 'format-uppercase',
-        title: __('Format Uppercase', 'core'),
+        title: __('Format Uppercase', 'tiny-steps'),
         icon: formatUppercase,
         categories: ['format']
     },
     {
         name: 'format-lowercase',
-        title: __('Format Lowercase', 'core'),
+        title: __('Format Lowercase', 'tiny-steps'),
         icon: formatLowercase,
         categories: ['format']
     },
     {
         name: 'format-ltr',
-        title: __('Format LTR', 'core'),
+        title: __('Format LTR', 'tiny-steps'),
         icon: formatLTR,
         categories: ['format']
     },
     // {
     //     name: 'format-rtl',
-    //     title: __('Format RTL', 'core'),
+    //     title: __('Format RTL', 'tiny-steps'),
     //     icon: formatRTL,
     //     categories: ['format']
     // },
     {
         name: 'format-indent',
-        title: __('Format Indent', 'core'),
+        title: __('Format Indent', 'tiny-steps'),
         icon: formatIndent,
         categories: ['format']
     },
     {
         name: 'format-indent-rtl',
-        title: __('Format Indent RTL', 'core'),
+        title: __('Format Indent RTL', 'tiny-steps'),
         icon: formatIndentRTL,
         categories: ['format']
     },
     {
         name: 'format-outdent',
-        title: __('Format Outdent', 'core'),
+        title: __('Format Outdent', 'tiny-steps'),
         icon: formatOutdent,
         categories: ['format']
     },
     {
         name: 'format-outdent-rtl',
-        title: __('Format Outdent RTL', 'core'),
+        title: __('Format Outdent RTL', 'tiny-steps'),
         icon: formatOutdentRTL,
         categories: ['format']
     },
     {
         name: 'format-list-bullets',
-        title: __('Format List Bullets', 'core'),
+        title: __('Format List Bullets', 'tiny-steps'),
         icon: formatListBullets,
         categories: ['format']
     },
     {
         name: 'format-list-bullets-rtl',
-        title: __('Format List Bullets RTL', 'core'),
+        title: __('Format List Bullets RTL', 'tiny-steps'),
         icon: formatListBulletsRTL,
         categories: ['format']
     },
     {
         name: 'format-list-numbered',
-        title: __('Format List Numbered', 'core'),
+        title: __('Format List Numbered', 'tiny-steps'),
         icon: formatListNumbered,
         categories: ['format']
     },
     {
         name: 'format-list-numbered-rtl',
-        title: __('Format List Numbered RTL', 'core'),
+        title: __('Format List Numbered RTL', 'tiny-steps'),
         icon: formatListNumberedRTL,
         categories: ['format']
     },
     {
         name: 'text-color',
-        title: __('Text Color', 'core'),
+        title: __('Text Color', 'tiny-steps'),
         icon: textColor,
         categories: ['format']
     },
     {
         name: 'subscript',
-        title: __('Subscript', 'core'),
+        title: __('Subscript', 'tiny-steps'),
         icon: subscript,
         categories: ['format']
     },
     {
         name: 'superscript',
-        title: __('Superscript', 'core'),
+        title: __('Superscript', 'tiny-steps'),
         icon: superscript,
         categories: ['format']
     },
@@ -822,7 +822,7 @@ const icons = [
     // Layout
     {
         name: 'layouts',
-        title: __('Layouts', 'core'),
+        title: __('Layouts', 'tiny-steps'),
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -843,145 +843,145 @@ const icons = [
     },
     {
         name: 'align-left',
-        title: __('Align Left', 'core'),
+        title: __('Align Left', 'tiny-steps'),
         icon: alignLeft,
         categories: ['layout']
     },
     {
         name: 'align-center',
-        title: __('Align Center', 'core'),
+        title: __('Align Center', 'tiny-steps'),
         icon: alignCenter,
         categories: ['layout']
     },
     {
         name: 'align-right',
-        title: __('Align Right', 'core'),
+        title: __('Align Right', 'tiny-steps'),
         icon: alignRight,
         categories: ['layout']
     },
     {
         name: 'align-justify',
-        title: __('Align Justify', 'core'),
+        title: __('Align Justify', 'tiny-steps'),
         icon: alignJustify,
         categories: ['layout']
     },
     {
         name: 'align-none',
-        title: __('Align None', 'core'),
+        title: __('Align None', 'tiny-steps'),
         icon: alignNone,
         categories: ['layout']
     },
     {
         name: 'columns',
-        title: __('Columns', 'core'),
+        title: __('Columns', 'tiny-steps'),
         icon: columns,
         categories: ['layout']
     },
     {
         name: 'column',
-        title: __('Column', 'core'),
+        title: __('Column', 'tiny-steps'),
         icon: column,
         categories: ['layout']
     },
     {
         name: 'row',
-        title: __('Row', 'core'),
+        title: __('Row', 'tiny-steps'),
         icon: row,
         categories: ['layout']
     },
     {
         name: 'group',
-        title: __('Group', 'core'),
+        title: __('Group', 'tiny-steps'),
         icon: group,
         categories: ['layout']
     },
     {
         name: 'ungroup',
-        title: __('Ungroup', 'core'),
+        title: __('Ungroup', 'tiny-steps'),
         icon: ungroup,
         categories: ['layout']
     },
     {
         name: 'stretch-wide',
-        title: __('Stretch Wide', 'core'),
+        title: __('Stretch Wide', 'tiny-steps'),
         icon: stretchWide,
         categories: ['layout']
     },
     {
         name: 'stretch-full-width',
-        title: __('Stretch Full Width', 'core'),
+        title: __('Stretch Full Width', 'tiny-steps'),
         icon: stretchFullWidth,
         categories: ['layout']
     },
     {
         name: 'position-left',
-        title: __('Position Left', 'core'),
+        title: __('Position Left', 'tiny-steps'),
         icon: positionLeft,
         categories: ['layout']
     },
     {
         name: 'position-center',
-        title: __('Position Center', 'core'),
+        title: __('Position Center', 'tiny-steps'),
         icon: positionCenter,
         categories: ['layout']
     },
     {
         name: 'position-right',
-        title: __('Position Right', 'core'),
+        title: __('Position Right', 'tiny-steps'),
         icon: positionRight,
         categories: ['layout']
     },
     {
         name: 'justify-left',
-        title: __('Justify Left', 'core'),
+        title: __('Justify Left', 'tiny-steps'),
         icon: justifyLeft,
         categories: ['layout']
     },
     {
         name: 'justify-center',
-        title: __('Justify Center', 'core'),
+        title: __('Justify Center', 'tiny-steps'),
         icon: justifyCenter,
         categories: ['layout']
     },
     {
         name: 'justify-right',
-        title: __('Justify Right', 'core'),
+        title: __('Justify Right', 'tiny-steps'),
         icon: justifyRight,
         categories: ['layout']
     },
     {
         name: 'justify-space-between',
-        title: __('Justify Space Between', 'core'),
+        title: __('Justify Space Between', 'tiny-steps'),
         icon: justifySpaceBetween,
         categories: ['layout']
     },
     {
         name: 'justify-stretch',
-        title: __('Justify Stretch', 'core'),
+        title: __('Justify Stretch', 'tiny-steps'),
         icon: justifyStretch,
         categories: ['layout']
     },
     {
         name: 'header',
-        title: __('Header', 'core'),
+        title: __('Header', 'tiny-steps'),
         icon: header,
         categories: ['layout']
     },
     {
         name: 'footer',
-        title: __('Footer', 'core'),
+        title: __('Footer', 'tiny-steps'),
         icon: footer,
         categories: ['layout']
     },
     {
         name: 'sidebar',
-        title: __('Sidebar', 'core'),
+        title: __('Sidebar', 'tiny-steps'),
         icon: sidebar,
         categories: ['layout']
     },
     {
         name: 'layout',
-        title: __('Layout', 'core'),
+        title: __('Layout', 'tiny-steps'),
         icon: layout,
         categories: ['layout']
     },
@@ -989,49 +989,49 @@ const icons = [
     // Tables
     {
         name: 'table',
-        title: __('Table', 'core'),
+        title: __('Table', 'tiny-steps'),
         icon: table,
         categories: ['tables']
     },
     {
         name: 'block-table',
-        title: __('Block Table', 'core'),
+        title: __('Block Table', 'tiny-steps'),
         icon: blockTable,
         categories: ['tables']
     },
     {
         name: 'table-column-after',
-        title: __('Table Column After', 'core'),
+        title: __('Table Column After', 'tiny-steps'),
         icon: tableColumnAfter,
         categories: ['tables']
     },
     {
         name: 'table-column-before',
-        title: __('Table Column Before', 'core'),
+        title: __('Table Column Before', 'tiny-steps'),
         icon: tableColumnBefore,
         categories: ['tables']
     },
     {
         name: 'table-column-delete',
-        title: __('Table Column Delete', 'core'),
+        title: __('Table Column Delete', 'tiny-steps'),
         icon: tableColumnDelete,
         categories: ['tables']
     },
     {
         name: 'table-row-after',
-        title: __('Table Row After', 'core'),
+        title: __('Table Row After', 'tiny-steps'),
         icon: tableRowAfter,
         categories: ['tables']
     },
     {
         name: 'table-row-before',
-        title: __('Table Row Before', 'core'),
+        title: __('Table Row Before', 'tiny-steps'),
         icon: tableRowBefore,
         categories: ['tables']
     },
     {
         name: 'table-row-delete',
-        title: __('Table Row Delete', 'core'),
+        title: __('Table Row Delete', 'tiny-steps'),
         icon: tableRowDelete,
         categories: ['tables']
     },
@@ -1039,98 +1039,98 @@ const icons = [
     // Actions
     {
         name: 'copy',
-        title: __('Copy', 'core'),
+        title: __('Copy', 'tiny-steps'),
         icon: copy,
         categories: ['actions']
     },
 
     {
         name: 'redo',
-        title: __('Redo', 'core'),
+        title: __('Redo', 'tiny-steps'),
         icon: redo,
         categories: ['actions']
     },
     {
         name: 'undo',
-        title: __('Undo', 'core'),
+        title: __('Undo', 'tiny-steps'),
         icon: undo,
         categories: ['actions']
     },
     {
         name: 'create',
-        title: __('Create', 'core'),
+        title: __('Create', 'tiny-steps'),
         icon: create,
         categories: ['actions']
     },
     {
         name: 'lock',
-        title: __('Lock', 'core'),
+        title: __('Lock', 'tiny-steps'),
         icon: lock,
         categories: ['actions']
     },
     {
         name: 'unlock',
-        title: __('Unlock', 'core'),
+        title: __('Unlock', 'tiny-steps'),
         icon: unlock,
         categories: ['actions']
     },
     {
         name: 'lock-outline',
-        title: __('Lock Outline', 'core'),
+        title: __('Lock Outline', 'tiny-steps'),
         icon: lockOutline,
         categories: ['actions']
     },
     {
         name: 'lock-small',
-        title: __('Lock Small', 'core'),
+        title: __('Lock Small', 'tiny-steps'),
         icon: lockSmall,
         categories: ['actions']
     },
     {
         name: 'login',
-        title: __('Login', 'core'),
+        title: __('Login', 'tiny-steps'),
         icon: login,
         categories: ['actions']
     },
     {
         name: 'reset',
-        title: __('Reset', 'core'),
+        title: __('Reset', 'tiny-steps'),
         icon: reset,
         categories: ['actions']
     },
     {
         name: 'rotate-left',
-        title: __('Rotate Left', 'core'),
+        title: __('Rotate Left', 'tiny-steps'),
         icon: rotateLeft,
         categories: ['actions']
     },
     {
         name: 'rotate-right',
-        title: __('Rotate Right', 'core'),
+        title: __('Rotate Right', 'tiny-steps'),
         icon: rotateRight,
         categories: ['actions']
     },
     {
         name: 'flip-horizontal',
-        title: __('Flip Horizontal', 'core'),
+        title: __('Flip Horizontal', 'tiny-steps'),
         icon: flipHorizontal,
         categories: ['actions']
     },
     {
         name: 'flip-vertical',
-        title: __('Flip Vertical', 'core'),
+        title: __('Flip Vertical', 'tiny-steps'),
         icon: flipVertical,
         categories: ['actions']
     },
     {
         name: 'replace',
-        title: __('Replace', 'core'),
+        title: __('Replace', 'tiny-steps'),
         icon: replace,
         categories: ['actions']
     },
     {
         name: 'fullscreen',
-        title: __('Fullscreen', 'core'),
+        title: __('Fullscreen', 'tiny-steps'),
         icon: fullscreen,
         categories: ['actions']
     },
@@ -1138,122 +1138,122 @@ const icons = [
     // Interface
     {
         name: 'close-small',
-        title: __('Close Small', 'core'),
+        title: __('Close Small', 'tiny-steps'),
         icon: closeSmall,
         categories: ['interface']
     },
     {
         name: 'more',
-        title: __('More', 'core'),
+        title: __('More', 'tiny-steps'),
         icon: more,
         categories: ['interface']
     },
     {
         name: 'more-horizontal',
-        title: __('More Horizontal', 'core'),
+        title: __('More Horizontal', 'tiny-steps'),
         icon: moreHorizontal,
         categories: ['interface']
     },
     {
         name: 'more-vertical',
-        title: __('More Vertical', 'core'),
+        title: __('More Vertical', 'tiny-steps'),
         icon: moreVertical,
         categories: ['interface']
     },
     {
         name: 'star-half',
-        title: __('Star Half', 'core'),
+        title: __('Star Half', 'tiny-steps'),
         icon: starHalf,
         categories: ['interface']
     },
     {
         name: 'help-filled',
-        title: __('Help Filled', 'core'),
+        title: __('Help Filled', 'tiny-steps'),
         icon: helpFilled,
         categories: ['interface']
     },
     {
         name: 'cog',
-        title: __('Cog', 'core'),
+        title: __('Cog', 'tiny-steps'),
         icon: cog,
         categories: ['interface'],
         isDefault: true
     },
     {
         name: 'plus-circle',
-        title: __('Plus Circle', 'core'),
+        title: __('Plus Circle', 'tiny-steps'),
         icon: plusCircle,
         categories: ['interface']
     },
     {
         name: 'plus-circle-filled',
-        title: __('Plus Circle Filled', 'core'),
+        title: __('Plus Circle Filled', 'tiny-steps'),
         icon: plusCircleFilled,
         categories: ['interface']
     },
     {
         name: 'cancel-circle-filled',
-        title: __('Cancel Circle Filled', 'core'),
+        title: __('Cancel Circle Filled', 'tiny-steps'),
         icon: cancelCircleFilled,
         categories: ['interface']
     },
     {
         name: 'plugins',
-        title: __('Plugins', 'core'),
+        title: __('Plugins', 'tiny-steps'),
         icon: plugins,
         categories: ['interface']
     },
     {
         name: 'filter',
-        title: __('Filter', 'core'),
+        title: __('Filter', 'tiny-steps'),
         icon: filter,
         categories: ['interface']
     },
     {
         name: 'list-view',
-        title: __('List View', 'core'),
+        title: __('List View', 'tiny-steps'),
         icon: listView,
         categories: ['interface']
     },
     {
         name: 'drag-handle',
-        title: __('Drag Handle', 'core'),
+        title: __('Drag Handle', 'tiny-steps'),
         icon: dragHandle,
         categories: ['interface']
     },
     {
         name: 'handle',
-        title: __('Handle', 'core'),
+        title: __('Handle', 'tiny-steps'),
         icon: handle,
         categories: ['interface']
     },
     {
         name: 'seen',
-        title: __('Seen', 'core'),
+        title: __('Seen', 'tiny-steps'),
         icon: seen,
         categories: ['interface']
     },
     {
         name: 'unseen',
-        title: __('Unseen', 'core'),
+        title: __('Unseen', 'tiny-steps'),
         icon: unseen,
         categories: ['interface']
     },
     {
         name: 'keyboard-close',
-        title: __('Keyboard Close', 'core'),
+        title: __('Keyboard Close', 'tiny-steps'),
         icon: keyboardClose,
         categories: ['interface']
     },
     {
         name: 'keyboard-return',
-        title: __('Keyboard Return', 'core'),
+        title: __('Keyboard Return', 'tiny-steps'),
         icon: keyboardReturn,
         categories: ['interface']
     },
     {
         name: 'styles',
-        title: __('Styles', 'core'),
+        title: __('Styles', 'tiny-steps'),
         icon: styles,
         categories: ['interface']
     },
@@ -1261,103 +1261,103 @@ const icons = [
     // Posts & Pages
     {
         name: 'page',
-        title: __('Page', 'core'),
+        title: __('Page', 'tiny-steps'),
         icon: page,
         categories: ['posts']
     },
     {
         name: 'pages',
-        title: __('Pages', 'core'),
+        title: __('Pages', 'tiny-steps'),
         icon: pages,
         categories: ['posts']
     },
     {
         name: 'post',
-        title: __('Post', 'core'),
+        title: __('Post', 'tiny-steps'),
         icon: post,
         categories: ['posts']
     },
     {
         name: 'post-author',
-        title: __('Post Author', 'core'),
+        title: __('Post Author', 'tiny-steps'),
         icon: postAuthor,
         categories: ['posts']
     },
     {
         name: 'post-categories',
-        title: __('Post Categories', 'core'),
+        title: __('Post Categories', 'tiny-steps'),
         icon: postCategories,
         categories: ['posts']
     },
     {
         name: 'post-content',
-        title: __('Post Content', 'core'),
+        title: __('Post Content', 'tiny-steps'),
         icon: postContent,
         categories: ['posts']
     },
     {
         name: 'post-date',
-        title: __('Post Date', 'core'),
+        title: __('Post Date', 'tiny-steps'),
         icon: postDate,
         categories: ['posts']
     },
     {
         name: 'post-excerpt',
-        title: __('Post Excerpt', 'core'),
+        title: __('Post Excerpt', 'tiny-steps'),
         icon: postExcerpt,
         categories: ['posts']
     },
     {
         name: 'post-featured-image',
-        title: __('Post Featured Image', 'core'),
+        title: __('Post Featured Image', 'tiny-steps'),
         icon: postFeaturedImage,
         categories: ['posts', 'media']
     },
     {
         name: 'post-list',
-        title: __('Post List', 'core'),
+        title: __('Post List', 'tiny-steps'),
         icon: postList,
         categories: ['posts']
     },
     {
         name: 'post-terms',
-        title: __('Post Terms', 'core'),
+        title: __('Post Terms', 'tiny-steps'),
         icon: postTerms,
         categories: ['posts']
     },
     {
         name: 'page-break',
-        title: __('Page Break', 'core'),
+        title: __('Page Break', 'tiny-steps'),
         icon: pageBreak,
         categories: ['posts', 'editor']
     },
     {
         name: 'custom-post-type',
-        title: __('Custom Post Type', 'core'),
+        title: __('Custom Post Type', 'tiny-steps'),
         icon: customPostType,
         categories: ['posts']
     },
     {
         name: 'term-description',
-        title: __('Term Description', 'core'),
+        title: __('Term Description', 'tiny-steps'),
         icon: termDescription,
         categories: ['posts']
     },
     {
         name: 'category',
-        title: __('Category', 'core'),
+        title: __('Category', 'tiny-steps'),
         icon: category,
         categories: ['posts']
     },
     {
         name: 'tag',
-        title: __('Tag', 'core'),
+        title: __('Tag', 'tiny-steps'),
         icon: tag,
         categories: ['posts']
     },
     {
         name: 'title',
-        title: __('Title', 'core'),
+        title: __('Title', 'tiny-steps'),
         icon: title,
         categories: ['posts', 'editor']
     },
@@ -1365,55 +1365,55 @@ const icons = [
     // Comments
     {
         name: 'comment',
-        title: __('Comment', 'core'),
+        title: __('Comment', 'tiny-steps'),
         icon: comment,
         categories: ['comments']
     },
     {
         name: 'post-comments',
-        title: __('Post Comments', 'core'),
+        title: __('Post Comments', 'tiny-steps'),
         icon: postComments,
         categories: ['comments', 'posts']
     },
     {
         name: 'post-comments-count',
-        title: __('Post Comments Count', 'core'),
+        title: __('Post Comments Count', 'tiny-steps'),
         icon: postCommentsCount,
         categories: ['comments', 'posts']
     },
     {
         name: 'post-comments-form',
-        title: __('Post Comments Form', 'core'),
+        title: __('Post Comments Form', 'tiny-steps'),
         icon: postCommentsForm,
         categories: ['comments', 'posts']
     },
     {
         name: 'comment-author-avatar',
-        title: __('Comment Author Avatar', 'core'),
+        title: __('Comment Author Avatar', 'tiny-steps'),
         icon: commentAuthorAvatar,
         categories: ['comments']
     },
     {
         name: 'comment-author-name',
-        title: __('Comment Author Name', 'core'),
+        title: __('Comment Author Name', 'tiny-steps'),
         icon: commentAuthorName,
         categories: ['comments']
     },
     {
         name: 'comment-content',
-        title: __('Comment Content', 'core'),
+        title: __('Comment Content', 'tiny-steps'),
         icon: commentContent,
         categories: ['comments']
     },
     {
         name: 'comment-edit-link',
-        title: __('Comment Edit Link', 'core'),
+        title: __('Comment Edit Link', 'tiny-steps'),
         icon: commentEditLink,
         categories: ['comments']
     },
     {
         name: 'comment-reply-link',
-        title: __('Comment Reply Link', 'core'),
+        title: __('Comment Reply Link', 'tiny-steps'),
         icon: commentReplyLink,
         categories: ['comments']
     },
@@ -1421,37 +1421,37 @@ const icons = [
     // Media
     {
         name: 'caption',
-        title: __('Caption', 'core'),
+        title: __('Caption', 'tiny-steps'),
         icon: caption,
         categories: ['media']
     },
     {
         name: 'capture-photo',
-        title: __('Capture Photo', 'core'),
+        title: __('Capture Photo', 'tiny-steps'),
         icon: capturePhoto,
         categories: ['media']
     },
     {
         name: 'capture-video',
-        title: __('Capture Video', 'core'),
+        title: __('Capture Video', 'tiny-steps'),
         icon: captureVideo,
         categories: ['media']
     },
     {
         name: 'aspect-ratio',
-        title: __('Aspect Ratio', 'core'),
+        title: __('Aspect Ratio', 'tiny-steps'),
         icon: aspectRatio,
         categories: ['media']
     },
     {
         name: 'crop',
-        title: __('Crop', 'core'),
+        title: __('Crop', 'tiny-steps'),
         icon: crop,
         categories: ['media', 'actions']
     },
     {
         name: 'file',
-        title: __('File', 'core'),
+        title: __('File', 'tiny-steps'),
         icon: file,
         categories: ['media']
     },
@@ -1459,68 +1459,68 @@ const icons = [
     // E-commerce
     {
         name: 'currency-dollar',
-        title: __('Currency Dollar', 'core'),
+        title: __('Currency Dollar', 'tiny-steps'),
         icon: currencyDollar,
         categories: ['ecommerce']
     },
     {
         name: 'currency-euro',
-        title: __('Currency Euro', 'core'),
+        title: __('Currency Euro', 'tiny-steps'),
         icon: currencyEuro,
         categories: ['ecommerce']
     },
     {
         name: 'currency-pound',
-        title: __('Currency Pound', 'core'),
+        title: __('Currency Pound', 'tiny-steps'),
         icon: currencyPound,
         categories: ['ecommerce']
     },
     {
         name: 'payment',
-        title: __('Payment', 'core'),
+        title: __('Payment', 'tiny-steps'),
         icon: payment,
         categories: ['ecommerce']
     },
     {
         name: 'percent',
-        title: __('Percent', 'core'),
+        title: __('Percent', 'tiny-steps'),
         icon: percent,
         categories: ['ecommerce']
     },
     {
         name: 'receipt',
-        title: __('Receipt', 'core'),
+        title: __('Receipt', 'tiny-steps'),
         icon: receipt,
         categories: ['ecommerce']
     },
     {
         name: 'shipping',
-        title: __('Shipping', 'core'),
+        title: __('Shipping', 'tiny-steps'),
         icon: shipping,
         categories: ['ecommerce'],
         isDefault: true
     },
     {
         name: 'store',
-        title: __('Store', 'core'),
+        title: __('Store', 'tiny-steps'),
         icon: store,
         categories: ['ecommerce']
     },
     {
         name: 'chart-bar',
-        title: __('Chart Bar', 'core'),
+        title: __('Chart Bar', 'tiny-steps'),
         icon: chartBar,
         categories: ['ecommerce']
     },
     {
         name: 'trending-down',
-        title: __('Trending Down', 'core'),
+        title: __('Trending Down', 'tiny-steps'),
         icon: trendingDown,
         categories: ['ecommerce']
     },
     {
         name: 'trending-up',
-        title: __('Trending Up', 'core'),
+        title: __('Trending Up', 'tiny-steps'),
         icon: trendingUp,
         categories: ['ecommerce']
     },
@@ -1528,355 +1528,355 @@ const icons = [
     // Miscellaneous
     {
         name: 'at-symbol',
-        title: __('At Symbol', 'core'),
+        title: __('At Symbol', 'tiny-steps'),
         icon: atSymbol,
         categories: ['misc']
     },
     {
         name: 'backup',
-        title: __('Backup', 'core'),
+        title: __('Backup', 'tiny-steps'),
         icon: backup,
         categories: ['misc']
     },
     {
         name: 'block-default',
-        title: __('Block Default', 'core'),
+        title: __('Block Default', 'tiny-steps'),
         icon: blockDefault,
         categories: ['misc']
     },
     {
         name: 'border',
-        title: __('Border', 'core'),
+        title: __('Border', 'tiny-steps'),
         icon: border,
         categories: ['misc']
     },
     {
         name: 'box',
-        title: __('Box', 'core'),
+        title: __('Box', 'tiny-steps'),
         icon: box,
         categories: ['misc']
     },
     {
         name: 'brush',
-        title: __('Brush', 'core'),
+        title: __('Brush', 'tiny-steps'),
         icon: brush,
         categories: ['misc']
     },
     {
         name: 'bug',
-        title: __('Bug', 'core'),
+        title: __('Bug', 'tiny-steps'),
         icon: bug,
         categories: ['misc']
     },
     {
         name: 'remove-bug',
-        title: __('Remove Bug', 'core'),
+        title: __('Remove Bug', 'tiny-steps'),
         icon: removeBug,
         categories: ['misc']
     },
     {
         name: 'classic',
-        title: __('Classic', 'core'),
+        title: __('Classic', 'tiny-steps'),
         icon: classic,
         categories: ['misc']
     },
     {
         name: 'cloud-upload',
-        title: __('Cloud Upload', 'core'),
+        title: __('Cloud Upload', 'tiny-steps'),
         icon: cloudUpload,
         categories: ['misc', 'actions']
     },
     {
         name: 'color',
-        title: __('Color', 'core'),
+        title: __('Color', 'tiny-steps'),
         icon: color,
         categories: ['misc']
     },
     {
         name: 'custom-link',
-        title: __('Custom Link', 'core'),
+        title: __('Custom Link', 'tiny-steps'),
         icon: customLink,
         categories: ['misc']
     },
     {
         name: 'drawer-left',
-        title: __('Drawer Left', 'core'),
+        title: __('Drawer Left', 'tiny-steps'),
         icon: drawerLeft,
         categories: ['misc']
     },
     {
         name: 'drawer-right',
-        title: __('Drawer Right', 'core'),
+        title: __('Drawer Right', 'tiny-steps'),
         icon: drawerRight,
         categories: ['misc']
     },
     {
         name: 'grid',
-        title: __('Grid', 'core'),
+        title: __('Grid', 'tiny-steps'),
         icon: grid,
         categories: ['misc', 'layout']
     },
     {
         name: 'inbox',
-        title: __('Inbox', 'core'),
+        title: __('Inbox', 'tiny-steps'),
         icon: inbox,
         categories: ['misc']
     },
     {
         name: 'institution',
-        title: __('Institution', 'core'),
+        title: __('Institution', 'tiny-steps'),
         icon: institution,
         categories: ['misc']
     },
     {
         name: 'insert-after',
-        title: __('Insert After', 'core'),
+        title: __('Insert After', 'tiny-steps'),
         icon: insertAfter,
         categories: ['misc', 'actions']
     },
     {
         name: 'insert-before',
-        title: __('Insert Before', 'core'),
+        title: __('Insert Before', 'tiny-steps'),
         icon: insertBefore,
         categories: ['misc', 'actions']
     },
     {
         name: 'key',
-        title: __('Key', 'core'),
+        title: __('Key', 'tiny-steps'),
         icon: key,
         categories: ['misc']
     },
     {
         name: 'lifesaver',
-        title: __('Lifesaver', 'core'),
+        title: __('Lifesaver', 'tiny-steps'),
         icon: lifesaver,
         categories: ['misc']
     },
     {
         name: 'line-dashed',
-        title: __('Line Dashed', 'core'),
+        title: __('Line Dashed', 'tiny-steps'),
         icon: lineDashed,
         categories: ['misc']
     },
     {
         name: 'line-dotted',
-        title: __('Line Dotted', 'core'),
+        title: __('Line Dotted', 'tiny-steps'),
         icon: lineDotted,
         categories: ['misc']
     },
     {
         name: 'line-solid',
-        title: __('Line Solid', 'core'),
+        title: __('Line Solid', 'tiny-steps'),
         icon: lineSolid,
         categories: ['misc']
     },
     {
         name: 'link',
-        title: __('Link', 'core'),
+        title: __('Link', 'tiny-steps'),
         icon: link,
         categories: ['misc']
     },
     {
         name: 'link-off',
-        title: __('Link Off', 'core'),
+        title: __('Link Off', 'tiny-steps'),
         icon: linkOff,
         categories: ['misc']
     },
     {
         name: 'loop',
-        title: __('Loop', 'core'),
+        title: __('Loop', 'tiny-steps'),
         icon: loop,
         categories: ['misc']
     },
     {
         name: 'map-marker',
-        title: __('Map Marker', 'core'),
+        title: __('Map Marker', 'tiny-steps'),
         icon: mapMarker,
         categories: ['misc']
     },
     {
         name: 'megaphone',
-        title: __('Megaphone', 'core'),
+        title: __('Megaphone', 'tiny-steps'),
         icon: megaphone,
         categories: ['misc']
     },
     {
         name: 'move-to',
-        title: __('Move To', 'core'),
+        title: __('Move To', 'tiny-steps'),
         icon: moveTo,
         categories: ['misc', 'actions']
     },
     {
         name: 'navigation',
-        title: __('Navigation', 'core'),
+        title: __('Navigation', 'tiny-steps'),
         icon: navigation,
         categories: ['misc']
     },
     {
         name: 'overlay-text',
-        title: __('Overlay Text', 'core'),
+        title: __('Overlay Text', 'tiny-steps'),
         icon: overlayText,
         categories: ['misc']
     },
     {
         name: 'people',
-        title: __('People', 'core'),
+        title: __('People', 'tiny-steps'),
         icon: people,
         categories: ['misc']
     },
     {
         name: 'pin',
-        title: __('Pin', 'core'),
+        title: __('Pin', 'tiny-steps'),
         icon: pin,
         categories: ['misc']
     },
     {
         name: 'pull-left',
-        title: __('Pull Left', 'core'),
+        title: __('Pull Left', 'tiny-steps'),
         icon: pullLeft,
         categories: ['misc', 'layout']
     },
     {
         name: 'pull-right',
-        title: __('Pull Right', 'core'),
+        title: __('Pull Right', 'tiny-steps'),
         icon: pullRight,
         categories: ['misc', 'layout']
     },
     {
         name: 'query-pagination',
-        title: __('Query Pagination', 'core'),
+        title: __('Query Pagination', 'tiny-steps'),
         icon: queryPagination,
         categories: ['misc']
     },
     {
         name: 'query-pagination-next',
-        title: __('Query Pagination Next', 'core'),
+        title: __('Query Pagination Next', 'tiny-steps'),
         icon: queryPaginationNext,
         categories: ['misc']
     },
     {
         name: 'query-pagination-numbers',
-        title: __('Query Pagination Numbers', 'core'),
+        title: __('Query Pagination Numbers', 'tiny-steps'),
         icon: queryPaginationNumbers,
         categories: ['misc']
     },
     {
         name: 'query-pagination-previous',
-        title: __('Query Pagination Previous', 'core'),
+        title: __('Query Pagination Previous', 'tiny-steps'),
         icon: queryPaginationPrevious,
         categories: ['misc']
     },
     {
         name: 'resize-corner-ne',
-        title: __('Resize Corner NE', 'core'),
+        title: __('Resize Corner NE', 'tiny-steps'),
         icon: resizeCornerNE,
         categories: ['misc']
     },
     {
         name: 'reusable-block',
-        title: __('Reusable Block', 'core'),
+        title: __('Reusable Block', 'tiny-steps'),
         icon: reusableBlock,
         categories: ['misc', 'editor']
     },
     {
         name: 'rss',
-        title: __('RSS', 'core'),
+        title: __('RSS', 'tiny-steps'),
         icon: rss,
         categories: ['misc']
     },
     {
         name: 'separator',
-        title: __('Separator', 'core'),
+        title: __('Separator', 'tiny-steps'),
         icon: separator,
         categories: ['misc', 'editor']
     },
     {
         name: 'shadow',
-        title: __('Shadow', 'core'),
+        title: __('Shadow', 'tiny-steps'),
         icon: shadow,
         categories: ['misc']
     },
     {
         name: 'shield',
-        title: __('Shield', 'core'),
+        title: __('Shield', 'tiny-steps'),
         icon: shield,
         categories: ['misc']
     },
     {
         name: 'shuffle',
-        title: __('Shuffle', 'core'),
+        title: __('Shuffle', 'tiny-steps'),
         icon: shuffle,
         categories: ['misc']
     },
     {
         name: 'site-logo',
-        title: __('Site Logo', 'core'),
+        title: __('Site Logo', 'tiny-steps'),
         icon: siteLogo,
         categories: ['misc']
     },
     {
         name: 'stack',
-        title: __('Stack', 'core'),
+        title: __('Stack', 'tiny-steps'),
         icon: stack,
         categories: ['misc']
     },
     {
         name: 'swatch',
-        title: __('Swatch', 'core'),
+        title: __('Swatch', 'tiny-steps'),
         icon: swatch,
         categories: ['misc']
     },
     {
         name: 'symbol',
-        title: __('Symbol', 'core'),
+        title: __('Symbol', 'tiny-steps'),
         icon: symbol,
         categories: ['misc']
     },
     {
         name: 'symbol-filled',
-        title: __('Symbol Filled', 'core'),
+        title: __('Symbol Filled', 'tiny-steps'),
         icon: symbolFilled,
         categories: ['misc']
     },
     {
         name: 'tip',
-        title: __('Tip', 'core'),
+        title: __('Tip', 'tiny-steps'),
         icon: tip,
         categories: ['misc']
     },
     {
         name: 'tool',
-        title: __('Tool', 'core'),
+        title: __('Tool', 'tiny-steps'),
         icon: tool,
         categories: ['misc']
     },
     {
         name: 'typography',
-        title: __('Typography', 'core'),
+        title: __('Typography', 'tiny-steps'),
         icon: typography,
         categories: ['misc', 'format']
     },
     {
         name: 'widget',
-        title: __('Widget', 'core'),
+        title: __('Widget', 'tiny-steps'),
         icon: widget,
         categories: ['misc']
     },
     {
         name: 'add-card',
-        title: __('Add Card', 'core'),
+        title: __('Add Card', 'tiny-steps'),
         icon: addCard,
         categories: ['actions']
     },
     {
         name: 'add-submenu',
-        title: __('Add Submenu', 'core'),
+        title: __('Add Submenu', 'tiny-steps'),
         icon: addSubmenu,
         categories: ['actions']
     },
     {
         name: 'remove-submenu',
-        title: __('Remove Submenu', 'core'),
+        title: __('Remove Submenu', 'tiny-steps'),
         icon: removeSubmenu,
         categories: ['actions']
     }

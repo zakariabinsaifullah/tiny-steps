@@ -127,17 +127,17 @@ export default function Library({
 
     return (
         <Modal
-            overlayClassName="core-theme-modal__overlay"
-            className={`core-theme-modal is-${activeTab}`}
-            title={__('Icons Library', 'core')}
+            overlayClassName="tnys-modal__overlay"
+            className={`tnys-modal is-${activeTab}`}
+            title={__('Icons Library', 'tiny-steps')}
             onRequestClose={onClose}
             isFullScreen={true}
             headerActions={<Header activeTab={activeTab} onTabChange={onTabChange} />}
         >
-            <div className="core-theme-modal__container">
+            <div className="tnys-modal__container">
                 <Sidebar categories={categories} category={selectedCategory} setCategory={setSelectedCategory} activeTab={activeTab} />
-                <div className="core-theme-modal__content">
-                    <Scrollable className="core-theme-modal__scrollable">
+                <div className="tnys-modal__content">
+                    <Scrollable className="tnys-modal__scrollable">
                         {activeTab === 'library' && (
                             <ContentIcons
                                 searchTerm={searchTerm}

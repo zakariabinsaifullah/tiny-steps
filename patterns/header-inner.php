@@ -1,15 +1,15 @@
 <?php
 /**
  * Title: Header Inner Pages
- * Slug: core-theme/header-inner
- * Categories: core-theme
+ * Slug: tnys/header-inner
+ * Categories: tnys
  * Description: Header Inner Pages.
  *
  * @package WordPress
- * @subpackage Core
- * @since Core 1.0
+ * @subpackage Tiny_Steps
+ * @since Tiny Steps 1.0
  */
 
 ?>
 
-<!-- wp:kadence/header {"uniqueID":"core-theme-header_116-a1","id":116} /-->
+<!-- wp:kadence/header {"uniqueID":"tnys-header_116-a1","id":116} /-->

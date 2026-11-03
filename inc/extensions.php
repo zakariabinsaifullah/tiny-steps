@@ -6,15 +6,15 @@
  * Extensions are different from custom blocks — they extend existing blocks
  * rather than registering new block types.
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
-if ( ! function_exists( 'core_theme_enqueue_hover_color_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_hover_color_editor_assets' ) ) :
 	/**
 	 * Enqueues the hover-color extension script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_hover_color_editor_assets() {
+	function tnys_enqueue_hover_color_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/hover-color/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -24,7 +24,7 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_editor_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-hover-color-extension',
+			'tnys-hover-color-extension',
 			get_theme_file_uri( 'build/extensions/hover-color/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -34,7 +34,7 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_editor_assets' ) ) :
 		$editor_css = get_theme_file_path( 'build/extensions/hover-color/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-hover-color-extension',
+				'tnys-hover-color-extension',
 				get_theme_file_uri( 'build/extensions/hover-color/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -42,14 +42,14 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_editor_assets' ) ) :
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_hover_color_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_hover_color_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_hover_color_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_hover_color_frontend_assets' ) ) :
 	/**
 	 * Enqueues the hover-color extension frontend stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_hover_color_frontend_assets() {
+	function tnys_enqueue_hover_color_frontend_assets() {
 		$asset_file  = get_theme_file_path( 'build/extensions/hover-color/index.asset.php' );
 		$style_file  = get_theme_file_path( 'build/extensions/hover-color/style-index.css' );
 
@@ -60,16 +60,16 @@ if ( ! function_exists( 'core_theme_enqueue_hover_color_frontend_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_style(
-			'core-theme-hover-color-extension-style',
+			'tnys-hover-color-extension-style',
 			get_theme_file_uri( 'build/extensions/hover-color/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_hover_color_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_hover_color_frontend_assets' );
 
-if ( ! function_exists( 'core_theme_render_hover_color_attributes' ) ) :
+if ( ! function_exists( 'tnys_render_hover_color_attributes' ) ) :
 	/**
 	 * Injects hover-color CSS classes and custom properties into block HTML on the frontend.
 	 *
@@ -81,7 +81,7 @@ if ( ! function_exists( 'core_theme_render_hover_color_attributes' ) ) :
 	 * @param array  $block         The block data including attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_hover_color_attributes( $block_content, $block ) {
+	function tnys_render_hover_color_attributes( $block_content, $block ) {
 		if ( empty( $block_content ) ) {
 			return $block_content;
 		}
@@ -163,18 +163,18 @@ if ( ! function_exists( 'core_theme_render_hover_color_attributes' ) ) :
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_hover_color_attributes', 10, 2 );
+add_filter( 'render_block', 'tnys_render_hover_color_attributes', 10, 2 );
 
 // =============================================================================
 // Group – Force Full Height Extension
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_group_full_height_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_group_full_height_editor_assets' ) ) :
 	/**
 	 * Enqueues the group-full-height extension script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_group_full_height_editor_assets() {
+	function tnys_enqueue_group_full_height_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/group-full-height/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -184,7 +184,7 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_editor_assets' ) )
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-group-full-height-extension',
+			'tnys-group-full-height-extension',
 			get_theme_file_uri( 'build/extensions/group-full-height/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -194,7 +194,7 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_editor_assets' ) )
 		$editor_css = get_theme_file_path( 'build/extensions/group-full-height/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-group-full-height-extension',
+				'tnys-group-full-height-extension',
 				get_theme_file_uri( 'build/extensions/group-full-height/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -202,14 +202,14 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_editor_assets' ) )
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_group_full_height_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_group_full_height_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_group_full_height_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_group_full_height_frontend_assets' ) ) :
 	/**
 	 * Enqueues the group-full-height frontend stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_group_full_height_frontend_assets() {
+	function tnys_enqueue_group_full_height_frontend_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/group-full-height/index.asset.php' );
 		$style_file = get_theme_file_path( 'build/extensions/group-full-height/style-index.css' );
 
@@ -220,16 +220,16 @@ if ( ! function_exists( 'core_theme_enqueue_group_full_height_frontend_assets' )
 		$assets = require $asset_file;
 
 		wp_enqueue_style(
-			'core-theme-group-full-height-extension-style',
+			'tnys-group-full-height-extension-style',
 			get_theme_file_uri( 'build/extensions/group-full-height/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_group_full_height_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_group_full_height_frontend_assets' );
 
-if ( ! function_exists( 'core_theme_render_group_full_height' ) ) :
+if ( ! function_exists( 'tnys_render_group_full_height' ) ) :
 	/**
 	 * Injects the `has-force-full-height` class into core/group blocks on the frontend
 	 * when the `forceFullHeight` attribute is enabled.
@@ -238,7 +238,7 @@ if ( ! function_exists( 'core_theme_render_group_full_height' ) ) :
 	 * @param array  $block         The block data including name and attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_group_full_height( $block_content, $block ) {
+	function tnys_render_group_full_height( $block_content, $block ) {
 		if ( 'core/group' !== $block['blockName'] ) {
 			return $block_content;
 		}
@@ -260,18 +260,18 @@ if ( ! function_exists( 'core_theme_render_group_full_height' ) ) :
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_group_full_height', 10, 2 );
+add_filter( 'render_block', 'tnys_render_group_full_height', 10, 2 );
 
 // =============================================================================
 // Heading & Paragraph – Max Width Extension
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_text_max_width_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_text_max_width_editor_assets' ) ) :
 	/**
 	 * Enqueues the text-max-width extension script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_text_max_width_editor_assets() {
+	function tnys_enqueue_text_max_width_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/text-max-width/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -281,7 +281,7 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_editor_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-text-max-width-extension',
+			'tnys-text-max-width-extension',
 			get_theme_file_uri( 'build/extensions/text-max-width/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -291,7 +291,7 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_editor_assets' ) ) :
 		$editor_css = get_theme_file_path( 'build/extensions/text-max-width/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-text-max-width-extension',
+				'tnys-text-max-width-extension',
 				get_theme_file_uri( 'build/extensions/text-max-width/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -299,14 +299,14 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_editor_assets' ) ) :
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_text_max_width_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_text_max_width_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_text_max_width_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_text_max_width_frontend_assets' ) ) :
 	/**
 	 * Enqueues the text-max-width frontend stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_text_max_width_frontend_assets() {
+	function tnys_enqueue_text_max_width_frontend_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/text-max-width/index.asset.php' );
 		$style_file = get_theme_file_path( 'build/extensions/text-max-width/style-index.css' );
 
@@ -317,16 +317,16 @@ if ( ! function_exists( 'core_theme_enqueue_text_max_width_frontend_assets' ) ) 
 		$assets = require $asset_file;
 
 		wp_enqueue_style(
-			'core-theme-text-max-width-extension-style',
+			'tnys-text-max-width-extension-style',
 			get_theme_file_uri( 'build/extensions/text-max-width/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_text_max_width_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_text_max_width_frontend_assets' );
 
-if ( ! function_exists( 'core_theme_render_text_max_width' ) ) :
+if ( ! function_exists( 'tnys_render_text_max_width' ) ) :
 	/**
 	 * Injects the `has-max-width` class and `--max-width` CSS custom property
 	 * into supported blocks on the frontend when the maxWidth attribute is set.
@@ -335,7 +335,7 @@ if ( ! function_exists( 'core_theme_render_text_max_width' ) ) :
 	 * @param array  $block         The block data including name and attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_text_max_width( $block_content, $block ) {
+	function tnys_render_text_max_width( $block_content, $block ) {
 		$supported = array( 'core/heading', 'core/paragraph' );
 
 		if ( ! in_array( $block['blockName'], $supported, true ) ) {
@@ -370,18 +370,18 @@ if ( ! function_exists( 'core_theme_render_text_max_width' ) ) :
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_text_max_width', 10, 2 );
+add_filter( 'render_block', 'tnys_render_text_max_width', 10, 2 );
 
 // =============================================================================
 // Button – Iconic Button Extension
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_iconic_button_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_iconic_button_editor_assets' ) ) :
 	/**
 	 * Enqueues the iconic-button extension script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_iconic_button_editor_assets() {
+	function tnys_enqueue_iconic_button_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/iconic-button/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -391,7 +391,7 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_editor_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-iconic-button-extension',
+			'tnys-iconic-button-extension',
 			get_theme_file_uri( 'build/extensions/iconic-button/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -401,7 +401,7 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_editor_assets' ) ) :
 		$editor_css = get_theme_file_path( 'build/extensions/iconic-button/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-iconic-button-extension',
+				'tnys-iconic-button-extension',
 				get_theme_file_uri( 'build/extensions/iconic-button/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -409,14 +409,14 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_editor_assets' ) ) :
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_iconic_button_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_iconic_button_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_iconic_button_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_iconic_button_frontend_assets' ) ) :
 	/**
 	 * Enqueues the iconic-button extension frontend stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_iconic_button_frontend_assets() {
+	function tnys_enqueue_iconic_button_frontend_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/iconic-button/index.asset.php' );
 		$style_file = get_theme_file_path( 'build/extensions/iconic-button/style-index.css' );
 
@@ -427,22 +427,22 @@ if ( ! function_exists( 'core_theme_enqueue_iconic_button_frontend_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_style(
-			'core-theme-iconic-button-extension-style',
+			'tnys-iconic-button-extension-style',
 			get_theme_file_uri( 'build/extensions/iconic-button/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_iconic_button_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_iconic_button_frontend_assets' );
 
-if ( ! function_exists( 'core_theme_iconic_button_svg_kses_args' ) ) :
+if ( ! function_exists( 'tnys_iconic_button_svg_kses_args' ) ) :
 	/**
 	 * Allowed SVG tags/attributes for icons rendered inside the iconic-button markup.
 	 *
 	 * @return array Kses args for wp_kses().
 	 */
-	function core_theme_iconic_button_svg_kses_args() {
+	function tnys_iconic_button_svg_kses_args() {
 		// Presentation attributes shared by most SVG shape elements — stroke-based
 		// icon sets (Feather, Lucide, Heroicons outline, Tabler, etc.) rely on these
 		// alongside fill, so omitting any of them renders the icon invisible.
@@ -550,7 +550,7 @@ if ( ! function_exists( 'core_theme_iconic_button_svg_kses_args' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
+if ( ! function_exists( 'tnys_render_iconic_button' ) ) :
 	/**
 	 * Injects the icon SVG markup and size/gap/padding/background CSS custom
 	 * properties into core/button blocks on the frontend when the iconic button
@@ -560,7 +560,7 @@ if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
 	 * @param array  $block         The block data including name and attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_iconic_button( $block_content, $block ) {
+	function tnys_render_iconic_button( $block_content, $block ) {
 		if ( 'core/button' !== ( $block['blockName'] ?? '' ) ) {
 			return $block_content;
 		}
@@ -584,16 +584,16 @@ if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
 		// Merge icon size/gap/padding/background CSS custom properties into the outer wrapper's style attribute.
 		$css_vars = array();
 		if ( ! empty( $attrs['iconicButtonIconSize'] ) ) {
-			$css_vars[] = '--core-theme-icon-size:' . esc_attr( $attrs['iconicButtonIconSize'] );
+			$css_vars[] = '--tnys-icon-size:' . esc_attr( $attrs['iconicButtonIconSize'] );
 		}
 		if ( ! empty( $attrs['iconicButtonIconGap'] ) ) {
-			$css_vars[] = '--core-theme-icon-gap:' . esc_attr( $attrs['iconicButtonIconGap'] );
+			$css_vars[] = '--tnys-icon-gap:' . esc_attr( $attrs['iconicButtonIconGap'] );
 		}
 		if ( ! empty( $attrs['iconicButtonIconPadding'] ) ) {
-			$css_vars[] = '--core-theme-icon-padding:' . esc_attr( $attrs['iconicButtonIconPadding'] );
+			$css_vars[] = '--tnys-icon-padding:' . esc_attr( $attrs['iconicButtonIconPadding'] );
 		}
 		if ( ! empty( $attrs['iconicButtonIconBgColor'] ) ) {
-			$css_vars[] = '--core-theme-icon-bg-color:' . esc_attr( $attrs['iconicButtonIconBgColor'] );
+			$css_vars[] = '--tnys-icon-bg-color:' . esc_attr( $attrs['iconicButtonIconBgColor'] );
 		}
 
 		if ( ! empty( $css_vars ) ) {
@@ -612,8 +612,8 @@ if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
 
 		// Build the icon markup and inject it after the link's inner content.
 		// Before/after visual ordering is handled entirely by CSS (flex-direction: row-reverse
-		// on the .core-theme-icon-before class), so the DOM position is always icon-after-text.
-		$icon_html = '<span class="core-theme-icon-button-svg">' . wp_kses( $icon_svg, core_theme_iconic_button_svg_kses_args() ) . '</span>';
+		// on the .tnys-icon-before class), so the DOM position is always icon-after-text.
+		$icon_html = '<span class="tnys-icon-button-svg">' . wp_kses( $icon_svg, tnys_iconic_button_svg_kses_args() ) . '</span>';
 
 		$block_content = preg_replace_callback(
 			'/(<a[^>]*class="[^"]*wp-block-button__link[^"]*"[^>]*>)(.*?)(<\/a>)/s',
@@ -627,18 +627,18 @@ if ( ! function_exists( 'core_theme_render_iconic_button' ) ) :
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_iconic_button', 10, 2 );
+add_filter( 'render_block', 'tnys_render_iconic_button', 10, 2 );
 
 // =============================================================================
 // Heading & Paragraph – Highlight Format
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_highlight_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_highlight_editor_assets' ) ) :
 	/**
 	 * Enqueues the highlight format script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_highlight_editor_assets() {
+	function tnys_enqueue_highlight_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/highlight/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -648,7 +648,7 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_editor_assets' ) ) :
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-highlight-extension',
+			'tnys-highlight-extension',
 			get_theme_file_uri( 'build/extensions/highlight/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -658,7 +658,7 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_editor_assets' ) ) :
 		$editor_css = get_theme_file_path( 'build/extensions/highlight/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-highlight-extension',
+				'tnys-highlight-extension',
 				get_theme_file_uri( 'build/extensions/highlight/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -666,14 +666,14 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_editor_assets' ) ) :
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_highlight_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_highlight_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_highlight_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_highlight_frontend_assets' ) ) :
 	/**
 	 * Enqueues the highlight format stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_highlight_frontend_assets() {
+	function tnys_enqueue_highlight_frontend_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/highlight/index.asset.php' );
 		$style_file = get_theme_file_path( 'build/extensions/highlight/style-index.css' );
 
@@ -682,22 +682,22 @@ if ( ! function_exists( 'core_theme_enqueue_highlight_frontend_assets' ) ) :
 		}
 
 		wp_enqueue_style(
-			'core-theme-highlight-extension-style',
+			'tnys-highlight-extension-style',
 			get_theme_file_uri( 'build/extensions/highlight/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_highlight_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_highlight_frontend_assets' );
 
-if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
+if ( ! function_exists( 'tnys_render_highlight_attributes' ) ) :
 	/**
-	 * Injects the highlight CSS custom properties (`--core-theme-highlight-*`) into
+	 * Injects the highlight CSS custom properties (`--tnys-highlight-*`) into
 	 * core/heading and core/paragraph blocks on the frontend when the
 	 * `highlightFontFamily` / `highlightColor` attributes are set.
 	 *
-	 * A solid highlight colour also sets `--core-theme-highlight-gradient: none` so
+	 * A solid highlight colour also sets `--tnys-highlight-gradient: none` so
 	 * it replaces the default gradient fill.
 	 *
 	 * The editor applies the same variables via the JS `editor.BlockListBlock`
@@ -708,7 +708,7 @@ if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
 	 * @param array  $block         The block data including attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_highlight_attributes( $block_content, $block ) {
+	function tnys_render_highlight_attributes( $block_content, $block ) {
 		$supported = array( 'core/heading', 'core/paragraph' );
 
 		if ( ! in_array( $block['blockName'], $supported, true ) ) {
@@ -728,11 +728,11 @@ if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
 		// attribute values itself, so pre-escaping would double-encode quotes
 		// (e.g. font stacks) into invalid CSS.
 		if ( ! empty( $font_family ) ) {
-			$css_vars[] = '--core-theme-highlight-font-family:' . $font_family;
+			$css_vars[] = '--tnys-highlight-font-family:' . $font_family;
 		}
 		if ( ! empty( $color ) ) {
-			$css_vars[] = '--core-theme-highlight-color:' . $color;
-			$css_vars[] = '--core-theme-highlight-gradient:none';
+			$css_vars[] = '--tnys-highlight-color:' . $color;
+			$css_vars[] = '--tnys-highlight-gradient:none';
 		}
 
 		$processor = new WP_HTML_Tag_Processor( $block_content );
@@ -751,18 +751,18 @@ if ( ! function_exists( 'core_theme_render_highlight_attributes' ) ) :
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_highlight_attributes', 10, 2 );
+add_filter( 'render_block', 'tnys_render_highlight_attributes', 10, 2 );
 
 // =============================================================================
 // core/read-more — Theme Button Styling Extension
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_read_more_button_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_read_more_button_editor_assets' ) ) :
 	/**
 	 * Enqueues the read-more-button extension script.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_read_more_button_editor_assets() {
+	function tnys_enqueue_read_more_button_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/read-more-button/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -772,7 +772,7 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_editor_assets' ) ) 
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-read-more-button-extension',
+			'tnys-read-more-button-extension',
 			get_theme_file_uri( 'build/extensions/read-more-button/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -780,9 +780,9 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_editor_assets' ) ) 
 		);
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_read_more_button_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_read_more_button_editor_assets' );
 
-if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_read_more_button_assets' ) ) :
 	/**
 	 * Enqueues the read-more-button stylesheet and the arrow it draws with.
 	 *
@@ -794,7 +794,7 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
 	 *
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_read_more_button_assets() {
+	function tnys_enqueue_read_more_button_assets() {
 		$style_file = get_theme_file_path( 'build/extensions/read-more-button/style-index.css' );
 
 		if ( ! file_exists( $style_file ) ) {
@@ -802,7 +802,7 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
 		}
 
 		wp_enqueue_style(
-			'core-theme-read-more-button-extension-style',
+			'tnys-read-more-button-extension-style',
 			get_theme_file_uri( 'build/extensions/read-more-button/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
@@ -815,21 +815,21 @@ if ( ! function_exists( 'core_theme_enqueue_read_more_button_assets' ) ) :
 		}
 
 		wp_add_inline_style(
-			'core-theme-read-more-button-extension-style',
-			':root{--core-theme-read-more-arrow:url("' . esc_url_raw( get_theme_file_uri( 'assets/svg/button-arrow.svg' ) ) . '");}'
+			'tnys-read-more-button-extension-style',
+			':root{--tnys-read-more-arrow:url("' . esc_url_raw( get_theme_file_uri( 'assets/svg/button-arrow.svg' ) ) . '");}'
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_read_more_button_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_read_more_button_assets' );
 
-if ( ! function_exists( 'core_theme_render_read_more_button' ) ) :
+if ( ! function_exists( 'tnys_render_read_more_button' ) ) :
 	/**
 	 * Styles core/read-more as the theme's default button.
 	 *
 	 * `wp-element-button` is the selector theme.json's `styles.elements.button`
 	 * compiles to, so adding it makes the block the theme button by
 	 * construction rather than a copy of its styles — it tracks any later
-	 * change to them. `core-theme-has-arrow` turns on the trailing arrow.
+	 * change to them. `tnys-has-arrow` turns on the trailing arrow.
 	 *
 	 * The editor applies the same classes through the JS
 	 * `editor.BlockListBlock` filter, which has no effect on rendered markup.
@@ -838,7 +838,7 @@ if ( ! function_exists( 'core_theme_render_read_more_button' ) ) :
 	 * @param array  $block         The block data including attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_read_more_button( $block_content, $block ) {
+	function tnys_render_read_more_button( $block_content, $block ) {
 		if ( 'core/read-more' !== ( $block['blockName'] ?? '' ) || empty( $block_content ) ) {
 			return $block_content;
 		}
@@ -852,15 +852,15 @@ if ( ! function_exists( 'core_theme_render_read_more_button' ) ) :
 		$processor->add_class( 'wp-element-button' );
 
 		if ( ! empty( $block['attrs']['showArrow'] ) ) {
-			$processor->add_class( 'core-theme-has-arrow' );
+			$processor->add_class( 'tnys-has-arrow' );
 		}
 
 		return $processor->get_updated_html();
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_read_more_button', 10, 2 );
+add_filter( 'render_block', 'tnys_render_read_more_button', 10, 2 );
 
-if ( ! function_exists( 'core_theme_register_read_more_arrow_attribute' ) ) :
+if ( ! function_exists( 'tnys_register_read_more_arrow_attribute' ) ) :
 	/**
 	 * Registers `showArrow` on core/read-more server side as well.
 	 *
@@ -874,7 +874,7 @@ if ( ! function_exists( 'core_theme_register_read_more_arrow_attribute' ) ) :
 	 * @param string $name Block name.
 	 * @return array Modified arguments.
 	 */
-	function core_theme_register_read_more_arrow_attribute( $args, $name ) {
+	function tnys_register_read_more_arrow_attribute( $args, $name ) {
 		if ( 'core/read-more' !== $name ) {
 			return $args;
 		}
@@ -892,19 +892,19 @@ if ( ! function_exists( 'core_theme_register_read_more_arrow_attribute' ) ) :
 		return $args;
 	}
 endif;
-add_filter( 'register_block_type_args', 'core_theme_register_read_more_arrow_attribute', 10, 2 );
+add_filter( 'register_block_type_args', 'tnys_register_read_more_arrow_attribute', 10, 2 );
 
 
 // =============================================================================
 // Kadence RowLayout — Add Overlay Extension
 // =============================================================================
 
-if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_editor_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_kadence_row_overlay_editor_assets' ) ) :
 	/**
 	 * Enqueues the kadence-row-overlay extension script and editor stylesheet.
 	 * Runs on `enqueue_block_editor_assets` (editor only).
 	 */
-	function core_theme_enqueue_kadence_row_overlay_editor_assets() {
+	function tnys_enqueue_kadence_row_overlay_editor_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.asset.php' );
 
 		if ( ! file_exists( $asset_file ) ) {
@@ -914,7 +914,7 @@ if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_editor_assets' )
 		$assets = require $asset_file;
 
 		wp_enqueue_script(
-			'core-theme-kadence-row-overlay-extension',
+			'tnys-kadence-row-overlay-extension',
 			get_theme_file_uri( 'build/extensions/kadence-row-overlay/index.js' ),
 			$assets['dependencies'],
 			wp_get_theme()->get( 'Version' ),
@@ -924,7 +924,7 @@ if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_editor_assets' )
 		$editor_css = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.css' );
 		if ( file_exists( $editor_css ) ) {
 			wp_enqueue_style(
-				'core-theme-kadence-row-overlay-extension',
+				'tnys-kadence-row-overlay-extension',
 				get_theme_file_uri( 'build/extensions/kadence-row-overlay/index.css' ),
 				array(),
 				wp_get_theme()->get( 'Version' )
@@ -932,15 +932,15 @@ if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_editor_assets' )
 		}
 	}
 endif;
-add_action( 'enqueue_block_editor_assets', 'core_theme_enqueue_kadence_row_overlay_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'tnys_enqueue_kadence_row_overlay_editor_assets' );
 
 
-if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_frontend_assets' ) ) :
+if ( ! function_exists( 'tnys_enqueue_kadence_row_overlay_frontend_assets' ) ) :
 	/**
 	 * Enqueues the kadence-row-overlay extension frontend stylesheet.
 	 * Runs on `enqueue_block_assets` (editor + front end).
 	 */
-	function core_theme_enqueue_kadence_row_overlay_frontend_assets() {
+	function tnys_enqueue_kadence_row_overlay_frontend_assets() {
 		$asset_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/index.asset.php' );
 		$style_file = get_theme_file_path( 'build/extensions/kadence-row-overlay/style-index.css' );
 
@@ -951,19 +951,19 @@ if ( ! function_exists( 'core_theme_enqueue_kadence_row_overlay_frontend_assets'
 		$assets = require $asset_file;
 
 		wp_enqueue_style(
-			'core-theme-kadence-row-overlay-extension-style',
+			'tnys-kadence-row-overlay-extension-style',
 			get_theme_file_uri( 'build/extensions/kadence-row-overlay/style-index.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);
 	}
 endif;
-add_action( 'enqueue_block_assets', 'core_theme_enqueue_kadence_row_overlay_frontend_assets' );
+add_action( 'enqueue_block_assets', 'tnys_enqueue_kadence_row_overlay_frontend_assets' );
 
 
-if ( ! function_exists( 'core_theme_render_kadence_row_overlay' ) ) :
+if ( ! function_exists( 'tnys_render_kadence_row_overlay' ) ) :
 	/**
-	 * Injects the `core-overlay` class into kadence/rowlayout blocks on the
+	 * Injects the `tnys-overlay` class into kadence/rowlayout blocks on the
 	 * frontend when the `addOverlay` attribute is enabled.
 	 *
 	 * The editor applies the class via the JS `editor.BlockListBlock` filter,
@@ -974,7 +974,7 @@ if ( ! function_exists( 'core_theme_render_kadence_row_overlay' ) ) :
 	 * @param array  $block         The block data including name and attributes.
 	 * @return string Modified block HTML.
 	 */
-	function core_theme_render_kadence_row_overlay( $block_content, $block ) {
+	function tnys_render_kadence_row_overlay( $block_content, $block ) {
 		if ( 'kadence/rowlayout' !== $block['blockName'] ) {
 			return $block_content;
 		}
@@ -989,11 +989,11 @@ if ( ! function_exists( 'core_theme_render_kadence_row_overlay' ) ) :
 
 		$processor = new WP_HTML_Tag_Processor( $block_content );
 		if ( $processor->next_tag() ) {
-			$processor->add_class( 'core-overlay' );
+			$processor->add_class( 'tnys-overlay' );
 			return $processor->get_updated_html();
 		}
 
 		return $block_content;
 	}
 endif;
-add_filter( 'render_block', 'core_theme_render_kadence_row_overlay', 10, 2 );
+add_filter( 'render_block', 'tnys_render_kadence_row_overlay', 10, 2 );

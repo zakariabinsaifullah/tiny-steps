@@ -1,10 +1,10 @@
 ( function () {
     'use strict';
 
-    const PANEL_ID   = 'core-theme-contact';
-    const OVERLAY_ID = 'core-theme-form-overlay';
+    const PANEL_ID   = 'tnys-contact';
+    const OVERLAY_ID = 'tnys-form-overlay';
     const OPEN_CLASS = 'is-open';
-    const LOCK_CLASS = 'core-theme-panel-open';
+    const LOCK_CLASS = 'tnys-panel-open';
 
     let lastTrigger = null;
 
@@ -20,7 +20,7 @@
         document.body.classList.add( LOCK_CLASS );
         p.setAttribute( 'aria-hidden', 'false' );
 
-        const closeBtn = p.querySelector( '.core-theme-form-panel__close' );
+        const closeBtn = p.querySelector( '.tnys-form-panel__close' );
         if ( closeBtn ) closeBtn.focus();
     }
 
@@ -37,7 +37,7 @@
         lastTrigger = null;
     }
 
-    // Trigger: <a href="#core-theme-contact"> or [data-open="core-theme-contact"]
+    // Trigger: <a href="#tnys-contact"> or [data-open="tnys-contact"]
     document.addEventListener( 'click', function ( e ) {
         const trigger = e.target.closest( 'a[href="#' + PANEL_ID + '"], [data-open="' + PANEL_ID + '"]' );
 
@@ -49,7 +49,7 @@
         }
 
         // Close button inside panel
-        if ( e.target.closest( '.core-theme-form-panel__close' ) ) {
+        if ( e.target.closest( '.tnys-form-panel__close' ) ) {
             closePanel();
             return;
         }

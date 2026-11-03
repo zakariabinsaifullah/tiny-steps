@@ -20,7 +20,7 @@ p.wp-block-post-excerpt__excerpt {
 }
 
 .is-style-post-typo.wp-block-post-content h2 {
-    font-size: var(--wp--preset--font-size--core-theme-heading-three);
+    font-size: var(--wp--preset--font-size--tnys-heading-three);
 }
 
 .wp-block-post-title a {
@@ -33,7 +33,7 @@ p.wp-block-post-excerpt__excerpt {
     gap: 8px;
     border: none;
     color: #fff;
-    background: var(--wp--preset--color--core-theme-tiber, #04262f);
+    background: var(--wp--preset--color--tnys-bay-of-many, #04262f);
     padding: 10px 16px;
     border-radius: 100px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -90,7 +90,7 @@ header.wp-block-kadence-rowlayout::before {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.175) 0%, rgba(255, 255, 255, 0.04) 35%, rgba(255, 255, 255, 0) 60%);
 }
 
-.core-theme-icon-pos .kt-svg-icon-link {
+.tnys-icon-pos .kt-svg-icon-link {
     flex-direction: row-reverse !important;
     gap: 12px;
 }
@@ -137,7 +137,7 @@ header.wp-block-kadence-rowlayout::before {
  * are defined here rather than there.
  *
  * The only hover state is `styles.elements.button[":hover"]` in theme.json,
- * which sets the background to `core-theme-mantis-dark` and the text to white. Do not
+ * which sets the background to `tnys-bay-of-many-dark` and the text to white. Do not
  * add hover rules here without checking theme.json, or the two will disagree.
  */
 
@@ -152,38 +152,40 @@ header.wp-block-kadence-rowlayout::before {
  * restated here. Keep the two in sync.
  */
 .wp-block-button.is-style-alternative .wp-block-button__link {
-    background-color: var(--wp--preset--color--core-theme-mantis-lighter);
-    color: var(--wp--preset--color--core-theme-mantis-darkest);
+    background-color: var(--wp--preset--color--tnys-bermuda-lighter);
+    color: var(--wp--preset--color--tnys-bermuda-darkest);
 }
 
 /* Overrides the default button's hover with the stronger Mantis fill. Text   turns Tiber: white on Mantis is only 2.1:1. */
 .wp-block-button.is-style-alternative .wp-block-button__link:hover {
-    background-color: var(--wp--preset--color--core-theme-mantis);
-    color: var(--wp--preset--color--core-theme-tiber);
+    background-color: var(--wp--preset--color--tnys-bermuda);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 /*
  * Outline — registered by core, not by the theme. Core ships its own CSS for
  * this variation (`border: 2px solid`, `color: currentColor`, `padding:
  * .667em 1.33em`) wrapped in `:root :where(...)`, so these plain class
- * selectors outrank it. Padding is restated to match `styles.elements.button`.
+ * selectors outrank it.
  *
- * The fill is transparent with `core-theme-mantis` text and border; hover
- * deepens both to `core-theme-mantis-dark`. Mirrors
+ * The secondary button: white fill with `tnys-bay-of-many` text and a 1.5px
+ * border; hover tints the fill `tnys-bay-of-many-lightest`. The padding is
+ * `styles.elements.button`'s 16px 28px less the border, so it sits at the same
+ * height as the primary button beside it. Mirrors
  * `styles.blocks.core/button.variations.outline` in theme.json.
  */
 .wp-block-button.is-style-outline .wp-block-button__link {
-    background-color: transparent;
+    background-color: var(--wp--preset--color--tnys-white);
     background-image: none;
-    border: 1px solid var(--wp--preset--color--core-theme-mantis);
-    color: var(--wp--preset--color--core-theme-mantis);
-    padding: 12px 42px;
+    border: 1.5px solid var(--wp--preset--color--tnys-bay-of-many);
+    color: var(--wp--preset--color--tnys-bay-of-many);
+    padding: 14.5px 26.5px;
 }
 
 .wp-block-button.is-style-outline .wp-block-button__link:hover {
-    background-color: transparent;
-    border-color: var(--wp--preset--color--core-theme-mantis-dark);
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    background-color: var(--wp--preset--color--tnys-bay-of-many-lightest);
+    border-color: var(--wp--preset--color--tnys-bay-of-many);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 /*
@@ -201,7 +203,7 @@ header.wp-block-kadence-rowlayout::before {
     border-radius: 0;
     background-color: transparent;
     background-image: none;
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    color: var(--wp--preset--color--tnys-bermuda-dark);
     font-weight: 600;
 }
 
@@ -220,7 +222,7 @@ header.wp-block-kadence-rowlayout::before {
 
 .wp-block-button.is-style-link .wp-block-button__link:hover {
     background-color: transparent;
-    color: var(--wp--preset--color--core-theme-mantis-darker);
+    color: var(--wp--preset--color--tnys-bermuda-darker);
 }
 
 .wp-block-button.is-style-link .wp-block-button__link:hover::after {
@@ -275,9 +277,9 @@ header.wp-block-kadence-rowlayout::before {
     border: 0 !important;
     border-radius: 999px;
     background-color: transparent !important;
-    color: var(--wp--preset--color--core-theme-neutral-dark);
-    font-family: var(--wp--preset--font-family--instrument-sans);
-    font-size: var(--wp--preset--font-size--core-theme-small);
+    color: var(--wp--preset--color--tnys-neutral-dark);
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: var(--wp--preset--font-size--tnys-small);
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
@@ -286,13 +288,13 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 .wp-block-tabs .wp-block-tab-list > [role='tab']:hover {
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 .wp-block-tabs .wp-block-tab-list > [role='tab'][aria-selected='true'],
 .wp-block-tabs .wp-block-tab-list > [role='tab'][aria-selected='true']:hover {
-    background-color: var(--wp--preset--color--core-theme-tiber) !important;
-    color: var(--wp--preset--color--core-theme-white);
+    background-color: var(--wp--preset--color--tnys-bay-of-many) !important;
+    color: var(--wp--preset--color--tnys-white);
 }
 
 /*
@@ -326,7 +328,7 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 .wp-block-tabs .wp-block-tab-list > [role='tab']:focus-visible {
-    outline: 1px solid var(--wp--preset--color--core-theme-neutral-dark);
+    outline: 1px solid var(--wp--preset--color--tnys-neutral-dark);
     outline-offset: 2px;
 }
 
@@ -350,7 +352,7 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 /*
- * Comparison table — Kadence Table (Adv) with the `core-theme-compare-table`
+ * Comparison table — Kadence Table (Adv) with the `tnys-compare-table`
  * class, first row as header. Three columns: a row label, the "two separate
  * firms" column on the dark section background, and the highlighted Core
  * column in Mantis.
@@ -362,14 +364,14 @@ header.wp-block-kadence-rowlayout::before {
  * The `!important`s in the mobile query answer the older site-wide `.kb-table`
  * rule above (table-layout and min-width), which is forced.
  */
-.core-theme-compare-table {
-    --compare-line: color-mix(in srgb, var(--wp--preset--color--core-theme-neutral-light) 40%, transparent);
-    --compare-line-light: var(--wp--preset--color--core-theme-neutral-lighter);
+.tnys-compare-table {
+    --compare-line: color-mix(in srgb, var(--wp--preset--color--tnys-neutral-light) 40%, transparent);
+    --compare-line-light: var(--wp--preset--color--tnys-neutral-lighter);
     --compare-radius: 16px;
     border-radius: 0;
 }
 
-.core-theme-compare-table .kb-table {
+.tnys-compare-table .kb-table {
     width: 100%;
     table-layout: fixed;
     border-collapse: separate;
@@ -378,123 +380,123 @@ header.wp-block-kadence-rowlayout::before {
 
 /* Doubled class: Kadence prints its own per-table cell padding later in the
    page at the same specificity, so this has to outrank it rather than tie. */
-.wp-block-kadence-table.core-theme-compare-table .kb-table :is(th, td) {
+.wp-block-kadence-table.tnys-compare-table .kb-table :is(th, td) {
     padding: 26px;
     border: 0;
     border-right: 1px solid var(--compare-line);
     border-bottom: 1px solid var(--compare-line);
     text-align: left;
     vertical-align: middle;
-    font-family: var(--wp--preset--font-family--instrument-sans);
-    font-size: var(--wp--preset--font-size--core-theme-medium);
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: var(--wp--preset--font-size--tnys-medium);
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-white);
+    color: var(--wp--preset--color--tnys-white);
 }
 
 /* Cell text is a Paragraph block, which carries theme.json's own colour and
    size; let it take the cell's instead. */
-.core-theme-compare-table .kb-table :is(th, td) p {
+.tnys-compare-table .kb-table :is(th, td) p {
     color: inherit;
     font: inherit;
 }
 
 /* Header row */
-.core-theme-compare-table .kb-table tr:first-child th {
+.tnys-compare-table .kb-table tr:first-child th {
     padding-top: 15px;
     padding-bottom: 15px;
     border-top: 1px solid var(--compare-line);
 }
 
-.core-theme-compare-table .kb-table tr:first-child th p {
-    font-family: var(--wp--preset--font-family--titling-gothic-fb-wide);
-    font-size: var(--wp--preset--font-size--core-theme-heading-six);
+.tnys-compare-table .kb-table tr:first-child th p {
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
     font-weight: 500;
     line-height: 1.4;
-    color: var(--wp--preset--color--core-theme-white);
+    color: var(--wp--preset--color--tnys-white);
 }
 
 /* The empty corner cell above the row labels. */
-.core-theme-compare-table .kb-table tr:first-child th:first-child {
+.tnys-compare-table .kb-table tr:first-child th:first-child {
     background: transparent;
     border: 0;
 }
 
-.core-theme-compare-table .kb-table tr:first-child th:nth-child(2) {
-    background: var(--wp--preset--color--core-theme-tiber);
+.tnys-compare-table .kb-table tr:first-child th:nth-child(2) {
+    background: var(--wp--preset--color--tnys-bay-of-many);
     border-left: 1px solid var(--compare-line);
     border-top-left-radius: var(--compare-radius);
 }
 
-.core-theme-compare-table .kb-table tr:first-child th:last-child {
-    background: var(--wp--preset--color--core-theme-mantis);
-    border-color: var(--wp--preset--color--core-theme-mantis);
+.tnys-compare-table .kb-table tr:first-child th:last-child {
+    background: var(--wp--preset--color--tnys-bermuda);
+    border-color: var(--wp--preset--color--tnys-bermuda);
     border-top-right-radius: var(--compare-radius);
 }
 
 /* Row labels */
-.core-theme-compare-table .kb-table tr:not(:first-child) td:first-child {
+.tnys-compare-table .kb-table tr:not(:first-child) td:first-child {
     font-weight: 700;
     border-left: 1px solid var(--compare-line);
 }
 
-.core-theme-compare-table .kb-table tr:nth-child(2) td:first-child {
+.tnys-compare-table .kb-table tr:nth-child(2) td:first-child {
     border-top: 1px solid var(--compare-line);
     border-top-left-radius: var(--compare-radius);
 }
 
 /* Highlighted Core column */
-.core-theme-compare-table .kb-table tr:not(:first-child) td:last-child {
-    background: var(--wp--preset--color--core-theme-mantis-lightest);
-    color: var(--wp--preset--color--core-theme-white-darker);
+.tnys-compare-table .kb-table tr:not(:first-child) td:last-child {
+    background: var(--wp--preset--color--tnys-bermuda-lightest);
+    color: var(--wp--preset--color--tnys-neutral);
     border-color: var(--compare-line-light);
 }
 
-.core-theme-compare-table .kb-table tr:last-child td:first-child {
+.tnys-compare-table .kb-table tr:last-child td:first-child {
     border-bottom-left-radius: var(--compare-radius);
 }
 
-.core-theme-compare-table .kb-table tr:last-child td:last-child {
+.tnys-compare-table .kb-table tr:last-child td:last-child {
     border-bottom-right-radius: var(--compare-radius);
 }
 
 /* Too narrow for three readable columns: the container scrolls sideways. */
 @media (max-width: 781px) {
-    .core-theme-compare-table .kb-table {
+    .tnys-compare-table .kb-table {
         min-width: 720px !important;
         table-layout: fixed !important;
     }
 
-    .wp-block-kadence-table.core-theme-compare-table .kb-table :is(th, td) {
+    .wp-block-kadence-table.tnys-compare-table .kb-table :is(th, td) {
         padding: 20px;
     }
 }
 
 /* ==========================================================================
    FAQ accordion
-   Kadence Accordion with the `core-theme-faq` class (icon style: basic circle).
+   Kadence Accordion with the `tnys-faq` class (icon style: basic circle).
    ========================================================================== */
 
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-pane {
-    border-bottom: 1px solid var(--wp--preset--color--core-theme-neutral-lighter);
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-pane {
+    border-bottom: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-blocks-accordion-header {
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header {
     align-items: flex-start;
     gap: 24px;
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-blocks-accordion-header.kt-accordion-panel-active {
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header.kt-accordion-panel-active {
     padding-bottom: 14px;
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-blocks-accordion-title {
-    font-family: var(--wp--preset--font-family--titling-gothic-fb-wide);
-    font-size: var(--wp--preset--font-size--core-theme-heading-six);
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-title {
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
     font-weight: 500;
     line-height: 1.4;
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-panel-inner {
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-panel-inner {
     border: 0;
 }
 
@@ -502,39 +504,39 @@ header.wp-block-kadence-rowlayout::before {
    Kadence paints the bars with the title background through an id + :not()
    chain (including on hover), so these selectors carry the full wrapper path
    to outrank it in every state. */
-.wp-block-kadence-accordion.core-theme-faq .kt-blocks-accordion-icon-trigger {
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-icon-trigger {
     flex: 0 0 36px;
     width: 36px;
     height: 36px;
     border-radius: 50%;
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::before,
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::before,
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
     top: 50%;
     left: 50%;
     width: 12px;
     height: 1.5px;
     margin: 0;
     border-radius: 1px;
-    background-color: var(--wp--preset--color--core-theme-mantis-dark);
+    background-color: var(--wp--preset--color--tnys-bermuda-dark);
     transform: translate(-50%, -50%);
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::before,
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::after {
-    background-color: var(--wp--preset--color--core-theme-white);
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::before,
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::after {
+    background-color: var(--wp--preset--color--tnys-white);
     transform: translate(-50%, -50%);
 }
 
 /* Keep the open toggle green on hover so the white minus stays visible. */
-.wp-block-kadence-accordion.core-theme-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active:hover .kt-blocks-accordion-icon-trigger {
-    background-color: var(--wp--preset--color--core-theme-mantis);
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-wrap.kt-accodion-icon-style-basiccircle .wp-block-kadence-pane.kt-accordion-pane .kt-accordion-header-wrap .kt-blocks-accordion-header.kt-accordion-panel-active:hover .kt-blocks-accordion-icon-trigger {
+    background-color: var(--wp--preset--color--tnys-bermuda);
 }
 
 /*
@@ -551,7 +553,7 @@ header.wp-block-kadence-rowlayout::before {
 
 /* ==========================================================================
    Photo hero overlay
-   Add the `core-overlay` class to a Kadence Row Layout, give it the Tiber
+   Add the `tnys-overlay` class to a Kadence Row Layout, give it the Tiber
    background colour and set the photo as the row's overlay image (cover,
    opacity 100). Desktop: the photo fills the right 57% with a fade into
    Tiber. Tablet/mobile: it becomes a 380px band along the bottom. The brand
@@ -559,27 +561,27 @@ header.wp-block-kadence-rowlayout::before {
    Kadence's base overlay rule, in the editor and on the front end.
    ========================================================================== */
 
-.wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg {
+.wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg {
     overflow: hidden;
 }
 
-.wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg > .kt-row-layout-overlay {
+.wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg > .kt-row-layout-overlay {
     right: 0;
     left: auto;
     width: 57%;
 }
 
-.wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg > .kt-row-layout-overlay::after {
+.wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg > .kt-row-layout-overlay::after {
     content: "";
     position: absolute;
     inset: -2px; /* covers sub-pixel seams at the photo's edges */
     background:
-        linear-gradient(90deg, var(--wp--preset--color--core-theme-tiber) 0%, color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 75%, transparent) 30%, color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 0%, transparent) 80%),
-        color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 20%, transparent);
+        linear-gradient(90deg, var(--wp--preset--color--tnys-bay-of-many) 0%, color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 75%, transparent) 30%, color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 0%, transparent) 80%),
+        color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 20%, transparent);
 }
 
 /* Brand arcs */
-.wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg::after {
+.wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg::after {
     content: "";
     position: absolute;
     top: -109.4px;
@@ -592,7 +594,7 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 @media (max-width: 1024px) {
-    .wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg > .kt-row-layout-overlay {
+    .wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg > .kt-row-layout-overlay {
         top: auto;
         bottom: 0;
         left: 0;
@@ -600,13 +602,13 @@ header.wp-block-kadence-rowlayout::before {
         height: 380px;
     }
 
-    .wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg > .kt-row-layout-overlay::after {
+    .wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg > .kt-row-layout-overlay::after {
         background:
-            linear-gradient(180deg, var(--wp--preset--color--core-theme-tiber) 0%, color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 60%, transparent) 35%, color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 0%, transparent) 85%),
-            color-mix(in srgb, var(--wp--preset--color--core-theme-tiber) 15%, transparent);
+            linear-gradient(180deg, var(--wp--preset--color--tnys-bay-of-many) 0%, color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 60%, transparent) 35%, color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 0%, transparent) 85%),
+            color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 15%, transparent);
     }
 
-    .wp-block-kadence-rowlayout.core-overlay.kt-row-has-bg::after {
+    .wp-block-kadence-rowlayout.tnys-overlay.kt-row-has-bg::after {
         top: -57.4px;
         right: auto;
         left: calc(50% - 190px);
@@ -617,46 +619,46 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 /*
- * Fact list — core Table with the `core-theme-fact-table` class (the
+ * Fact list — core Table with the `tnys-fact-table` class (the
  * "At a glance" rows on the bio pages). Two columns, no header: a bold Tiber
  * label and a plain value, each row closed by a Neutral Lighter rule. Empty
  * values stay as empty cells until the client supplies them.
  * Loaded in the editor and on the front end, so both read the same.
  */
-.wp-block-table.core-theme-fact-table {
+.wp-block-table.tnys-fact-table {
     margin: 0;
 }
 
-.wp-block-table.core-theme-fact-table table {
+.wp-block-table.tnys-fact-table table {
     width: 100%;
     border-collapse: collapse;
     border: 0;
 }
 
-.wp-block-table.core-theme-fact-table :is(td, th) {
+.wp-block-table.tnys-fact-table :is(td, th) {
     padding: 18px 0;
     border: 0;
-    border-bottom: 1px solid var(--wp--preset--color--core-theme-neutral-lighter);
+    border-bottom: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
     vertical-align: top;
     text-align: left;
-    font-family: var(--wp--preset--font-family--instrument-sans);
-    font-size: var(--wp--preset--font-size--core-theme-medium);
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: var(--wp--preset--font-size--tnys-medium);
     font-weight: 400;
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-neutral-dark);
+    color: var(--wp--preset--color--tnys-neutral-dark);
 }
 
 /* Label column: 240px, plus the 24px gap to the value as padding (table
    cells size their content box, so the padding adds on top). */
-.wp-block-table.core-theme-fact-table :is(td, th):first-child {
+.wp-block-table.tnys-fact-table :is(td, th):first-child {
     width: 240px;
     padding-right: 24px;
     font-weight: 700;
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 @media (max-width: 600px) {
-    .wp-block-table.core-theme-fact-table :is(td, th):first-child {
+    .wp-block-table.tnys-fact-table :is(td, th):first-child {
         width: 36%;
         padding-right: 16px;
     }
@@ -664,103 +666,103 @@ header.wp-block-kadence-rowlayout::before {
 
 
 /* ==========================================================================
-   Single post article — `core-post-content` on the Post Content block
-   760px reading column: a larger lead paragraph, Titling Gothic subheadings,
+   Single post article — `tnys-post-content` on the Post Content block
+   760px reading column: a larger lead paragraph, DM Sans subheadings,
    a Mantis-ruled quote, rounded figures with captions and Mantis bullets.
    ========================================================================== */
 
-.core-post-content > * {
+.tnys-post-content > * {
     margin-block: 0;
 }
 
-.core-post-content > * + * {
+.tnys-post-content > * + * {
     margin-block-start: 32px;
 }
 
-.core-post-content p,
-.core-post-content li {
-    font-size: var(--wp--preset--font-size--core-theme-large);
+.tnys-post-content p,
+.tnys-post-content li {
+    font-size: var(--wp--preset--font-size--tnys-large);
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-neutral-dark);
+    color: var(--wp--preset--color--tnys-neutral-dark);
 }
 
 /* Lead paragraph */
-.core-post-content > p:first-child {
-    font-size: var(--wp--preset--font-size--core-theme-heading-six);
+.tnys-post-content > p:first-child {
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
 }
 
-.core-post-content h2,
-.core-post-content h3,
-.core-post-content h4 {
-    font-family: var(--wp--preset--font-family--titling-gothic-fb-wide);
+.tnys-post-content h2,
+.tnys-post-content h3,
+.tnys-post-content h4 {
+    font-family: var(--wp--preset--font-family--dm-sans);
     font-weight: 500;
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
-.core-post-content h2 {
-    font-size: var(--wp--preset--font-size--core-theme-heading-four);
+.tnys-post-content h2 {
+    font-size: var(--wp--preset--font-size--tnys-heading-four);
     line-height: 1.3;
 }
 
-.core-post-content h3 {
-    font-size: var(--wp--preset--font-size--core-theme-heading-five);
+.tnys-post-content h3 {
+    font-size: var(--wp--preset--font-size--tnys-heading-five);
     line-height: 1.4;
 }
 
-.core-post-content h4 {
-    font-size: var(--wp--preset--font-size--core-theme-heading-six);
+.tnys-post-content h4 {
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
     line-height: 1.4;
 }
 
-.core-post-content a:where(:not(.wp-element-button)) {
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+.tnys-post-content a:where(:not(.wp-element-button)) {
+    color: var(--wp--preset--color--tnys-bermuda-dark);
     text-decoration: underline;
     text-underline-offset: 2px;
 }
 
 /* Quote */
-.core-post-content .wp-block-quote {
+.tnys-post-content .wp-block-quote {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-inline: 0;
     padding: 8px 0 8px 28px;
     border: 0;
-    border-left: 4px solid var(--wp--preset--color--core-theme-mantis);
+    border-left: 4px solid var(--wp--preset--color--tnys-bermuda);
 }
 
-.core-post-content .wp-block-quote p {
+.tnys-post-content .wp-block-quote p {
     margin: 0;
-    font-family: var(--wp--preset--font-family--titling-gothic-fb-wide);
-    font-size: var(--wp--preset--font-size--core-theme-heading-five);
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-size: var(--wp--preset--font-size--tnys-heading-five);
     font-weight: 500;
     line-height: 1.4;
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
-.core-post-content .wp-block-quote cite {
-    font-size: var(--wp--preset--font-size--core-theme-small);
+.tnys-post-content .wp-block-quote cite {
+    font-size: var(--wp--preset--font-size--tnys-small);
     font-style: normal;
     font-weight: 600;
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-neutral);
+    color: var(--wp--preset--color--tnys-neutral);
 }
 
 /* Figure */
-.core-post-content .wp-block-image img {
+.tnys-post-content .wp-block-image img {
     border-radius: 16px;
 }
 
-.core-post-content .wp-block-image figcaption {
+.tnys-post-content .wp-block-image figcaption {
     margin: 12px 0 0;
-    font-size: var(--wp--preset--font-size--core-theme-small);
+    font-size: var(--wp--preset--font-size--tnys-small);
     line-height: 1.5;
     text-align: left;
-    color: var(--wp--preset--color--core-theme-neutral);
+    color: var(--wp--preset--color--tnys-neutral);
 }
 
 /* Bullets: small Mantis dots */
-.core-post-content ul {
+.tnys-post-content ul {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -768,12 +770,12 @@ header.wp-block-kadence-rowlayout::before {
     list-style: none;
 }
 
-.core-post-content ul li {
+.tnys-post-content ul li {
     position: relative;
     padding-left: 18px;
 }
 
-.core-post-content ul li::before {
+.tnys-post-content ul li::before {
     content: '';
     position: absolute;
     top: 0.65em;
@@ -781,57 +783,57 @@ header.wp-block-kadence-rowlayout::before {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--wp--preset--color--core-theme-mantis);
+    background-color: var(--wp--preset--color--tnys-bermuda);
 }
 
-.core-post-content ol {
+.tnys-post-content ol {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding-left: 22px;
 }
 
-.core-post-content ol li::marker {
+.tnys-post-content ol li::marker {
     font-weight: 600;
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    color: var(--wp--preset--color--tnys-bermuda-dark);
 }
 
 /* ==========================================================================
-   Data table — Kadence Table with the `core-theme-data-table` class
+   Data table — Kadence Table with the `tnys-data-table` class
    Header row and row fills come from each Table Row's Background setting
    (Tiber header, alternating White / Peppermint Lighter). This adds the
    rounded outer border, the row rules, the type and equal columns.
    Narrow screens scroll sideways inside the rounded frame.
    ========================================================================== */
 
-.wp-block-kadence-table.core-theme-data-table {
-    border: 1px solid var(--wp--preset--color--core-theme-neutral-lighter);
+.wp-block-kadence-table.tnys-data-table {
+    border: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
     border-radius: 16px;
     overflow-x: auto;
 }
 
-.core-theme-data-table .kb-table {
+.tnys-data-table .kb-table {
     width: 100%;
     margin: 0;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-.core-theme-data-table .kb-table tr + tr {
-    border-top: 1px solid var(--wp--preset--color--core-theme-neutral-lighter);
+.tnys-data-table .kb-table tr + tr {
+    border-top: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
 }
 
-.core-theme-data-table .kb-table :is(th, td) {
+.tnys-data-table .kb-table :is(th, td) {
     border: 0;
     vertical-align: top;
     text-align: left;
-    font-size: var(--wp--preset--font-size--core-theme-medium);
+    font-size: var(--wp--preset--font-size--tnys-medium);
     font-weight: 400;
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-neutral-dark);
+    color: var(--wp--preset--color--tnys-neutral-dark);
 }
 
-.core-theme-data-table .kb-table :is(th, td) p {
+.tnys-data-table .kb-table :is(th, td) p {
     margin: 0;
     font-size: inherit;
     font-weight: inherit;
@@ -840,19 +842,19 @@ header.wp-block-kadence-rowlayout::before {
 }
 
 /* Header row: white on the row's Tiber fill */
-.core-theme-data-table .kb-table tr:first-child > :is(th, td) {
+.tnys-data-table .kb-table tr:first-child > :is(th, td) {
     font-weight: 700;
-    color: var(--wp--preset--color--core-theme-white);
+    color: var(--wp--preset--color--tnys-white);
 }
 
 /* First column names the row */
-.core-theme-data-table .kb-table tr:not(:first-child) > :first-child {
+.tnys-data-table .kb-table tr:not(:first-child) > :first-child {
     font-weight: 700;
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 @media (max-width: 781px) {
-    .core-theme-data-table .kb-table {
+    .tnys-data-table .kb-table {
         min-width: 720px;
     }
 }

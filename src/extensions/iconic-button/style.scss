@@ -1,9 +1,9 @@
-.wp-block-button.core-theme-icon-button {
+.wp-block-button.tnys-icon-button {
     .wp-block-button__link {
         display: flex !important;
         align-items: center;
         justify-content: center;
-        gap: var(--core-theme-icon-gap, 8px) !important;
+        gap: var(--tnys-icon-gap, 10px) !important;
 
         &.has-text-align-left {
             justify-content: flex-start !important;
@@ -17,25 +17,25 @@
             justify-content: flex-end !important;
         }
 
-        .core-theme-icon-button-svg {
+        .tnys-icon-button-svg {
             flex-shrink: 0;
             pointer-events: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--core-theme-icon-bg-color, transparent);
-            padding: var(--core-theme-icon-padding, 0);
+            background-color: var(--tnys-icon-bg-color, transparent);
+            padding: var(--tnys-icon-padding, 0);
             border-radius: 50%;
 
             svg {
-                width: var(--core-theme-icon-size, 1em);
-                height: var(--core-theme-icon-size, 1em);
+                width: var(--tnys-icon-size, 20px);
+                height: var(--tnys-icon-size, 20px);
                 fill: currentColor;
             }
         }
     }
 
-    &.core-theme-icon-before {
+    &.tnys-icon-before {
         .wp-block-button__link {
             flex-direction: row-reverse;
         }

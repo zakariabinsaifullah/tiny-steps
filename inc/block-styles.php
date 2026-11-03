@@ -4,19 +4,19 @@
  *
  * Registers custom style variations for core (and third-party) blocks.
  *
- * @package Core
+ * @package Tiny_Steps
  */
 
-if ( ! function_exists( 'core_theme_block_styles' ) ) :
+if ( ! function_exists( 'tnys_block_styles' ) ) :
 	/**
 	 * Registers all custom block style variations for the theme.
 	 */
-	function core_theme_block_styles() {
+	function tnys_block_styles() {
 		register_block_style(
 			'core/group',
 			array(
 				'name'  => 'wrap-mobile',
-				'label' => __( 'Wrap Mobile', 'core' ),
+				'label' => __( 'Wrap Mobile', 'tiny-steps' ),
 			)
 		);
 
@@ -25,7 +25,7 @@ if ( ! function_exists( 'core_theme_block_styles' ) ) :
 			'core/button',
 			array(
 				'name'  => 'alternative',
-				'label' => __( 'Alternative', 'core' ),
+				'label' => __( 'Alternative', 'tiny-steps' ),
 			)
 		);
 
@@ -33,9 +33,9 @@ if ( ! function_exists( 'core_theme_block_styles' ) ) :
 			'core/button',
 			array(
 				'name'  => 'link',
-				'label' => __( 'Link', 'core' ),
+				'label' => __( 'Link', 'tiny-steps' ),
 			)
 		);
 	}
 endif;
-add_action( 'init', 'core_theme_block_styles' );
+add_action( 'init', 'tnys_block_styles' );

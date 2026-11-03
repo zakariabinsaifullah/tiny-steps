@@ -35,15 +35,15 @@ const hangIconicButtonPanel = createHigherOrderComponent( BlockEdit => {
                 <BlockEdit key="edit" { ...props } />
                 { isSelected && (
                     <InspectorControls>
-                        <PanelBody title={ __( 'Icon Settings', 'core' ) } initialOpen={ initialOpen }>
+                        <PanelBody title={ __( 'Icon Settings', 'tiny-steps' ) } initialOpen={ initialOpen }>
                             <NativeToggleControl
-                                label={ __( 'Add Icon to Button', 'core' ) }
+                                label={ __( 'Add Icon to Button', 'tiny-steps' ) }
                                 checked={ iconicButtonEnabled }
                                 onChange={ () => {
                                     const newEnabled = ! iconicButtonEnabled;
                                     const newAttrs = { iconicButtonEnabled: newEnabled };
                                     if ( newEnabled && ! iconicButtonUniqueClass ) {
-                                        newAttrs.iconicButtonUniqueClass = `core-theme-icon-button-${ clientId.slice( 0, 8 ) }`;
+                                        newAttrs.iconicButtonUniqueClass = `tnys-icon-button-${ clientId.slice( 0, 8 ) }`;
                                     }
                                     setAttributes( newAttrs );
                                     initialOpen = true;
@@ -75,34 +75,34 @@ const hangIconicButtonPanel = createHigherOrderComponent( BlockEdit => {
                                         iconSize={ 24 }
                                     />
                                     <NativeToggleGroupControl
-                                        label={ __( 'Position', 'core' ) }
+                                        label={ __( 'Position', 'tiny-steps' ) }
                                         value={ iconicButtonIconPosition }
                                         options={ [
-                                            { label: __( 'Before', 'core' ), value: 'core-theme-icon-before' },
-                                            { label: __( 'After', 'core' ), value: '' }
+                                            { label: __( 'Before', 'tiny-steps' ), value: 'tnys-icon-before' },
+                                            { label: __( 'After', 'tiny-steps' ), value: '' }
                                         ] }
                                         onChange={ value => setAttributes( { iconicButtonIconPosition: value } ) }
                                     />
                                     <NativeUnitControl
-                                        label={ __( 'Size', 'core' ) }
+                                        label={ __( 'Size', 'tiny-steps' ) }
                                         value={ iconicButtonIconSize }
                                         onChange={ value => setAttributes( { iconicButtonIconSize: value } ) }
                                         mb="16px"
                                     />
                                     <NativeUnitControl
-                                        label={ __( 'Gap', 'core' ) }
+                                        label={ __( 'Gap', 'tiny-steps' ) }
                                         value={ iconicButtonIconGap }
                                         onChange={ value => setAttributes( { iconicButtonIconGap: value } ) }
                                         mb="16px"
                                     />
                                     <NativeUnitControl
-                                        label={ __( 'Icon Padding', 'core' ) }
+                                        label={ __( 'Icon Padding', 'tiny-steps' ) }
                                         value={ iconicButtonIconPadding }
                                         onChange={ value => setAttributes( { iconicButtonIconPadding: value } ) }
                                         mb="16px"
                                     />
                                     <PanelColorControl
-                                        label={ __( 'Icon Background', 'core' ) }
+                                        label={ __( 'Icon Background', 'tiny-steps' ) }
                                         colorSettings={ [
                                             {
                                                 value: iconicButtonIconBgColor,
@@ -120,4 +120,4 @@ const hangIconicButtonPanel = createHigherOrderComponent( BlockEdit => {
     };
 }, 'withHangIconicButtonPanel' );
 
-addFilter( 'editor.BlockEdit', 'core-theme/iconic-button-panel', hangIconicButtonPanel );
+addFilter( 'editor.BlockEdit', 'tnys/iconic-button-panel', hangIconicButtonPanel );

@@ -1,10 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "core-theme/social-share",
+  "name": "tnys/social-share",
   "version": "0.3.0",
   "title": "Social Share",
-  "category": "core-theme",
+  "category": "tnys",
   "icon": "share",
   "description": "Add social sharing buttons for the current post.",
   "example": {},
@@ -68,7 +68,7 @@
       "type": "string"
     }
   },
-  "textdomain": "core",
+  "textdomain": "tiny-steps",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

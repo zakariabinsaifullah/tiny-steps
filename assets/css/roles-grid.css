@@ -4,39 +4,39 @@
    accent bar, job type and open count, the title and an Apply link.
    ============================================================================= */
 
-.core-roles {
+.tnys-roles {
     display: grid;
-    grid-template-columns: repeat(var(--core-roles-columns, 3), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--tnys-roles-columns, 3), minmax(0, 1fr));
     gap: 24px;
 }
 
 /* Card grids are one column on tablet and mobile. */
 @media (max-width: 1024px) {
-    .core-roles {
+    .tnys-roles {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
-.core-role {
+.tnys-role {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 24px;
-    background: var(--wp--preset--color--core-theme-white);
+    background: var(--wp--preset--color--tnys-white);
     border-radius: 14px;
-    box-shadow: 0 4px 18px color-mix(in srgb, var(--wp--preset--color--core-theme-white-dark) 25%, transparent);
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--wp--preset--color--tnys-neutral-lighter) 25%, transparent);
 }
 
 /* The 40px Mantis accent bar used on the theme's other cards. */
-.core-role::before {
+.tnys-role::before {
     content: '';
     width: 40px;
     height: 4px;
     border-radius: 2px;
-    background: var(--wp--preset--color--core-theme-mantis);
+    background: var(--wp--preset--color--tnys-bermuda);
 }
 
-.core-role__meta {
+.tnys-role__meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -44,63 +44,63 @@
     gap: 8px;
 }
 
-.core-role__type {
-    font-size: var(--wp--preset--font-size--core-theme-small);
+.tnys-role__type {
+    font-size: var(--wp--preset--font-size--tnys-small);
     font-weight: 600;
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    color: var(--wp--preset--color--tnys-bermuda-dark);
 }
 
-.core-role__count {
+.tnys-role__count {
     padding: 4px 12px;
     border-radius: 999px;
-    background: var(--wp--preset--color--core-theme-mantis-lighter);
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    background: var(--wp--preset--color--tnys-bermuda-lighter);
+    color: var(--wp--preset--color--tnys-bermuda-dark);
     font-size: 12px;
     font-weight: 600;
     line-height: 1.5;
 }
 
-.core-role__title {
+.tnys-role__title {
     margin: 0;
-    font-family: var(--wp--preset--font-family--titling-gothic-fb-wide);
-    font-size: var(--wp--preset--font-size--core-theme-heading-six);
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
     font-weight: 500;
     line-height: 1.4;
-    color: var(--wp--preset--color--core-theme-tiber);
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 /* Apply: the design's Link button. `margin-top: auto` keeps the links level
    across a row of cards with titles of different lengths. */
-.core-role__apply {
+.tnys-role__apply {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     align-self: flex-start;
     margin-top: auto;
     padding-top: 4px;
-    font-size: var(--wp--preset--font-size--core-theme-medium);
+    font-size: var(--wp--preset--font-size--tnys-medium);
     font-weight: 600;
     line-height: 1.5;
-    color: var(--wp--preset--color--core-theme-mantis-dark);
+    color: var(--wp--preset--color--tnys-bermuda-dark);
     text-decoration: none;
 }
 
-.core-role__apply:hover {
-    color: var(--wp--preset--color--core-theme-mantis-darker);
+.tnys-role__apply:hover {
+    color: var(--wp--preset--color--tnys-bermuda-darker);
 }
 
-.core-role__apply svg {
+.tnys-role__apply svg {
     flex-shrink: 0;
     transition: transform 0.2s ease;
 }
 
-.core-role__apply:hover svg {
+.tnys-role__apply:hover svg {
     transform: translateX(3px);
 }
 
-.core-roles__empty {
+.tnys-roles__empty {
     margin: 0;
-    font-size: var(--wp--preset--font-size--core-theme-large);
-    color: var(--wp--preset--color--core-theme-neutral-dark);
+    font-size: var(--wp--preset--font-size--tnys-large);
+    color: var(--wp--preset--color--tnys-neutral-dark);
 }

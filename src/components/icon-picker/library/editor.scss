@@ -1,4 +1,4 @@
-.core-theme-modal__icons {
+.tnys-modal__icons {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 24px;
@@ -46,17 +46,17 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
-.core-theme-modal__my-icons {
+.tnys-modal__my-icons {
     &-item {
         position: relative;
         display: flex;
 
-        .core-theme-modal__icons-button {
+        .tnys-modal__icons-button {
             flex: 1;
         }
 
-        &:hover .core-theme-modal__my-icons-remove,
-        .core-theme-modal__my-icons-remove:focus {
+        &:hover .tnys-modal__my-icons-remove,
+        .tnys-modal__my-icons-remove:focus {
             opacity: 1;
         }
     }
@@ -107,7 +107,7 @@
     }
 }
 
-.core-theme-modal__custom-svg {
+.tnys-modal__custom-svg {
     display: flex;
     padding: 24px 0;
     gap: 24px;
@@ -136,7 +136,7 @@
         width: 360px;
         display: flex;
         flex-direction: column;
-        .core-theme-icon-preview-container {
+        .tnys-icon-preview-container {
             flex: 1;
         }
 

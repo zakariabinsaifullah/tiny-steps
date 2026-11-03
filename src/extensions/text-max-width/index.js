@@ -18,7 +18,7 @@ const SUPPORTED_BLOCKS = ['core/heading', 'core/paragraph'];
 const ATTRIBUTE = 'maxWidth';
 const CLASS_NAME = 'has-max-width';
 
-addFilter('blocks.registerBlockType', 'core-theme/text-max-width-add-attribute', (settings, name) => {
+addFilter('blocks.registerBlockType', 'tnys/text-max-width-add-attribute', (settings, name) => {
     if (!SUPPORTED_BLOCKS.includes(name)) {
         return settings;
     }
@@ -37,7 +37,7 @@ addFilter('blocks.registerBlockType', 'core-theme/text-max-width-add-attribute',
 
 addFilter(
     'editor.BlockEdit',
-    'core-theme/text-max-width-add-inspector-controls',
+    'tnys/text-max-width-add-inspector-controls',
     createHigherOrderComponent(BlockEdit => {
         return props => {
             const { name, attributes, setAttributes } = props;
@@ -50,9 +50,9 @@ addFilter(
                 <>
                     <BlockEdit {...props} />
                     <InspectorControls>
-                        <PanelBody title={__('Max Width', 'core')}>
+                        <PanelBody title={__('Max Width', 'tiny-steps')}>
                             <NativeRangeControl
-                                label={__('Maximum width (px)', 'core')}
+                                label={__('Maximum width (px)', 'tiny-steps')}
                                 value={attributes[ATTRIBUTE]}
                                 onChange={value => setAttributes({ [ATTRIBUTE]: value })}
                                 min={200}
@@ -70,7 +70,7 @@ addFilter(
 
 addFilter(
     'editor.BlockListBlock',
-    'core-theme/text-max-width-add-styles',
+    'tnys/text-max-width-add-styles',
     createHigherOrderComponent(BlockListBlock => {
         return props => {
             const { name, attributes } = props;

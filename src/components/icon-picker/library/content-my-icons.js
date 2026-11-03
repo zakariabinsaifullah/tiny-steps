@@ -56,15 +56,15 @@ export const ContentMyIcons = ({ currentCustomSvg, onIconSelect, onGoToCustomTab
             setError('');
             await deleteIcon(icon.id);
         } catch (deleteError) {
-            setError(deleteError?.message || __('The icon could not be deleted.', 'core'));
+            setError(deleteError?.message || __('The icon could not be deleted.', 'tiny-steps'));
         }
     };
 
     if (!hasLoaded) {
         return (
-            <div className="core-theme-modal__my-icons-placeholder">
+            <div className="tnys-modal__my-icons-placeholder">
                 <Spinner />
-                <p>{__('Loading your icons…', 'core')}</p>
+                <p>{__('Loading your icons…', 'tiny-steps')}</p>
             </div>
         );
     }
@@ -83,9 +83,9 @@ export const ContentMyIcons = ({ currentCustomSvg, onIconSelect, onGoToCustomTab
                         <SearchControl
                             value={searchTerm}
                             onChange={setSearchTerm}
-                            label={__('Search your icons', 'core')}
-                            placeholder={__('Search...', 'core')}
-                            className="core-theme-modal__search"
+                            label={__('Search your icons', 'tiny-steps')}
+                            placeholder={__('Search...', 'tiny-steps')}
+                            className="tnys-modal__search"
                             size="compact"
                         />
                     </FlexItem>
@@ -93,48 +93,48 @@ export const ContentMyIcons = ({ currentCustomSvg, onIconSelect, onGoToCustomTab
             )}
 
             {0 === myIcons.length && (
-                <div className="core-theme-modal__my-icons-placeholder">
-                    <p>{__('You have not saved any icons yet.', 'core')}</p>
-                    <p className="core-theme-modal__my-icons-placeholder-help">
+                <div className="tnys-modal__my-icons-placeholder">
+                    <p>{__('You have not saved any icons yet.', 'tiny-steps')}</p>
+                    <p className="tnys-modal__my-icons-placeholder-help">
                         {__(
                             'Paste an SVG in the Custom SVG tab, give it a name, and choose “Add to My Icons” to make it available across the whole site.',
-                            'core'
+                            'tiny-steps'
                         )}
                     </p>
                     <Button variant="primary" onClick={onGoToCustomTab} __next40pxDefaultSize>
-                        {__('Add an icon', 'core')}
+                        {__('Add an icon', 'tiny-steps')}
                     </Button>
                 </div>
             )}
 
-            {myIcons.length > 0 && 0 === filteredIcons.length && <p>{__('No icons found!', 'core')}</p>}
+            {myIcons.length > 0 && 0 === filteredIcons.length && <p>{__('No icons found!', 'tiny-steps')}</p>}
 
             {filteredIcons.length > 0 && (
-                <div className="core-theme-modal__icons core-theme-modal__my-icons">
+                <div className="tnys-modal__icons tnys-modal__my-icons">
                     {filteredIcons.map(icon => {
                         const isDeleting = deletingIds.includes(icon.id);
 
                         return (
-                            <div className="core-theme-modal__my-icons-item" key={icon.id}>
+                            <div className="tnys-modal__my-icons-item" key={icon.id}>
                                 <Button
-                                    className={`core-theme-modal__icons-button ${currentCustomSvg === icon.svg ? 'is-selected' : ''}`}
+                                    className={`tnys-modal__icons-button ${currentCustomSvg === icon.svg ? 'is-selected' : ''}`}
                                     onClick={() => onIconSelect(icon)}
                                     disabled={isDeleting}
                                     label={sprintf(
                                         /* translators: %s: icon name. */
-                                        __('Use %s', 'core'),
+                                        __('Use %s', 'tiny-steps'),
                                         icon.label
                                     )}
                                     showTooltip
                                 >
                                     <span
-                                        className="core-theme-modal__my-icons-preview"
+                                        className="tnys-modal__my-icons-preview"
                                         dangerouslySetInnerHTML={{ __html: icon.svg }} // eslint-disable-line react/no-danger
                                     />
                                     <span className="icon-title">{icon.label}</span>
                                 </Button>
                                 <Button
-                                    className="core-theme-modal__my-icons-remove"
+                                    className="tnys-modal__my-icons-remove"
                                     icon={trash}
                                     iconSize={18}
                                     size="small"
@@ -143,7 +143,7 @@ export const ContentMyIcons = ({ currentCustomSvg, onIconSelect, onGoToCustomTab
                                     disabled={isDeleting}
                                     label={sprintf(
                                         /* translators: %s: icon name. */
-                                        __('Delete %s', 'core'),
+                                        __('Delete %s', 'tiny-steps'),
                                         icon.label
                                     )}
                                     onClick={() => setPendingDelete(icon)}
@@ -158,12 +158,12 @@ export const ContentMyIcons = ({ currentCustomSvg, onIconSelect, onGoToCustomTab
                 isOpen={!!pendingDelete}
                 onConfirm={confirmDelete}
                 onCancel={() => setPendingDelete(null)}
-                confirmButtonText={__('Delete', 'core')}
+                confirmButtonText={__('Delete', 'tiny-steps')}
             >
                 {pendingDelete &&
                     sprintf(
                         /* translators: %s: icon name. */
-                        __('Delete “%s” from your icon library? Blocks already using it keep their icon.', 'core'),
+                        __('Delete “%s” from your icon library? Blocks already using it keep their icon.', 'tiny-steps'),
                         pendingDelete.label
                     )}
             </ConfirmDialog>

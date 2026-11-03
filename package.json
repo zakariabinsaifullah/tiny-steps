@@ -1,7 +1,7 @@
 {
-    "name": "core",
+    "name": "tiny-steps",
     "version": "0.3.0",
-    "description": "Core — A Full Site Editing block theme",
+    "description": "Tiny Steps — A Full Site Editing block theme",
     "author": "binsaifullah",
     "license": "GPL-2.0-or-later",
     "main": "build/index.js",

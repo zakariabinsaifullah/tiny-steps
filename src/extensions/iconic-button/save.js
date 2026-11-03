@@ -20,13 +20,13 @@ function addIconicButtonSaveProps( props, blockType, attributes ) {
         return props;
     }
 
-    const classes = [ 'core-theme-icon-button', iconicButtonUniqueClass ];
+    const classes = [ 'tnys-icon-button', iconicButtonUniqueClass ];
     if ( iconicButtonIconPosition !== '' ) {
-        classes.push( 'core-theme-icon-before' );
+        classes.push( 'tnys-icon-before' );
     }
 
     props.className = ( ( props.className || '' ) + ' ' + classes.join( ' ' ) ).trim();
     return props;
 }
 
-addFilter( 'blocks.getSaveContent.extraProps', 'core-theme/iconic-button-save-props', addIconicButtonSaveProps );
+addFilter( 'blocks.getSaveContent.extraProps', 'tnys/iconic-button-save-props', addIconicButtonSaveProps );

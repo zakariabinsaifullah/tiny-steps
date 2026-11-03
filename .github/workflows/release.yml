@@ -40,24 +40,24 @@ jobs:
             - name: Prepare Release Artifact
               run: |
                   # 1. Create a build directory named after the theme slug
-                  mkdir core
+                  mkdir tiny-steps
 
                   # 2. Copy files to build dir (the leading slash anchors the
-                  #    exclude to the root, so nothing else named "core" is skipped)
-                  rsync -rc --exclude-from='.distignore' --exclude '/core/' . core/
+                  #    exclude to the root, so nothing else named "tiny-steps" is skipped)
+                  rsync -rc --exclude-from='.distignore' --exclude '/tiny-steps/' . tiny-steps/
 
                   # 3. CLEANUP: Force remove any .DS_Store files that slipped through
-                  find core -name ".DS_Store" -type f -delete
+                  find tiny-steps -name ".DS_Store" -type f -delete
 
                   # 4. Zip the clean directory
-                  zip -r core.zip core
+                  zip -r tiny-steps.zip tiny-steps
             - name: Create Release
               uses: ncipollo/release-action@v1.14.0
               with:
-                  artifacts: 'core.zip'
+                  artifacts: 'tiny-steps.zip'
                   token: ${{ secrets.GITHUB_TOKEN }}
                   allowUpdates: true
                   makeLatest: true
                   tag: ${{ github.ref_name }}
-                  name: 'Core ${{ github.ref_name }}'
-                  body: 'Core theme release ${{ github.ref_name }}'
+                  name: 'Tiny Steps ${{ github.ref_name }}'
+                  body: 'Tiny Steps theme release ${{ github.ref_name }}'

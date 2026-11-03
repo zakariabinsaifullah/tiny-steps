@@ -16,12 +16,12 @@ import './style.scss';
 
 const BLOCK_NAME = 'kadence/rowlayout';
 const ATTRIBUTE = 'addOverlay';
-const CLASS_NAME = 'core-overlay';
+const CLASS_NAME = 'tnys-overlay';
 
 /**
  * Add `addOverlay` attribute to kadence/rowlayout.
  */
-addFilter('blocks.registerBlockType', 'core-theme/kadence-row-overlay-add-attribute', (settings, name) => {
+addFilter('blocks.registerBlockType', 'tnys/kadence-row-overlay-add-attribute', (settings, name) => {
     if (name !== BLOCK_NAME) {
         return settings;
     }
@@ -43,7 +43,7 @@ addFilter('blocks.registerBlockType', 'core-theme/kadence-row-overlay-add-attrib
  */
 addFilter(
     'editor.BlockEdit',
-    'core-theme/kadence-row-overlay-add-inspector-controls',
+    'tnys/kadence-row-overlay-add-inspector-controls',
     createHigherOrderComponent(BlockEdit => {
         return props => {
             const { name, attributes, setAttributes } = props;
@@ -56,10 +56,10 @@ addFilter(
                 <>
                     <BlockEdit {...props} />
                     <InspectorControls>
-                        <PanelBody title={__('Overlay', 'core')}>
+                        <PanelBody title={__('Overlay', 'tiny-steps')}>
                             <NativeToggleControl
-                                label={__('Add overlay', 'core')}
-                                help={__('Apply the photo-hero overlay treatment (right 57% on desktop, bottom band on tablet/mobile). Requires a Tiber background colour and a Kadence overlay image.', 'core')}
+                                label={__('Add overlay', 'tiny-steps')}
+                                help={__('Apply the photo-hero overlay treatment (right 57% on desktop, bottom band on tablet/mobile). Requires a Tiber background colour and a Kadence overlay image.', 'tiny-steps')}
                                 checked={!!attributes[ATTRIBUTE]}
                                 onChange={value => setAttributes({ [ATTRIBUTE]: value })}
                             />
@@ -77,7 +77,7 @@ addFilter(
  */
 addFilter(
     'editor.BlockListBlock',
-    'core-theme/kadence-row-overlay-add-class',
+    'tnys/kadence-row-overlay-add-class',
     createHigherOrderComponent(BlockListBlock => {
         return props => {
             const { name, attributes } = props;

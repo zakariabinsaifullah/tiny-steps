@@ -18,22 +18,22 @@ const iconResources = [
     {
         name: 'Heroicons',
         url: 'https://heroicons.com/',
-        description: __('Beautiful hand-crafted SVG icons by Tailwind CSS', 'core')
+        description: __('Beautiful hand-crafted SVG icons by Tailwind CSS', 'tiny-steps')
     },
     {
         name: 'Google Fonts Icons',
         url: 'https://fonts.google.com/icons',
-        description: __('Material icons and symbols', 'core')
+        description: __('Material icons and symbols', 'tiny-steps')
     },
     {
         name: 'Remix Icon',
         url: 'https://remixicon.com/',
-        description: __('Open-source icon library', 'core')
+        description: __('Open-source icon library', 'tiny-steps')
     },
     {
         name: 'Basicons',
         url: 'https://basicons.xyz/',
-        description: __('Basic icons for your projects', 'core')
+        description: __('Basic icons for your projects', 'tiny-steps')
     }
 ];
 
@@ -50,18 +50,18 @@ export const Sidebar = ({ categories = [], category, setCategory, activeTab }) =
 
     if ('custom' === activeTab) {
         return (
-            <div className="core-theme-modal__sidebar">
-                <h4 className="icons-heading">{__('Resources', 'core')}</h4>
+            <div className="tnys-modal__sidebar">
+                <h4 className="icons-heading">{__('Resources', 'tiny-steps')}</h4>
                 <p style={helpTextStyle}>
                     {__(
                         'Want to try a different icon? Maybe find one from these resources, Copy the SVG code and paste it in the editor.',
-                        'core'
+                        'tiny-steps'
                     )}
                 </p>
-                <Scrollable className="core-theme-modal__scrollable">
-                    <div className="core-theme-modal__sidebar-buttons">
+                <Scrollable className="tnys-modal__scrollable">
+                    <div className="tnys-modal__sidebar-buttons">
                         {iconResources.map(resource => (
-                            <ExternalLink key={resource.url} href={resource.url} className="core-theme-modal__sidebar-link">
+                            <ExternalLink key={resource.url} href={resource.url} className="tnys-modal__sidebar-link">
                                 {resource.name}
                             </ExternalLink>
                         ))}
@@ -73,34 +73,34 @@ export const Sidebar = ({ categories = [], category, setCategory, activeTab }) =
 
     if ('my-icons' === activeTab) {
         return (
-            <div className="core-theme-modal__sidebar">
-                <h4 className="icons-heading">{__('My Icons', 'core')}</h4>
+            <div className="tnys-modal__sidebar">
+                <h4 className="icons-heading">{__('My Icons', 'tiny-steps')}</h4>
                 <p style={helpTextStyle}>
                     {__(
                         'Icons you have saved from the Custom SVG tab. They are stored site-wide, so they are available in every block that uses an icon.',
-                        'core'
+                        'tiny-steps'
                     )}
                 </p>
                 <p style={{ ...helpTextStyle, fontWeight: '500', color: '#1e1e1e' }}>
                     {myIconsCount === 1
-                        ? __('1 saved icon', 'core')
-                        : `${myIconsCount} ${__('saved icons', 'core')}`}
+                        ? __('1 saved icon', 'tiny-steps')
+                        : `${myIconsCount} ${__('saved icons', 'tiny-steps')}`}
                 </p>
             </div>
         );
     }
 
     return (
-        <div className="core-theme-modal__sidebar">
-            <h4 className="icons-heading">{__('Categories', 'core')}</h4>
-            <Scrollable className="core-theme-modal__scrollable">
-                <div className="core-theme-modal__sidebar-buttons">
+        <div className="tnys-modal__sidebar">
+            <h4 className="icons-heading">{__('Categories', 'tiny-steps')}</h4>
+            <Scrollable className="tnys-modal__scrollable">
+                <div className="tnys-modal__sidebar-buttons">
                     {categories.map(cat => (
                         <Button
                             key={cat.slug}
                             icon={file}
                             iconSize={20}
-                            className={`core-theme-modal__sidebar-button ${category === cat.slug ? 'is-selected' : ''}`}
+                            className={`tnys-modal__sidebar-button ${category === cat.slug ? 'is-selected' : ''}`}
                             onClick={() => setCategory(cat.slug)}
                         >
                             {cat.name}

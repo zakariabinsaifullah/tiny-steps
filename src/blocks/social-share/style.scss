@@ -6,26 +6,26 @@
 	--icon-radius: 0px;
 	--icon-padding: 0px;
 
-	&.justify-center .core-theme-social-share__icons {
+	&.justify-center .tnys-social-share__icons {
 		justify-content: center;
 	}
 
-	&.justify-right .core-theme-social-share__icons {
+	&.justify-right .tnys-social-share__icons {
 		justify-content: flex-end;
 	}
 
-	&.justify-left .core-theme-social-share__icons {
+	&.justify-left .tnys-social-share__icons {
 		justify-content: flex-start;
 	}
 
-	.core-theme-social-share__icons {
+	.tnys-social-share__icons {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: var(--gap);
 	}
 
-	.core-theme-social-share__item {
+	.tnys-social-share__item {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
