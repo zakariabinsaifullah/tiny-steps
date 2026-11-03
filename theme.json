@@ -367,6 +367,11 @@
                     "name": "Float Shadow",
                     "shadow": "0 10px 15px 0 rgba(14, 28, 52, 0.16)",
                     "slug": "tnys-shadow-float"
+                },
+                {
+                    "name": "Subtle Shadow",
+                    "shadow": "0 10px 15px 0 rgba(36, 72, 132, 0.06)",
+                    "slug": "tnys-shadow-subtle"
                 }
             ]
         },
