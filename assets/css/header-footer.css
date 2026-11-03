@@ -21,6 +21,13 @@
     white-space: nowrap;
 }
 
+/* The 1px rule between the menu and the call button; a flex item this narrow
+   would otherwise shrink to nothing. */
+.tnys-header-divider {
+    flex-shrink: 0;
+    width: 1px;
+}
+
 /* Top-level submenu arrow: 18px, 4px from the label. */
 .tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
     width: 18px;
@@ -381,6 +388,11 @@
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
+
+/* The divider sits in a Kadence column that sizes children to their content. */
+.tnys-footer-main .wp-block-separator {
+    width: 100%;
+}
 
 @media (max-width: 767px) {
     /* The emergency note wraps, so it reads left-aligned with the icon on its first line. */

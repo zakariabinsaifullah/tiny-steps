@@ -951,10 +951,6 @@
                 },
                 "css": "transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);",
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--manrope)",
-                    "fontStyle": "normal",
-                    "fontWeight": "400",
-                    "lineHeight": "1.5",
                     "textDecoration": "none"
                 }
             }
