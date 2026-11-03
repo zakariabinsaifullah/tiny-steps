@@ -888,3 +888,19 @@ header.wp-block-kadence-rowlayout::before {
         flex: 0 0 auto;
     }
 }
+
+/* ==========================================================================
+   Hover cards
+   Add `tnys-hover-cards` to a Row Layout whose Sections are cards with an
+   Icon block. Hovering a card turns the icon's circle Bay of Many and the
+   icon white; the card's own hover background is set on the Section.
+   ========================================================================== */
+
+.tnys-hover-cards .wp-block-kadence-column .wp-block-tnys-icon .icon-container {
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tnys-hover-cards .wp-block-kadence-column:hover .wp-block-tnys-icon .icon-container {
+    background-color: var(--wp--preset--color--tnys-bay-of-many) !important;
+    color: var(--wp--preset--color--tnys-white) !important;
+}
