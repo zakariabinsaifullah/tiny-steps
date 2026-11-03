@@ -57,14 +57,24 @@ add_action( 'wp_enqueue_scripts', 'tnys_enqueue_styles' );
 
 if ( ! function_exists( 'tnys_enqueue_block_styles' ) ) :
 	/**
-	 * Enqueues the shared block stylesheet in both the editor and on the front end.
+	 * Enqueues the shared block stylesheets in both the editor and on the front end.
+	 *
+	 * Versioned by file modification time, so a push-to-deploy update reaches
+	 * browsers without a theme version bump.
 	 */
 	function tnys_enqueue_block_styles() {
 		wp_enqueue_style(
 			'tnys-block-style',
 			get_parent_theme_file_uri( 'assets/css/blocks.css' ),
 			array(),
-			wp_get_theme()->get( 'Version' )
+			(string) filemtime( get_parent_theme_file_path( 'assets/css/blocks.css' ) )
+		);
+
+		wp_enqueue_style(
+			'tnys-header-footer',
+			get_parent_theme_file_uri( 'assets/css/header-footer.css' ),
+			array( 'tnys-block-style' ),
+			(string) filemtime( get_parent_theme_file_path( 'assets/css/header-footer.css' ) )
 		);
 	}
 endif;

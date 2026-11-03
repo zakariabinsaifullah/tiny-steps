@@ -1,0 +1,403 @@
+/*
+ * Header, mobile menu and footer
+ *
+ * The parts of the Figma header and footer that block settings can't express:
+ * the desktop dropdown panels, the mobile menu accordion, the tablet/mobile
+ * header layout and the stacked footer bars. Everything else (colours, type,
+ * padding, gaps) is set on the blocks themselves.
+ *
+ * Hooks used here are class names set on the blocks: `tnys-primary-nav`,
+ * `tnys-mobile-nav`, `tnys-header-*`, `tnys-utility-bar`, `tnys-mobile-menu*`,
+ * `tnys-emergency-note` and `tnys-footer-*`.
+ */
+
+/* --------------------------------------------------------------------------
+   Header: keep every label on one line
+   -------------------------------------------------------------------------- */
+
+.tnys-primary-nav .wp-block-navigation-item__label,
+.tnys-header-call .wp-block-button__link,
+.tnys-utility-bar .icon-heading {
+    white-space: nowrap;
+}
+
+/* Top-level submenu arrow: 18px, 4px from the label. */
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+}
+
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop dropdown panels
+   White card, 16px radius, 1px border and a soft shadow. Items are 16px bold
+   with a chevron; "Conditions We Treat" keeps its own children open beneath
+   it on a 2px rail, and the Services panel splits into two columns.
+   -------------------------------------------------------------------------- */
+
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container {
+    top: calc(100% + 12px);
+    min-width: 320px;
+    padding: 16px;
+    gap: 4px;
+    background-color: var(--wp--preset--color--tnys-white);
+    border: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
+    border-radius: 16px;
+    box-shadow: 0 16px 20px rgba(14, 28, 52, 0.12);
+}
+
+/* Hover bridge across the 12px gap so the panel doesn't close on the way down. */
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -13px;
+    height: 13px;
+}
+
+/* Services: two columns, "Conditions We Treat" fills the first. */
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container:has(> .has-child) {
+    display: grid;
+    grid-template-columns: 320px 288px;
+    grid-auto-rows: min-content;
+    column-gap: 24px;
+    row-gap: 4px;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container:has(> .has-child) > .has-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container:has(> .has-child) > :not(.has-child) {
+    grid-column: 2;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container > .wp-block-navigation-item {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* First-level dropdown links. */
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    color: var(--wp--preset--color--tnys-bay-of-many);
+}
+
+.tnys-primary-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M12.0143 10.9767L8.02378 6.98624C7.86795 6.83041 7.79385 6.64807 7.80149 6.43922C7.80913 6.23037 7.89087 6.04803 8.0467 5.8922C8.20253 5.73636 8.38869 5.65845 8.60518 5.65845C8.82166 5.65845 9.00782 5.73636 9.16366 5.8922L13.6957 10.4242C13.7794 10.5079 13.8402 10.5953 13.8781 10.6864C13.916 10.7773 13.9349 10.8741 13.9349 10.9767C13.9349 11.0794 13.916 11.1762 13.8781 11.2671C13.8402 11.3581 13.7794 11.4455 13.6957 11.5292L9.14074 16.0842C8.98491 16.24 8.80257 16.3141 8.59372 16.3064C8.38487 16.2988 8.20253 16.2171 8.0467 16.0612C7.89087 15.9054 7.81295 15.7192 7.81295 15.5028C7.81295 15.2863 7.89087 15.1001 8.0467 14.9443L12.0143 10.9767Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M12.0143 10.9767L8.02378 6.98624C7.86795 6.83041 7.79385 6.64807 7.80149 6.43922C7.80913 6.23037 7.89087 6.04803 8.0467 5.8922C8.20253 5.73636 8.38869 5.65845 8.60518 5.65845C8.82166 5.65845 9.00782 5.73636 9.16366 5.8922L13.6957 10.4242C13.7794 10.5079 13.8402 10.5953 13.8781 10.6864C13.916 10.7773 13.9349 10.8741 13.9349 10.9767C13.9349 11.0794 13.916 11.1762 13.8781 11.2671C13.8402 11.3581 13.7794 11.4455 13.6957 11.5292L9.14074 16.0842C8.98491 16.24 8.80257 16.3141 8.59372 16.3064C8.38487 16.2988 8.20253 16.2171 8.0467 16.0612C7.89087 15.9054 7.81295 15.7192 7.81295 15.5028C7.81295 15.2863 7.89087 15.1001 8.0467 14.9443L12.0143 10.9767Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
+.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content:focus-visible {
+    background-color: var(--wp--preset--color--tnys-bermuda-lightest);
+}
+
+/* Nested list ("Conditions We Treat" children): always open, on a rail. */
+.tnys-primary-nav .wp-block-navigation__submenu-container .has-child > .wp-block-navigation__submenu-icon {
+    display: none;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    overflow: visible;
+    margin: 0 0 0 12px;
+    padding: 0 0 4px;
+    border: 0;
+    border-left: 2px solid var(--wp--preset--color--tnys-bermuda-lighter);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+.tnys-primary-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+    padding: 8px 12px 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--wp--preset--color--tnys-bermuda-gray-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Tablet and mobile header (below 1024px)
+   Core collapses the menu only below 600px; the five links and the call
+   button don't fit until 1024px, so the hamburger takes over from there.
+   -------------------------------------------------------------------------- */
+
+.tnys-primary-nav .wp-block-navigation__responsive-container-open {
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--wp--preset--color--tnys-bay-of-many);
+    border-radius: 999px;
+    background-color: var(--wp--preset--color--tnys-white);
+    color: var(--wp--preset--color--tnys-bay-of-many);
+}
+
+.tnys-primary-nav .wp-block-navigation__responsive-container-open svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media (max-width: 1023px) {
+    .tnys-primary-nav .wp-block-navigation__responsive-container-open:not(.always-shown) {
+        display: flex;
+    }
+
+    .tnys-primary-nav .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+        display: none;
+    }
+
+    .tnys-header-actions {
+        gap: 8px !important;
+    }
+
+    .tnys-header-divider {
+        display: none !important;
+    }
+
+    /* The call button sits before the menu button. */
+    .tnys-header-actions > .tnys-primary-nav {
+        order: 2;
+    }
+}
+
+@media (max-width: 767px) {
+    .tnys-header-logo img {
+        width: 96px !important;
+    }
+
+    .tnys-header-call .wp-block-button__link {
+        padding: 10px 16px !important;
+        font-size: var(--wp--preset--font-size--tnys-small);
+        --tnys-icon-size: 16px !important;
+        --tnys-icon-gap: 8px !important;
+    }
+
+    .tnys-utility-bar {
+        gap: 6px 18px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .tnys-header-logo img {
+        width: 80px !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile menu (navigation overlay)
+   -------------------------------------------------------------------------- */
+
+.tnys-mobile-menu__close {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background-color: var(--wp--preset--color--tnys-bermuda-lightest);
+    color: var(--wp--preset--color--tnys-bay-of-many);
+}
+
+.tnys-mobile-menu__close svg {
+    width: 22px;
+    height: 22px;
+}
+
+.tnys-mobile-nav,
+.tnys-mobile-nav .wp-block-navigation__container {
+    width: 100%;
+    gap: 0;
+}
+
+/* Top-level rows: label on the left, toggle or chevron on the right. */
+.tnys-mobile-nav .wp-block-navigation__container > .wp-block-navigation-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+    padding: 16px 0;
+    line-height: 1.3;
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .wp-block-navigation-link > .wp-block-navigation-item__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .wp-block-navigation-link > .wp-block-navigation-item__content::after {
+    content: '';
+    width: 22px;
+    height: 22px;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M12.0143 10.9767L8.02378 6.98624C7.86795 6.83041 7.79385 6.64807 7.80149 6.43922C7.80913 6.23037 7.89087 6.04803 8.0467 5.8922C8.20253 5.73636 8.38869 5.65845 8.60518 5.65845C8.82166 5.65845 9.00782 5.73636 9.16366 5.8922L13.6957 10.4242C13.7794 10.5079 13.8402 10.5953 13.8781 10.6864C13.916 10.7773 13.9349 10.8741 13.9349 10.9767C13.9349 11.0794 13.916 11.1762 13.8781 11.2671C13.8402 11.3581 13.7794 11.4455 13.6957 11.5292L9.14074 16.0842C8.98491 16.24 8.80257 16.3141 8.59372 16.3064C8.38487 16.2988 8.20253 16.2171 8.0467 16.0612C7.89087 15.9054 7.81295 15.7192 7.81295 15.5028C7.81295 15.2863 7.89087 15.1001 8.0467 14.9443L12.0143 10.9767Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M12.0143 10.9767L8.02378 6.98624C7.86795 6.83041 7.79385 6.64807 7.80149 6.43922C7.80913 6.23037 7.89087 6.04803 8.0467 5.8922C8.20253 5.73636 8.38869 5.65845 8.60518 5.65845C8.82166 5.65845 9.00782 5.73636 9.16366 5.8922L13.6957 10.4242C13.7794 10.5079 13.8402 10.5953 13.8781 10.6864C13.916 10.7773 13.9349 10.8741 13.9349 10.9767C13.9349 11.0794 13.916 11.1762 13.8781 11.2671C13.8402 11.3581 13.7794 11.4455 13.6957 11.5292L9.14074 16.0842C8.98491 16.24 8.80257 16.3141 8.59372 16.3064C8.38487 16.2988 8.20253 16.2171 8.0467 16.0612C7.89087 15.9054 7.81295 15.7192 7.81295 15.5028C7.81295 15.2863 7.89087 15.1001 8.0467 14.9443L12.0143 10.9767Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+}
+
+/* +/− toggle in a 32px circle. */
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background-color: var(--wp--preset--color--tnys-bermuda-lightest);
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon svg {
+    display: none;
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-icon::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: var(--wp--preset--color--tnys-bay-of-many);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.29021 10.7098H4.75187C4.55146 10.7098 4.38306 10.6412 4.24667 10.504C4.11028 10.3669 4.04208 10.1976 4.04208 9.99625C4.04208 9.795 4.11028 9.62701 4.24667 9.49229C4.38306 9.35757 4.55146 9.29021 4.75187 9.29021H9.29021V4.75188C9.29021 4.55188 9.35882 4.38278 9.49604 4.24458C9.63312 4.10625 9.80236 4.03708 10.0037 4.03708C10.205 4.03708 10.373 4.10625 10.5077 4.24458C10.6424 4.38278 10.7098 4.55188 10.7098 4.75188V9.29021H15.2481C15.4481 9.29021 15.6172 9.35882 15.7554 9.49604C15.8937 9.63312 15.9629 9.80236 15.9629 10.0037C15.9629 10.205 15.8937 10.373 15.7554 10.5077C15.6172 10.6424 15.4481 10.7098 15.2481 10.7098H10.7098V15.2481C10.7098 15.4485 10.6412 15.6169 10.504 15.7533C10.3669 15.8897 10.1976 15.9579 9.99625 15.9579C9.795 15.9579 9.62701 15.8897 9.49229 15.7533C9.35757 15.6169 9.29021 15.4485 9.29021 15.2481V10.7098Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.29021 10.7098H4.75187C4.55146 10.7098 4.38306 10.6412 4.24667 10.504C4.11028 10.3669 4.04208 10.1976 4.04208 9.99625C4.04208 9.795 4.11028 9.62701 4.24667 9.49229C4.38306 9.35757 4.55146 9.29021 4.75187 9.29021H9.29021V4.75188C9.29021 4.55188 9.35882 4.38278 9.49604 4.24458C9.63312 4.10625 9.80236 4.03708 10.0037 4.03708C10.205 4.03708 10.373 4.10625 10.5077 4.24458C10.6424 4.38278 10.7098 4.55188 10.7098 4.75188V9.29021H15.2481C15.4481 9.29021 15.6172 9.35882 15.7554 9.49604C15.8937 9.63312 15.9629 9.80236 15.9629 10.0037C15.9629 10.205 15.8937 10.373 15.7554 10.5077C15.6172 10.6424 15.4481 10.7098 15.2481 10.7098H10.7098V15.2481C10.7098 15.4485 10.6412 15.6169 10.504 15.7533C10.3669 15.8897 10.1976 15.9579 9.99625 15.9579C9.795 15.9579 9.62701 15.8897 9.49229 15.7533C9.35757 15.6169 9.29021 15.4485 9.29021 15.2481V10.7098Z'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+}
+
+/* Open item: teal label, filled circle, minus sign. */
+.tnys-mobile-nav .wp-block-navigation__container > .has-child:has(> [aria-expanded='true']) > .wp-block-navigation-item__content {
+    color: var(--wp--preset--color--tnys-bermuda-dark);
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > [aria-expanded='true'] {
+    background-color: var(--wp--preset--color--tnys-bermuda);
+}
+
+.tnys-mobile-nav .wp-block-navigation__container > .has-child > [aria-expanded='true']::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.75187 10.7098C4.55146 10.7098 4.38306 10.6412 4.24667 10.504C4.11028 10.3669 4.04208 10.1976 4.04208 9.99625C4.04208 9.795 4.11028 9.62701 4.24667 9.49229C4.38306 9.35757 4.55146 9.29021 4.75187 9.29021H15.2481C15.4485 9.29021 15.6178 9.35882 15.7558 9.49604C15.8939 9.63312 15.9629 9.80236 15.9629 10.0037C15.9629 10.205 15.8939 10.373 15.7558 10.5077C15.6178 10.6424 15.4485 10.7098 15.2481 10.7098H4.75187Z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4.75187 10.7098C4.55146 10.7098 4.38306 10.6412 4.24667 10.504C4.11028 10.3669 4.04208 10.1976 4.04208 9.99625C4.04208 9.795 4.11028 9.62701 4.24667 9.49229C4.38306 9.35757 4.55146 9.29021 4.75187 9.29021H15.2481C15.4485 9.29021 15.6178 9.35882 15.7558 9.49604C15.8939 9.63312 15.9629 9.80236 15.9629 10.0037C15.9629 10.205 15.8939 10.373 15.7558 10.5077C15.6178 10.6424 15.4485 10.7098 15.2481 10.7098H4.75187Z'/%3E%3C/svg%3E");
+}
+
+/*
+ * Sub-items open in the flow, below their row, only when toggled (never on
+ * hover). The doubled class outranks core's hover rule.
+ */
+.tnys-mobile-nav.tnys-mobile-nav .has-child .wp-block-navigation__submenu-container {
+    position: static;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    gap: 2px;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    font-family: var(--wp--preset--font-family--manrope);
+}
+
+.tnys-mobile-nav.tnys-mobile-nav .wp-block-navigation__container > .has-child > [aria-expanded='false'] ~ .wp-block-navigation__submenu-container {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.tnys-mobile-nav.tnys-mobile-nav .wp-block-navigation__container > .has-child > [aria-expanded='true'] ~ .wp-block-navigation__submenu-container {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 16px;
+}
+
+.tnys-mobile-nav .wp-block-navigation__submenu-container > .wp-block-navigation-item {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+}
+
+.tnys-mobile-nav .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+    padding: 10px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--wp--preset--color--tnys-bay-of-many);
+}
+
+/* "Conditions We Treat" children: always shown on a rail. */
+.tnys-mobile-nav .wp-block-navigation__submenu-container .has-child > .wp-block-navigation__submenu-icon {
+    display: none;
+}
+
+.tnys-mobile-nav.tnys-mobile-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+    margin: 0 0 4px 12px;
+    padding: 0;
+    border-left: 2px solid var(--wp--preset--color--tnys-bermuda-lighter);
+}
+
+.tnys-mobile-nav .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+    padding: 8px 12px 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--wp--preset--color--tnys-bermuda-gray-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    /* The emergency note wraps, so it reads left-aligned with the icon on its first line. */
+    .tnys-emergency-note,
+    .tnys-emergency-note .tnys-icon-block-wrapper {
+        justify-content: flex-start;
+    }
+
+    .tnys-emergency-note .tnys-icon-block-wrapper {
+        align-items: flex-start;
+    }
+
+    .tnys-footer-bottom > p {
+        flex-basis: 100%;
+    }
+
+    .tnys-footer-legal {
+        gap: 10px 20px !important;
+    }
+}
