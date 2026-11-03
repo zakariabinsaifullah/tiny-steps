@@ -16,10 +16,6 @@ Pick blocks in this order, and move down a level only when the level above can't
 1. **Core WordPress blocks.** These are strongly preferred for all content: headings, paragraphs, buttons, images, lists, query loops and so on.
 2. **Custom blocks in the Tiny Steps inserter category** (`tnys/*`):
     - Icon
-    - Carousel (with Slide)
-    - Image Accordion (with Image Accordion Item)
-    - Story Cards (with Story Card)
-    - Ticker Gallery
     - Social Share
 3. Always use Tiny Steps **Icon** block where icon is used, always use SVG code and saved them under **My Icons** for future use.
 4. **Other Kadence blocks.** Use these only when neither core blocks nor the theme's custom blocks can do the job.
@@ -102,4 +98,4 @@ Style blocks through the options they already have, in this order:
 
 -   always use Tiny Steps theme color and typography
 -   never use custom color and typography without permission
--   never use letter spacing without permisson
+-   never use letter spacing, custom line-height, etc without permisson
