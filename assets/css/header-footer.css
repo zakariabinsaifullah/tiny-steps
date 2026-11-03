@@ -54,9 +54,9 @@
 
 /* --------------------------------------------------------------------------
    Desktop dropdown panels
-   White card, 16px radius, 1px border and a soft shadow. Items are 16px bold
-   with a chevron; "Conditions We Treat" keeps its own children open beneath
-   it on a 2px rail, and the Services panel splits into two columns.
+   White card, 16px radius, 1px border and a soft shadow, one column. Items
+   are 16px bold; only items with children get a chevron, and their children
+   open beneath them on hover or focus.
    -------------------------------------------------------------------------- */
 
 /*
@@ -90,24 +90,6 @@
     height: 13px;
 }
 
-/* Services: two columns, "Conditions We Treat" fills the first. */
-.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container:has(> .has-child) {
-    display: grid;
-    grid-template-columns: 320px 288px;
-    grid-auto-rows: min-content;
-    column-gap: 24px;
-    row-gap: 4px;
-}
-
-.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container:has(> .has-child) > .has-child {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-}
-
-.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container:has(> .has-child) > :not(.has-child) {
-    grid-column: 2;
-}
-
 .tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container > .wp-block-navigation-item {
     flex-direction: column;
     align-items: stretch;
@@ -125,7 +107,8 @@
     color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
-.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+/* Chevron only on items that have children of their own. */
+.tnys-primary-nav .wp-block-navigation__responsive-container-content > .wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container > .has-child > .wp-block-navigation-item__content::after {
     content: '';
     width: 18px;
     height: 18px;
@@ -142,26 +125,40 @@
     background-color: var(--wp--preset--color--tnys-bermuda-lightest);
 }
 
-/* Nested list ("Conditions We Treat" children): always open, on a rail. */
+/*
+ * Nested list ("Conditions We Treat" children): hidden until its parent is
+ * hovered or focused, then it opens in place beneath the parent on a 2px
+ * rail rather than flying out to the side.
+ */
 .tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .has-child > .wp-block-navigation__submenu-icon {
     display: none;
 }
 
 .tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
     position: static;
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
     width: auto;
-    height: auto;
+    height: 0;
     min-width: 0;
-    overflow: visible;
+    overflow: hidden;
     margin: 0 0 0 12px;
-    padding: 0 0 4px;
+    padding: 0;
     border: 0;
     border-left: 2px solid var(--wp--preset--color--tnys-bermuda-lighter);
     border-radius: 0;
     box-shadow: none;
     background: transparent;
+}
+
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .has-child:hover > .wp-block-navigation__submenu-container,
+.tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .has-child:focus-within > .wp-block-navigation__submenu-container {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+    margin-bottom: 20px;
+    padding-bottom: 4px;
 }
 
 .tnys-primary-nav .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
