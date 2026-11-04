@@ -154,6 +154,19 @@ Build inner pages from the homepage sections whenever the Figma section matches 
 | `tnys-home-about` | Copy beside two offset photos | Intro / about blocks |
 | `tnys-home-cta` | Closing CTA card over Bay of Many with stethoscope | End-of-page call to action |
 
+The **Services** page (page **16**) adds inner-page sections; reuse these too:
+
+| uniqueID | Section | Reuse for |
+|---|---|---|
+| `tnys-svc-hero` | Inner-page hero: kicker, H1 (heading-two, Bay of Many Dark), intro, Get directions + outline Call buttons, photo right (Bermuda Lightest) | Hero of every inner page |
+| `tnys-svc-summary` | "Key takeaways" checklist + "On this page" jump links in a Bermuda Gray Lightest box | Long pages with a table of contents (sections need `anchor`s) |
+| `tnys-svc-treat` / `-testing` / `-different` | Heading block (rule, H2 heading-three, intro) + white icon-card grid (2 or 3 columns, title, divider, text, optional link button) | Any list of services, features or reasons |
+| `tnys-svc-physicals` | H2 left, photo + text + button right | Single topic with a photo |
+| `tnys-svc-steps` | Numbered step cards (Bermuda Lighter band) + "Ready to be seen?" CTA strip | Processes, how-it-works |
+| `tnys-svc-faq` | H2 + photo left, FAQ accordion right (Kadence Accordion, class `tnys-faq`, first item open, FAQ schema on) | Every FAQ |
+
+On inner pages, section H2s use **heading-three** (44 → 30px); the homepage uses heading-two.
+
 How to reuse a section:
 1. Copy it from the homepage editor (block toolbar → Copy, or read it with `wp.data.select('core/block-editor')` / the `get_post_blocks` MCP tool) and paste it into the new page.
 2. Rename **every** Kadence `uniqueID` in the copy to the new page's prefix (e.g. `tnys-home-help-…` → `tnys-services-help-…`). IDs must be unique on a page, and unique IDs keep the CSS per block predictable.
