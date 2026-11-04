@@ -372,6 +372,11 @@
                     "name": "Subtle Shadow",
                     "shadow": "0 10px 15px 0 rgba(36, 72, 132, 0.06)",
                     "slug": "tnys-shadow-subtle"
+                },
+                {
+                    "name": "Logo Shadow",
+                    "shadow": "0 10px 13px 0 rgba(36, 72, 132, 0.12)",
+                    "slug": "tnys-shadow-logo"
                 }
             ]
         },
