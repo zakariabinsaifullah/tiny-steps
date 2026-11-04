@@ -170,6 +170,18 @@ The **Services** page (page **16**) adds inner-page sections; reuse these too:
 | `tnys-fever-table` | Kadence Table (`kadence/table`, first row header) with the class **`tnys-data-table`**: Bay of Many header, zebra rows, rounded border; each cell after the first starts with a `p.tnys-table-label` (the column name), shown only on mobile, where every row turns into a card. CSS lives in `assets/css/blocks.css` | Every data table |
 | `tnys-ear-table` (Ear Infections, page **20**) | Stacked variant: full-width heading block (rule, H2, intro with max width 720) → 3-column `tnys-data-table` → note paragraph (max width 800); column `rowGap` 40/40/28 | Comparison tables (e.g. teething vs ear infection) |
 | `tnys-fever-care` | Copy, then a core group **grid** (`columnCount 2`, `minimumColumnWidth 16rem`) of Bermuda Gray Lightest tiles: check icon + bold title + text (4px gap) | Tips, do / don't lists |
+| `tnys-stomach-dehydration` (Stomach Flu, page **22**; also `tnys-croup-er`, `tnys-whentogo-er/-questions/-urgent/-wait/-leave`) | `tnys-cond-lists` variant: H2 + intro left, one white list card right (6px top bar) whose items are a 2-column grid of Bermuda Gray Lightest tiles (12px radius, 14/16px padding, 18px check), optional card title, paragraphs and buttons below the card. Emergency variant: Alizarin Crimson bar, Alizarin Crimson Dark title and icons | Signs to watch, ER red flags, checklists |
+| `tnys-whentogo-decide` (When to Go, page **26**) | `tnys-ear-table` with a 4-column `tnys-data-table` | Wide comparison tables |
+| `tnys-whentogo-flu` / `tnys-insurance-selfpay` / `tnys-hours-hourstable` | H2 + intro left, 2-column `tnys-data-table` + note right (white background). Hours tables use `{{hours_mon}}` … `{{hours_sun}}` | Hours, prices, two-column comparisons |
+| `tnys-testing-onsite` (On-Site Testing, page **24**) | Heading block, then H3 sub-headings (heading-five) each followed by a 3-column icon-card row (28px icon in 56px circle) | Grouped feature / service lists |
+| `tnys-testing-steps` / `tnys-physicals-steps` | `tnys-svc-steps` without the CTA strip, 3 or 4 numbered cards | Processes |
+| `tnys-servicearea-contact` (Service Area, page **29**; also `tnys-about-mission`, `tnys-team-languages`, `tnys-reviews-leave`) | Banner: Bay of Many band, centred rule, white H2 (heading-two) and text (`style.typography.textAlign: center`), optional white button | Mission statements, contact strips, review requests |
+| `tnys-insurance-carriers` (Insurance, page **27**) | Image + text + tile grid, followed by the homepage logo-circle rows (desktop + mobile) filtered to the needed carriers | Accepted plans |
+| `tnys-team-stats` (Our Care Team, page **31**) | Bermuda Lighter band, 4 white stat cards (icon + heading-six title, no border) | At-a-glance numbers |
+| `tnys-about-gallery` (About, page **30**) | Heading block + nested rows of column background images: one tall left (544px), one wide + two small right (260px) | Photo galleries |
+| `tnys-terms-s1` … (Terms, page **37**; Privacy, page **3**) | Legal page: title-only hero (no image column), then text sections (H2 left vertically centred, copy right), separated by a Kadence Spacer divider with 40px gaps | Legal and policy pages |
+| `tnys-faqpage-visit` … (FAQ, page **34**) | Several `tnys-ear-faq` sections in a row on one gray band (100/50 … 50/100 padding), each with its own anchor | Topic-grouped FAQs |
+| Resources (page **36**) | The posts page renders the DB override of the `home` template (header + sections + footer). Latest articles = core Query Loops: featured post (1) + 3-column grid (offset 1, 9 per page) with pagination | Blog index |
 
 On inner pages, section H2s use **heading-three** (44 → 30px); the homepage uses heading-two.
 
