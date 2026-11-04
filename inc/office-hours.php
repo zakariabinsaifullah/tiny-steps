@@ -295,7 +295,7 @@ if ( ! function_exists( 'tnys_office_hours_register_setting' ) ) :
 		);
 	}
 endif;
-add_action( 'admin_init', 'tnys_office_hours_register_setting' );
+add_action( 'init', 'tnys_office_hours_register_setting' );
 
 if ( ! function_exists( 'tnys_office_hours_add_menu' ) ) :
 	/**
