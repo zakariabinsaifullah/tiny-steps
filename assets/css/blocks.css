@@ -479,6 +479,121 @@ p.is-style-underline-links a {
 }
 
 /*
+ * Data table — a Kadence Table (Adv) with the `tnys-data-table` class
+ * (first row = header). Desktop: bordered table, Bay of Many header, zebra
+ * body rows, first column semi-bold Bay of Many. Mobile: the header row hides
+ * and each row becomes a white card. Add a paragraph with the class
+ * `tnys-table-label` inside a cell to show a small label above it on mobile
+ * only (e.g. "What to do").
+ */
+.kb-table-container.tnys-data-table {
+    overflow: hidden;
+    border: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
+    border-radius: 16px;
+}
+
+.kb-table-container.tnys-data-table .kb-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.kb-table-container.tnys-data-table .kb-table :is(th, td) {
+    padding: 16px 24px;
+    border: 0;
+    background: var(--wp--preset--color--tnys-white);
+    color: var(--wp--preset--color--tnys-bay-of-many-darker);
+    font-size: var(--wp--preset--font-size--tnys-medium);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+}
+
+.kb-table-container.tnys-data-table .kb-table :is(th, td) p {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.kb-table-container.tnys-data-table .kb-table th {
+    padding: 18px 24px;
+    background: var(--wp--preset--color--tnys-bay-of-many);
+    color: var(--wp--preset--color--tnys-white);
+    font-weight: 700;
+}
+
+.kb-table-container.tnys-data-table .kb-table tr:nth-child(odd):not(:first-child) td {
+    background: var(--wp--preset--color--tnys-bermuda-gray-lightest);
+}
+
+.kb-table-container.tnys-data-table .kb-table td:first-child {
+    color: var(--wp--preset--color--tnys-bay-of-many);
+    font-weight: 600;
+}
+
+.kb-table-container.tnys-data-table .tnys-table-label {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .kb-table-container.tnys-data-table {
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+    }
+
+    /* !important answers the older site-wide `.kb-table` min-width rule. */
+    .kb-table-container.tnys-data-table .kb-table {
+        display: block;
+        min-width: 0 !important;
+        table-layout: auto !important;
+    }
+
+    .kb-table-container.tnys-data-table .kb-table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .kb-table-container.tnys-data-table .kb-table tr {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px;
+        border: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
+        border-radius: 12px;
+        background: var(--wp--preset--color--tnys-white);
+    }
+
+    .kb-table-container.tnys-data-table .kb-table tr:first-child {
+        display: none;
+    }
+
+    .kb-table-container.tnys-data-table .kb-table :is(th, td),
+    .kb-table-container.tnys-data-table .kb-table tr:nth-child(odd):not(:first-child) td {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: auto;
+        padding: 0;
+        background: transparent;
+    }
+
+    .kb-table-container.tnys-data-table .kb-table td:first-child {
+        font-weight: 700;
+    }
+
+    .kb-table-container.tnys-data-table .tnys-table-label {
+        display: block;
+        color: var(--wp--preset--color--tnys-bermuda-dark);
+        font-size: var(--wp--preset--font-size--tnys-extra-small);
+        font-weight: 700;
+    }
+}
+
+/*
  * Smooth scrolling for in-page links (e.g. a button pointing at #contact).
  * Fallback only: assets/js/smooth-scroll.js handles these links with eased,
  * distance-based scrolling and switches this off while it animates.
