@@ -538,7 +538,7 @@ p.is-style-underline-links a {
 }
 
 @media (max-width: 767px) {
-    .kb-table-container.tnys-data-table {
+    .wp-block-kadence-table.kb-table-container.tnys-data-table {
         overflow: visible;
         border: 0;
         border-radius: 0;
@@ -585,7 +585,7 @@ p.is-style-underline-links a {
         font-weight: 700;
     }
 
-    .kb-table-container.tnys-data-table .tnys-table-label {
+    .kb-table-container.tnys-data-table .kb-table :is(th, td) p.tnys-table-label {
         display: block;
         color: var(--wp--preset--color--tnys-bermuda-dark);
         font-size: var(--wp--preset--font-size--tnys-extra-small);
