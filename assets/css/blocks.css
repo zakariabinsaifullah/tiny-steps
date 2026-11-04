@@ -911,3 +911,77 @@ p.is-style-underline-links a {
     background-color: var(--wp--preset--color--tnys-bay-of-many) !important;
     color: var(--wp--preset--color--tnys-white) !important;
 }
+
+/*
+ * FAQ accordion — a Kadence Accordion with the `tnys-faq` class.
+ * Each question is a white card (radius 12, padding 22/24, 12px apart); the
+ * toggle is a 32px Bermuda Lighter circle with a Bay of Many plus that turns
+ * into a minus while the item is open.
+ */
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-inner-wrap {
+    row-gap: 12px;
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-pane {
+    padding: 22px 24px;
+    border-radius: 12px;
+    background: var(--wp--preset--color--tnys-white);
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-header-wrap {
+    margin: 0;
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header,
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header:hover,
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header:focus,
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-header.kt-accordion-panel-active {
+    gap: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--wp--preset--color--tnys-bay-of-many);
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-size: var(--wp--preset--font-size--tnys-heading-six);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-title-wrap {
+    flex: 1;
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-icon-trigger {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+    background: var(--wp--preset--color--tnys-bermuda-lighter);
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-icon-trigger::before,
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-icon-trigger::after {
+    top: 15px;
+    left: 10px;
+    width: 12px;
+    height: 2px;
+    background: var(--wp--preset--color--tnys-bay-of-many);
+    transform: none;
+    transition: transform 0.2s ease;
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-blocks-accordion-icon-trigger::after {
+    transform: rotate(90deg);
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::after {
+    transform: rotate(0deg);
+}
+
+.wp-block-kadence-accordion.tnys-faq .kt-accordion-panel-inner {
+    padding: 12px 0 0;
+    border: 0;
+    background: transparent;
+}
