@@ -36,6 +36,7 @@ require_once get_theme_file_path( 'inc/bindings.php' );   // Dynamic block data 
 
 // ── Form panel ─────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/form.php' );       // Slide-in form panel & settings
+require_once get_theme_file_path( 'inc/office-hours.php' ); // Office hours settings & {{placeholders}}
 
 // ── Shortcodes ─────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/shortcode.php' );         // Posts grid shortcode
