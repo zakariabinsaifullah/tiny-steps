@@ -915,8 +915,8 @@ p.is-style-underline-links a {
 /*
  * FAQ accordion — a Kadence Accordion with the `tnys-faq` class.
  * Each question is a white card (radius 12, padding 22/24, 12px apart); the
- * toggle is a 32px Bermuda Lighter circle with a Bay of Many plus that turns
- * into a minus while the item is open.
+ * toggle is a 32px Bermuda Lighter circle. The plus/minus bars and their colour
+ * (Bay of Many) come from the block's own Icon settings, not from CSS.
  *
  * Kadence prints per-block CSS such as
  * `.kt-accordion-id… > .kt-accordion-inner-wrap > .wp-block-kadence-pane >
@@ -968,28 +968,6 @@ p.is-style-underline-links a {
     margin-left: auto;
     border-radius: 50%;
     background: var(--wp--preset--color--tnys-bermuda-lighter);
-}
-
-.wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap > .wp-block-kadence-pane > .kt-accordion-header-wrap > .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::before,
-.wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap > .wp-block-kadence-pane > .kt-accordion-header-wrap > .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
-    top: 15px;
-    right: auto;
-    left: 10px;
-    width: 12px;
-    height: 2px;
-    border-radius: 1px;
-    background: var(--wp--preset--color--tnys-bay-of-many);
-    transform: none;
-    transition: transform 0.2s ease;
-}
-
-/* Vertical bar of the plus; it turns flat (minus) while the item is open. */
-.wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap > .wp-block-kadence-pane > .kt-accordion-header-wrap > .kt-blocks-accordion-header .kt-blocks-accordion-icon-trigger::after {
-    transform: rotate(90deg);
-}
-
-.wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap > .wp-block-kadence-pane > .kt-accordion-header-wrap > .kt-blocks-accordion-header.kt-accordion-panel-active .kt-blocks-accordion-icon-trigger::after {
-    transform: rotate(0deg);
 }
 
 .wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap > .wp-block-kadence-pane .kt-accordion-panel-inner {
