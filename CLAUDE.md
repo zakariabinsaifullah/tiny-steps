@@ -39,25 +39,26 @@ Pick blocks in this order, and move down a level only when the level above can't
 -   **Global rule:** every top-level Row Layout has its top and bottom margin set to **0** (`"margin":[0,"",0,""],"marginUnit":"px"`). This applies everywhere: pages, posts, patterns, templates and template parts. Otherwise the theme's global block gap (1.2rem) adds about 19px between sections, on top of the padding.
 -   Row Layouts nested inside another Row Layout don't get this default. Space them as the design needs.
 -   but in case of same background based sections like two sections, both have same background, then use **Inner Space** 100px in total (50px-50px) while on tablet it will be (35px-35px)
--   The space between a section title (heading block) and the columns/content below it is always **50px** on every device (set it as the heading's bottom margin).
+-   **Gaps (global rule):** every gap between elements (heading to content, between items, between columns and rows, inside cards, icon to text) uses the exact value from the Figma frames: desktop values on desktop, mobile values on mobile, and desktop values on tablet unless Figma has a tablet frame. This keeps spacing consistent across the site. The fixed gap numbers in sections 3a, 3b and 6 are only fallbacks for when Figma doesn't show the spacing. Section padding (above) and card padding (24px) are not gaps and keep their rules.
+-   When Figma doesn't show it, the space between a section title (heading block) and the content below it is **50px** on every device.
 
 ## 3a. Card columns (nested Row Layout)
 
 -   Build card grids as a nested Row Layout (`kadence/rowlayout`) with one **Section** (`kadence/column`) per card.
--   Columns gap is always **24px**, both between columns and between rows: `"columnGutter":"custom","customGutter":[24,24,24],"collapseGutter":"custom","customRowGutter":[24,24,24]`.
+-   Columns gap falls back to **24px** (Figma's value wins), both between columns and between rows: `"columnGutter":"custom","customGutter":[24,24,24],"collapseGutter":"custom","customRowGutter":[24,24,24]`.
 -   On tablet and mobile, cards are always **1 column**: `"tabletLayout":"row","mobileLayout":"row"`.
 -   For image cards, don't use `core/cover`. Use the Section's own **Background Image + Overlay** settings (`backgroundImg`, `overlay` with a `tnys-*` colour, `overlayOpacity`).
 -   Cards in the same row are always **equal height**. If the design gives a card height, set it as the Section's min height. Kadence adds padding on top of min height, so enter the design height minus the top and bottom padding (for example, 443px card − 48px padding = `"height":[395]`).
 -   Card content is vertically aligned to the **bottom** (`"verticalAlignment":"bottom"`).
 -   Card inner padding is an equal **24px** on all sides (`"padding":[24,24,24,24]`).
--   The gap between a card's title and its description is always **16px**. Set it with the Section's **Vertical Gap** setting (`"rowGapVariable":["custom","",""],"rowGap":[16,"",""],"rowGapUnit":"px"`), not with block margins.
--   **Numbered items (global rule):** in a content item made of a number + heading + description (e.g. process steps "01 / 02 / 03"), the three are always **16px** apart. Put them in one vertical Group with `blockGap: 16px` and 0 margins; anything after the item (a divider, a button) sits outside that Group with its own gap.
+-   The gap between a card's title and its description follows Figma (fallback **16px**). Set it with the Section's **Vertical Gap** setting (`"rowGapVariable":["custom","",""],"rowGap":[16,"",""],"rowGapUnit":"px"`), not with block margins.
+-   **Numbered items (global rule):** in a content item made of a number + heading + description (e.g. process steps "01 / 02 / 03"), the three are spaced by Figma's gap (fallback **16px**). Put them in one vertical Group with that `blockGap` and 0 margins; anything after the item (a divider, a button) sits outside that Group with its own gap.
 -   The heading and paragraph inside a card have **0 margin and 0 padding** (`"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}`), so the Section's gap controls all spacing.
 
 ## 3b. Content columns (nested Row Layout)
 
--   For content layouts that aren't card grids, such as text beside an image, the column gap is **70px**: `"columnGutter":"custom","customGutter":[70,70,70]`.
--   When the columns stack on tablet and mobile, the row gap is **50px**: `"collapseGutter":"custom","customRowGutter":[50,50,50]`.
+-   For content layouts that aren't card grids, such as text beside an image, the column gap falls back to **70px** (Figma's value wins): `"columnGutter":"custom","customGutter":[70,70,70]`.
+-   When the columns stack on tablet and mobile, the row gap falls back to **50px** (Figma's mobile value wins): `"collapseGutter":"custom","customRowGutter":[50,50,50]`.
 -   Card grids keep the 24px gap from section 3a.
 
 ## 4. Style with existing block settings
@@ -101,11 +102,12 @@ Style blocks through the options they already have, in this order:
         4. Delete any temporary folder or file afterwards.
     -   Check the result: the attachment's file should be `.webp` and it should have `_biio_savings` / `_biio_optimized_at` meta.
 -   Icon (SVG) size is always **24px** on every device. Set only the desktop size (`"sizes":{"Desktop":24},"iconSize":24`); tablet and mobile inherit it.
--   **Icon + title gap (global rule):** when an Icon block shows a title next to the icon, the gap between them is always **16px** (`"listGap":"16px"`). If you set it by script, also set `blockStyle["--list-gap"]` to `"16px"`: the block only recalculates `blockStyle` when it renders in the editor, so changing `listGap` alone can leave the old gap in the saved markup.
+-   **Icon + title gap (global rule):** when an Icon block shows a title next to the icon, the gap between them follows Figma (fallback **16px**, `"listGap":"16px"`). If you set it by script, also set `blockStyle["--list-gap"]` to the same value: the block only recalculates `blockStyle` when it renders in the editor, so changing `listGap` alone can leave the old gap in the saved markup.
 -   When an icon sits in a box (border or background), the inner padding is **15px** on all sides (`"spacing":{"padding":{"top":"15px","right":"15px","bottom":"15px","left":"15px"}}`). Don't add padding to icons without a box.
 
 ## 7. Color, Typography
 
 -   always use Tiny Steps theme color and typography
 -   never use custom color and typography without permission
+-   **Exception, transparent colours:** when Figma uses a transparent colour (e.g. a divider in Bay of Many at 16%), use it as a custom `rgba()` value built from the matching `tnys-*` colour, e.g. `rgba(36, 72, 132, 0.16)`. Solid colours always use the `tnys-*` presets.
 -   never use letter spacing, custom line-height, etc without permisson
