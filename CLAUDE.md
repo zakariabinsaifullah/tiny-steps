@@ -165,6 +165,10 @@ The **Services** page (page **16**) adds inner-page sections; reuse these too:
 | `tnys-svc-steps` | Numbered step cards (Bermuda Lighter band) + "Ready to be seen?" CTA strip | Processes, how-it-works |
 | `tnys-svc-faq` | H2 + photo left, FAQ accordion right (Kadence Accordion, class `tnys-faq`, first item open, FAQ schema on) | Every FAQ |
 | `tnys-cond-lists` (Conditions We Treat, page **17**) | H2 left, stacked white list cards right, each with a 6px coloured top bar (Kadence column top border), 18px check/arrow icons per item | Short lists of items (conditions, what to bring) |
+| `tnys-fever-hero` (Fever, page **19**) | `tnys-svc-hero` with a byline and a red emergency callout (Alizarin Crimson Lightest box, red border, Tiny Steps icon, bold link text) instead of buttons | Health guides that need a 911 warning |
+| `tnys-fever-temperature` / `-high` | Text-only content section: H2 left, text column right (photo, paragraphs, H3 sub-questions) in a vertical group with a **16px** gap | Long-form article sections |
+| `tnys-fever-table` | Kadence Table (`kadence/table`, first row header) with the class **`tnys-data-table`**: Bay of Many header, zebra rows, rounded border; each cell after the first starts with a `p.tnys-table-label` (the column name), shown only on mobile, where every row turns into a card. CSS lives in `assets/css/blocks.css` | Every data table |
+| `tnys-fever-care` | Copy, then a core group **grid** (`columnCount 2`, `minimumColumnWidth 16rem`) of Bermuda Gray Lightest tiles: check icon + bold title + text (4px gap) | Tips, do / don't lists |
 
 On inner pages, section H2s use **heading-three** (44 → 30px); the homepage uses heading-two.
 
