@@ -110,6 +110,10 @@ return array(
 				'type' => 'string',
 				'default' => 'Desktop'
 			),
+			'size' => array(
+				'type' => 'number',
+				'default' => 48
+			),
 			'hideWhenStatic' => array(
 				'type' => 'boolean',
 				'default' => true

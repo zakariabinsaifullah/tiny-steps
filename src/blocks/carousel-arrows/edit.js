@@ -5,7 +5,7 @@ import { PanelBody } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { NativeResponsiveControl, NativeSelectControl, NativeTextControl, NativeToggleControl } from '../../components';
+import { NativeRangeControl, NativeResponsiveControl, NativeSelectControl, NativeTextControl, NativeToggleControl } from '../../components';
 import Arrows from './arrows';
 import { justifyClasses } from './utils';
 
@@ -18,9 +18,12 @@ const JUSTIFY_OPTIONS = [
 
 export default function Edit( props ) {
     const { attributes, setAttributes } = props;
-    const { target, justify, hideWhenStatic, resMode = 'Desktop' } = attributes;
+    const { target, justify, size, hideWhenStatic, resMode = 'Desktop' } = attributes;
 
-    const blockProps = useBlockProps( { className: justifyClasses( justify ).join( ' ' ) } );
+    const blockProps = useBlockProps( {
+        className: justifyClasses( justify ).join( ' ' ),
+        style: size && size !== 48 ? { '--tnys-arrow-size': `${ size }px` } : undefined
+    } );
 
     return (
         <>
@@ -42,6 +45,15 @@ export default function Edit( props ) {
                             onChange={ value => setAttributes( { justify: { ...justify, [ resMode ]: value || undefined } } ) }
                         />
                     </NativeResponsiveControl>
+                    <NativeRangeControl
+                        label={ __( 'Button size (px)', 'tiny-steps' ) }
+                        value={ size }
+                        onChange={ value => setAttributes( { size: value } ) }
+                        min={ 32 }
+                        max={ 64 }
+                        step={ 1 }
+                        resetFallbackValue={ 48 }
+                    />
                     <NativeToggleControl
                         label={ __( 'Hide when there is nothing to scroll', 'tiny-steps' ) }
                         checked={ hideWhenStatic }

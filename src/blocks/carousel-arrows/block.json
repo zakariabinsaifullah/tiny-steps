@@ -26,6 +26,10 @@
             "type": "string",
             "default": "Desktop"
         },
+        "size": {
+            "type": "number",
+            "default": 48
+        },
         "hideWhenStatic": {
             "type": "boolean",
             "default": true
