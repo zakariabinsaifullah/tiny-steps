@@ -119,6 +119,13 @@ header.wp-block-kadence-rowlayout::before {
     }
 }
 
+/* Paragraph style: Underlined Links (inline links underlined, as in the Figma body copy) */
+p.is-style-underline-links a {
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+    text-underline-position: from-font;
+}
+
 /* Kadence Codes */
 .kb-table-container {
     border-radius: 20px;

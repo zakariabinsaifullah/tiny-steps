@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tnys/carousel",
+  "version": "0.0.1",
+  "title": "Carousel",
+  "category": "tnys",
+  "description": "A swipeable row of slides. Pair it with Carousel Arrows for remote navigation.",
+  "keywords": [
+    "slider",
+    "carousel",
+    "slides"
+  ],
+  "allowedBlocks": [
+    "tnys/slide"
+  ],
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "perView": {
+      "type": "object",
+      "default": {
+        "Desktop": 3,
+        "Tablet": 2,
+        "Mobile": 1.2
+      }
+    },
+    "gap": {
+      "type": "object",
+      "default": {
+        "Desktop": 24,
+        "Tablet": 24,
+        "Mobile": 12
+      }
+    },
+    "height": {
+      "type": "object"
+    },
+    "gridDesktop": {
+      "type": "boolean",
+      "default": false
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "interval": {
+      "type": "number",
+      "default": 5
+    },
+    "loop": {
+      "type": "boolean",
+      "default": false
+    },
+    "resMode": {
+      "type": "string",
+      "default": "Desktop"
+    }
+  },
+  "textdomain": "tiny-steps",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

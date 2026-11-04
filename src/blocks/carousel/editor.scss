@@ -1,0 +1,9 @@
+.editor-styles-wrapper .wp-block-tnys-carousel .tnys-carousel__track {
+    scroll-snap-type: none;
+    scrollbar-width: thin;
+
+    > .block-list-appender {
+        flex: 0 0 auto;
+        align-self: center;
+    }
+}

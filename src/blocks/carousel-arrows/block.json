@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "tnys/carousel-arrows",
+    "version": "0.0.1",
+    "title": "Carousel Arrows",
+    "category": "tnys",
+    "description": "Previous and next buttons that control a Carousel anywhere on the page.",
+    "keywords": ["slider", "carousel", "navigation", "arrows"],
+    "supports": {
+        "html": false,
+        "spacing": {
+            "margin": true
+        }
+    },
+    "attributes": {
+        "target": {
+            "type": "string",
+            "default": ""
+        },
+        "justify": {
+            "type": "object",
+            "default": { "Desktop": "left" }
+        },
+        "resMode": {
+            "type": "string",
+            "default": "Desktop"
+        },
+        "hideWhenStatic": {
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "textdomain": "tiny-steps",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

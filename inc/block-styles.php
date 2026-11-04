@@ -20,6 +20,13 @@ if ( ! function_exists( 'tnys_block_styles' ) ) :
 			)
 		);
 
+		register_block_style(
+			'core/paragraph',
+			array(
+				'name'  => 'underline-links',
+				'label' => __( 'Underlined Links', 'tiny-steps' ),
+			)
+		);
 
 		register_block_style(
 			'core/button',

@@ -1,0 +1,102 @@
+.wp-block-tnys-carousel-arrows {
+    display: flex;
+    gap: 10px;
+
+    &.is-justify-left {
+        justify-content: flex-start;
+    }
+
+    &.is-justify-center {
+        justify-content: center;
+    }
+
+    &.is-justify-right {
+        justify-content: flex-end;
+    }
+
+    @media (max-width: 1024px) {
+        &.is-justify-tablet-left {
+            justify-content: flex-start;
+        }
+
+        &.is-justify-tablet-center {
+            justify-content: center;
+        }
+
+        &.is-justify-tablet-right {
+            justify-content: flex-end;
+        }
+    }
+
+    @media (max-width: 767px) {
+        &.is-justify-mobile-left {
+            justify-content: flex-start;
+        }
+
+        &.is-justify-mobile-center {
+            justify-content: center;
+        }
+
+        &.is-justify-mobile-right {
+            justify-content: flex-end;
+        }
+    }
+
+    &.hide-when-static.is-static {
+        display: none;
+    }
+
+    button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid color-mix(in srgb, var(--wp--preset--color--tnys-bay-of-many) 20%, transparent);
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+            background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--wp--preset--color--tnys-bermuda);
+            outline-offset: 2px;
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 0.4;
+        }
+    }
+
+    .tnys-carousel-arrows__prev {
+        background-color: var(--wp--preset--color--tnys-white);
+        color: var(--wp--preset--color--tnys-bay-of-many);
+
+        svg {
+            transform: scaleX(-1);
+        }
+
+        &:not(:disabled):hover {
+            background-color: var(--wp--preset--color--tnys-bay-of-many-lightest);
+        }
+    }
+
+    .tnys-carousel-arrows__next {
+        background-color: var(--wp--preset--color--tnys-bay-of-many);
+        color: var(--wp--preset--color--tnys-white);
+
+        &:not(:disabled):hover {
+            background-color: var(--wp--preset--color--tnys-bay-of-many-dark);
+        }
+    }
+}

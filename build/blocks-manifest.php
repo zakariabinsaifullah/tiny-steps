@@ -1,6 +1,125 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'carousel' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'tnys/carousel',
+		'version' => '0.0.1',
+		'title' => 'Carousel',
+		'category' => 'tnys',
+		'description' => 'A swipeable row of slides. Pair it with Carousel Arrows for remote navigation.',
+		'keywords' => array(
+			'slider',
+			'carousel',
+			'slides'
+		),
+		'allowedBlocks' => array(
+			'tnys/slide'
+		),
+		'supports' => array(
+			'html' => false,
+			'anchor' => true,
+			'align' => array(
+				'wide',
+				'full'
+			),
+			'spacing' => array(
+				'margin' => true
+			)
+		),
+		'attributes' => array(
+			'perView' => array(
+				'type' => 'object',
+				'default' => array(
+					'Desktop' => 3,
+					'Tablet' => 2,
+					'Mobile' => 1.2
+				)
+			),
+			'gap' => array(
+				'type' => 'object',
+				'default' => array(
+					'Desktop' => 24,
+					'Tablet' => 24,
+					'Mobile' => 12
+				)
+			),
+			'height' => array(
+				'type' => 'object'
+			),
+			'gridDesktop' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'autoplay' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'interval' => array(
+				'type' => 'number',
+				'default' => 5
+			),
+			'loop' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'resMode' => array(
+				'type' => 'string',
+				'default' => 'Desktop'
+			)
+		),
+		'textdomain' => 'tiny-steps',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'carousel-arrows' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'tnys/carousel-arrows',
+		'version' => '0.0.1',
+		'title' => 'Carousel Arrows',
+		'category' => 'tnys',
+		'description' => 'Previous and next buttons that control a Carousel anywhere on the page.',
+		'keywords' => array(
+			'slider',
+			'carousel',
+			'navigation',
+			'arrows'
+		),
+		'supports' => array(
+			'html' => false,
+			'spacing' => array(
+				'margin' => true
+			)
+		),
+		'attributes' => array(
+			'target' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'justify' => array(
+				'type' => 'object',
+				'default' => array(
+					'Desktop' => 'left'
+				)
+			),
+			'resMode' => array(
+				'type' => 'string',
+				'default' => 'Desktop'
+			),
+			'hideWhenStatic' => array(
+				'type' => 'boolean',
+				'default' => true
+			)
+		),
+		'textdomain' => 'tiny-steps',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
+	),
 	'icon' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -193,6 +312,75 @@ return array(
 			'iconVerticalAlign' => array(
 				'type' => 'string',
 				'default' => 'center'
+			)
+		),
+		'textdomain' => 'tiny-steps',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
+	),
+	'slide' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'tnys/slide',
+		'version' => '0.0.1',
+		'title' => 'Slide',
+		'category' => 'tnys',
+		'description' => 'One slide of a carousel. Add any blocks inside it.',
+		'parent' => array(
+			'tnys/carousel'
+		),
+		'supports' => array(
+			'html' => false,
+			'reusable' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true,
+				'link' => true
+			),
+			'spacing' => array(
+				'padding' => true,
+				'blockGap' => true
+			),
+			'dimensions' => array(
+				'minHeight' => true
+			),
+			'__experimentalBorder' => array(
+				'color' => true,
+				'radius' => true,
+				'style' => true,
+				'width' => true
+			),
+			'shadow' => true,
+			'layout' => array(
+				'default' => array(
+					'type' => 'flex',
+					'orientation' => 'vertical',
+					'justifyContent' => 'stretch'
+				),
+				'allowSwitching' => false,
+				'allowOrientation' => false,
+				'allowInheriting' => false
+			)
+		),
+		'attributes' => array(
+			'imageId' => array(
+				'type' => 'number'
+			),
+			'imageUrl' => array(
+				'type' => 'string'
+			),
+			'imageAlt' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imagePosition' => array(
+				'type' => 'string',
+				'default' => '50% 50%'
+			),
+			'shade' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'textdomain' => 'tiny-steps',
