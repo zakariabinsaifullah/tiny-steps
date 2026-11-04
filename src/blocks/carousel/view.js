@@ -19,26 +19,54 @@ function initCarousel( carousel ) {
     const atEnd = () => track.scrollLeft >= maxScroll() - 2;
     const canScroll = () => maxScroll() > 2;
 
-    // One step is one slide plus the gap.
-    const step = () => {
-        const [ first, second ] = slides();
-        if ( ! first ) {
-            return track.clientWidth;
+    // Each slide's start, capped at the end of the track, without duplicates.
+    const snapPositions = () => {
+        const items = slides();
+        const max = maxScroll();
+        if ( ! items.length ) {
+            return [ 0 ];
         }
-        return second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
+        const origin = items[ 0 ].offsetLeft;
+        const positions = [];
+        items.forEach( item => {
+            const left = Math.min( item.offsetLeft - origin, max );
+            if ( ! positions.length || left - positions[ positions.length - 1 ] > 2 ) {
+                positions.push( left );
+            }
+        } );
+        return positions;
     };
+
+    // Where an in-progress smooth scroll is heading, so quick repeated
+    // clicks add up instead of restarting from a mid-animation position.
+    let target = null;
+    let settleTimer;
 
     const go = direction => {
         if ( ! canScroll() ) {
             return;
         }
-        if ( loop && direction > 0 && atEnd() ) {
-            track.scrollTo( { left: 0 } );
-        } else if ( loop && direction < 0 && atStart() ) {
-            track.scrollTo( { left: maxScroll() } );
-        } else {
-            track.scrollBy( { left: direction * step() } );
+        const positions = snapPositions();
+        const from = target ?? track.scrollLeft;
+
+        // The snap position closest to where the track is (or is heading).
+        let index = 0;
+        positions.forEach( ( left, i ) => {
+            if ( Math.abs( left - from ) < Math.abs( positions[ index ] - from ) ) {
+                index = i;
+            }
+        } );
+
+        let next = index + direction;
+        if ( next < 0 || next >= positions.length ) {
+            if ( ! loop ) {
+                return;
+            }
+            next = next < 0 ? positions.length - 1 : 0;
         }
+
+        target = positions[ next ];
+        track.scrollTo( { left: target } );
     };
 
     const notify = () => listeners.forEach( fn => fn( api ) );
@@ -62,6 +90,14 @@ function initCarousel( carousel ) {
         frame = requestAnimationFrame( notify );
     };
     track.addEventListener( 'scroll', onChange, { passive: true } );
+    track.addEventListener(
+        'scroll',
+        () => {
+            clearTimeout( settleTimer );
+            settleTimer = setTimeout( () => ( target = null ), 150 );
+        },
+        { passive: true }
+    );
     new ResizeObserver( onChange ).observe( track );
 
     // Arrow keys move one slide when the track has focus.
@@ -87,6 +123,7 @@ function initCarousel( carousel ) {
                 return;
             }
             if ( atEnd() ) {
+                target = 0;
                 track.scrollTo( { left: 0 } );
             } else {
                 go( 1 );
