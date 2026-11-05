@@ -78,7 +78,7 @@ function tnys_form_panel_html() {
 			<?php endif; ?>
 
 			<button class="tnys-form-panel__close" aria-label="<?php esc_attr_e( 'Close form', 'tiny-steps' ); ?>">
-				<svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 				</svg>
 			</button>
@@ -86,23 +86,18 @@ function tnys_form_panel_html() {
 
 		<div class="tnys-form-panel__body">
 			<?php if ( $title ) : ?>
-				<h2 class="tnys-form-panel__title">
-					<?php
-					/*
-					 * A closing full stop is drawn in Mantis, like the period on
-					 * every section heading, so it is split off and wrapped.
-					 */
-					if ( '.' === substr( $title, -1 ) ) {
-						echo esc_html( substr( $title, 0, -1 ) ) . '<span class="tnys-form-panel__accent">.</span>';
-					} else {
-						echo esc_html( $title );
-					}
-					?>
-				</h2>
+				<h2 class="tnys-form-panel__title"><?php echo esc_html( $title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $description ) : ?>
-				<p class="tnys-form-panel__desc"><?php echo esc_html( $description ); ?></p>
+				<div class="tnys-form-panel__desc">
+					<?php
+					// Each line of the description is its own paragraph.
+					foreach ( preg_split( '/\R+/', trim( $description ) ) as $line ) {
+						echo '<p>' . esc_html( $line ) . '</p>';
+					}
+					?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( $shortcode ) : ?>
