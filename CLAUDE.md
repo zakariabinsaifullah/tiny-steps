@@ -181,7 +181,7 @@ The **Services** page (page **16**) adds inner-page sections; reuse these too:
 | `tnys-about-gallery` (About, page **30**) | Heading block + nested rows of column background images: one tall left (544px), one wide + two small right (260px) | Photo galleries |
 | `tnys-terms-s1` … (Terms, page **37**; Privacy, page **3**) | Legal page: title-only hero (no image column), then text sections (H2 left vertically centred, copy right), separated by a Kadence Spacer divider with 40px gaps | Legal and policy pages |
 | `tnys-faqpage-visit` … (FAQ, page **34**) | Several `tnys-ear-faq` sections in a row on one gray band (100/50 … 50/100 padding), each with its own anchor | Topic-grouped FAQs |
-| Resources (page **36**) | The posts page renders the DB override of the `home` template (header + sections + footer). Latest articles = core Query Loops: featured post (1) + 3-column grid (offset 1, 9 per page) with pagination | Blog index |
+| Resources (page **36**) | The posts page renders the DB override of the `home` template (header + sections + footer). Latest articles = shortcodes in the section's column (gap 40/40/28): `[tnys_posts_tabs for="articles" categories="…"]` → `[tnys_featured_post]` (newest sticky post) → `[tnys_posts_grid id="articles" per_page="9" exclude="featured" categories="…"]`; styles in `assets/css/shortcode.css` | Blog index |
 
 On inner pages, section H2s use **heading-three** (44 → 30px); the homepage uses heading-two.
 
