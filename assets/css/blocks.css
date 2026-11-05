@@ -11,6 +11,11 @@ p.wp-block-post-excerpt__excerpt {
     color: #edf0fc !important;
 }
 
+/* An excerpt given its own text colour (e.g. the single post hero lead) keeps it. */
+.wp-block-post-excerpt.has-text-color p.wp-block-post-excerpt__excerpt {
+    color: inherit !important;
+}
+
 .wp-block-group {
     overflow: clip;
 }
