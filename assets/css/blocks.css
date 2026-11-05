@@ -977,7 +977,11 @@ p.is-style-underline-links a {
  * these selectors follow the same structure from `.tnys-faq` (which wraps
  * `.kt-accordion-wrap`) to stay more specific without !important.
  */
+/* Kadence lays the panes out as a flex column only above mobile and switches
+   to block on phones, where row-gap does nothing; keep the column everywhere. */
 .wp-block-kadence-accordion.tnys-faq > .kt-accordion-wrap > .kt-accordion-inner-wrap {
+    display: flex;
+    flex-direction: column;
     row-gap: 12px;
 }
 
