@@ -54,35 +54,36 @@ if ( ! function_exists( 'tnys_posts_grid_arrow_svg' ) ) :
 endif;
 
 
-if ( ! function_exists( 'tnys_posts_grid_post_meta' ) ) :
+if ( ! function_exists( 'tnys_posts_grid_category_label' ) ) :
 	/**
-	 * Category (first term of the taxonomy) • date, shared by the card and the
-	 * featured post.
+	 * Name of the post's first term in the taxonomy, or ''.
 	 *
 	 * @param int    $post_id  Post ID.
 	 * @param string $taxonomy Taxonomy used for the category label.
-	 * @param string $prefix   BEM block name for the classes.
 	 */
-	function tnys_posts_grid_post_meta( $post_id, $taxonomy, $prefix ) {
-		$terms    = get_the_terms( $post_id, $taxonomy );
-		$cat_name = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+	function tnys_posts_grid_category_label( $post_id, $taxonomy ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+		return ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+	}
+endif;
 
-		$html = '<div class="' . $prefix . '__meta">';
-		if ( $cat_name ) {
-			$html .= '<span class="' . $prefix . '__category">' . esc_html( $cat_name ) . '</span>';
-			$html .= '<span class="' . $prefix . '__sep" aria-hidden="true">&bull;</span>';
-		}
-		$html .= '<time class="' . $prefix . '__date" datetime="' . esc_attr( get_the_date( 'c', $post_id ) ) . '">' . esc_html( get_the_date( 'F j, Y', $post_id ) ) . '</time>';
-		$html .= '</div>';
 
-		return $html;
+if ( ! function_exists( 'tnys_posts_grid_date' ) ) :
+	/**
+	 * The publish date, shared by the card and the featured post.
+	 *
+	 * @param int    $post_id Post ID.
+	 * @param string $prefix  BEM block name for the class.
+	 */
+	function tnys_posts_grid_date( $post_id, $prefix ) {
+		return '<time class="' . $prefix . '__date" datetime="' . esc_attr( get_the_date( 'c', $post_id ) ) . '">' . esc_html( get_the_date( 'F j, Y', $post_id ) ) . '</time>';
 	}
 endif;
 
 
 if ( ! function_exists( 'tnys_posts_grid_render_post_item' ) ) :
 	/**
-	 * Renders a single post card: image → category • date → title → excerpt → Read more.
+	 * Renders a single post card: image → category pill → title → excerpt → date.
 	 *
 	 * @param int    $post_id  Post ID.
 	 * @param string $taxonomy Taxonomy used for the category label.
@@ -95,7 +96,8 @@ if ( ! function_exists( 'tnys_posts_grid_render_post_item' ) ) :
 
 		$permalink = get_permalink( $post_id );
 		$title     = get_the_title( $post_id );
-		$excerpt   = wp_trim_words( get_the_excerpt( $post_id ), 22 );
+		$excerpt   = wp_trim_words( get_the_excerpt( $post_id ), 18 );
+		$category  = tnys_posts_grid_category_label( $post_id, $taxonomy );
 		$thumbnail = has_post_thumbnail( $post_id )
 			? get_the_post_thumbnail( $post_id, 'medium_large', array( 'loading' => 'lazy' ) )
 			: '';
@@ -107,18 +109,18 @@ if ( ! function_exists( 'tnys_posts_grid_render_post_item' ) ) :
 		}
 
 		$html .= '<div class="ipg-card__body">';
-		$html .= tnys_posts_grid_post_meta( $post_id, $taxonomy, 'ipg-card' );
+
+		if ( $category ) {
+			$html .= '<span class="ipg-card__category">' . esc_html( $category ) . '</span>';
+		}
+
 		$html .= '<h3 class="ipg-card__title"><a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a></h3>';
 
 		if ( $excerpt ) {
 			$html .= '<p class="ipg-card__excerpt">' . esc_html( $excerpt ) . '</p>';
 		}
 
-		$html .= '<a class="ipg-card__link" href="' . esc_url( $permalink ) . '" aria-label="' . esc_attr( sprintf( /* translators: %s: post title */ __( 'Read more: %s', 'tiny-steps' ), $title ) ) . '">';
-		$html .= '<span>' . esc_html__( 'Read more', 'tiny-steps' ) . '</span>';
-		$html .= tnys_posts_grid_arrow_svg( 18, 'ipg-card__arrow' );
-		$html .= '</a>';
-
+		$html .= tnys_posts_grid_date( $post_id, 'ipg-card' );
 		$html .= '</div>';
 		$html .= '</article>';
 
@@ -225,14 +227,14 @@ if ( ! function_exists( 'tnys_posts_grid_render_pagination' ) ) :
 			return '';
 		}
 
-		$svg_prev = tnys_posts_grid_arrow_svg( 16, 'ipg-arrow ipg-arrow--prev' );
-		$svg_next = tnys_posts_grid_arrow_svg( 16, 'ipg-arrow' );
+		$svg_prev = tnys_posts_grid_arrow_svg( 18, 'ipg-arrow ipg-arrow--prev' );
+		$svg_next = tnys_posts_grid_arrow_svg( 18, 'ipg-arrow' );
 
 		$html = '<div class="ipg-pagination">';
 
 		// Prev.
 		$prev_page = max( 1, $current_page - 1 );
-		$html     .= '<button class="ipg-page-btn ipg-page-arrow"'
+		$html     .= '<button class="ipg-page-btn ipg-page-arrow ipg-page-arrow--prev"'
 			. ( 1 === $current_page ? ' disabled' : '' )
 			. ' data-page="' . $prev_page . '" aria-label="' . esc_attr__( 'Previous page', 'tiny-steps' ) . '">'
 			. $svg_prev
@@ -250,7 +252,7 @@ if ( ! function_exists( 'tnys_posts_grid_render_pagination' ) ) :
 
 		// Next.
 		$next_page = min( $total_pages, $current_page + 1 );
-		$html     .= '<button class="ipg-page-btn ipg-page-arrow"'
+		$html     .= '<button class="ipg-page-btn ipg-page-arrow ipg-page-arrow--next"'
 			. ( $current_page === $total_pages ? ' disabled' : '' )
 			. ' data-page="' . $next_page . '" aria-label="' . esc_attr__( 'Next page', 'tiny-steps' ) . '">'
 			. $svg_next
@@ -605,11 +607,11 @@ add_shortcode( 'tnys_posts_tabs', 'tnys_posts_tabs_shortcode' );
 
 if ( ! function_exists( 'tnys_featured_post_shortcode' ) ) :
 	/**
-	 * [tnys_featured_post id="" post_type="post" label="Featured" button="Read more"]
+	 * [tnys_featured_post id="" post_type="post" label="Featured" button=""]
 	 *
-	 * One post as a wide card: image on the left; tag, category • date, title,
-	 * excerpt and a Read more button on the right. Without `id` it shows the
-	 * newest sticky post, or the newest post when none is sticky.
+	 * One post as a wide card: image on the left; tag, title, excerpt and date
+	 * on the right, plus a button when `button` has a label. Without `id` it
+	 * shows the newest sticky post, or the newest post when none is sticky.
 	 */
 	function tnys_featured_post_shortcode( $atts ) {
 		$atts = shortcode_atts(
@@ -617,7 +619,7 @@ if ( ! function_exists( 'tnys_featured_post_shortcode' ) ) :
 				'id'        => '',
 				'post_type' => 'post',
 				'label'     => __( 'Featured', 'tiny-steps' ),
-				'button'    => __( 'Read more', 'tiny-steps' ),
+				'button'    => '',
 			),
 			$atts,
 			'tnys_featured_post'
@@ -638,7 +640,7 @@ if ( ! function_exists( 'tnys_featured_post_shortcode' ) ) :
 		$taxonomy  = tnys_posts_grid_resolve_taxonomy( $post_type );
 		$permalink = get_permalink( $post_id );
 		$title     = get_the_title( $post_id );
-		$excerpt   = wp_trim_words( get_the_excerpt( $post_id ), 40 );
+		$excerpt   = wp_trim_words( get_the_excerpt( $post_id ), 24 );
 
 		$html = '<article class="ipg-featured">';
 
@@ -654,18 +656,21 @@ if ( ! function_exists( 'tnys_featured_post_shortcode' ) ) :
 			$html .= '<span class="ipg-featured__tag">' . esc_html( $atts['label'] ) . '</span>';
 		}
 
-		$html .= tnys_posts_grid_post_meta( $post_id, $taxonomy, 'ipg-featured' );
-		$html .= '<h2 class="ipg-featured__title"><a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a></h2>';
+		$html .= '<h3 class="ipg-featured__title"><a href="' . esc_url( $permalink ) . '">' . esc_html( $title ) . '</a></h3>';
 
 		if ( $excerpt ) {
 			$html .= '<p class="ipg-featured__excerpt">' . esc_html( $excerpt ) . '</p>';
 		}
 
+		$html .= tnys_posts_grid_date( $post_id, 'ipg-featured' );
+
 		/*
 		 * `wp-element-button` is what theme.json's styles.elements.button
 		 * compiles to, so this is the theme's primary button by construction.
 		 */
-		$html .= '<a class="wp-element-button ipg-featured__button" href="' . esc_url( $permalink ) . '" aria-label="' . esc_attr( sprintf( /* translators: %s: post title */ __( 'Read more: %s', 'tiny-steps' ), $title ) ) . '">' . esc_html( $atts['button'] ) . '</a>';
+		if ( '' !== trim( $atts['button'] ) ) {
+			$html .= '<a class="wp-element-button ipg-featured__button" href="' . esc_url( $permalink ) . '" aria-label="' . esc_attr( sprintf( /* translators: %s: post title */ __( 'Read more: %s', 'tiny-steps' ), $title ) ) . '">' . esc_html( $atts['button'] ) . '</a>';
+		}
 
 		$html .= '</div>';
 		$html .= '</article>';

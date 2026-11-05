@@ -1,6 +1,9 @@
 /* =============================================================================
    Posts Grid + Featured Post shortcodes — shortcode.css
    [tnys_posts_grid], [tnys_posts_tabs], [tnys_featured_post]
+
+   Matches the Figma "Posts / Latest articles" section: category pills,
+   a featured post card, a 3-column card grid and round pagination buttons.
    ============================================================================= */
 
 /* Wrapper */
@@ -21,17 +24,18 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
+    gap: 10px;
+    margin-bottom: 40px;
 }
 
 .ipg-filter-btn {
     cursor: pointer;
+    margin: 0;
+    padding: 8px 16px;
     background: var(--wp--preset--color--tnys-white);
-    border: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
+    border: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
     border-radius: 999px;
-    padding: 10px 18px;
-    font-family: inherit;
+    font-family: var(--wp--preset--font-family--manrope);
     font-size: var(--wp--preset--font-size--tnys-small);
     font-weight: 600;
     line-height: 1.5;
@@ -53,30 +57,37 @@
     color: var(--wp--preset--color--tnys-white);
 }
 
-.ipg-filter-btn:focus-visible {
-    outline: 2px solid var(--wp--preset--color--tnys-bay-of-many);
+.ipg-filter-btn:focus-visible,
+.ipg-page-btn:focus-visible {
+    outline: 2px solid var(--wp--preset--color--tnys-bermuda-dark);
     outline-offset: 2px;
 }
 
 /* =============================================================================
-   Post grid — 3 columns on desktop, 1 on tablet and mobile
+   Post grid — 3 columns on desktop, 2 on tablet, 1 on mobile; 24px gaps
    ============================================================================= */
 
 .ipg-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 32px;
+    gap: 24px;
 }
 
 @media (max-width: 1024px) {
     .ipg-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .ipg-grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 24px;
     }
 }
 
 .ipg-no-posts {
-    color: var(--wp--preset--color--tnys-neutral-dark);
+    margin: 0;
+    color: var(--wp--preset--color--tnys-bermuda-gray-dark);
     font-size: var(--wp--preset--font-size--tnys-medium);
 }
 
@@ -89,21 +100,24 @@
     flex-direction: column;
     overflow: hidden;
     background: var(--wp--preset--color--tnys-white);
-    border-radius: 14px;
-    box-shadow: 0 4px 18px color-mix(in srgb, var(--wp--preset--color--tnys-neutral-lighter) 25%, transparent);
+    border: 1px solid var(--wp--preset--color--tnys-bermuda-gray-lighter);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(14, 28, 52, 0.06);
 }
 
 .ipg-card__image {
     display: block;
+    flex-shrink: 0;
     height: 240px;
     overflow: hidden;
 }
 
-.ipg-card__image img {
+.ipg-card__image img,
+.ipg-featured__image img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.35s ease;
 }
 
@@ -115,35 +129,43 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
-    padding: 24px 24px 28px;
+    padding: 22px 24px 24px;
 }
 
-/* Meta: category • date (shared shape with the featured post) */
-.ipg-card__meta,
-.ipg-featured__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--wp--preset--font-size--tnys-small);
-    line-height: 1.5;
-    color: var(--wp--preset--color--tnys-neutral);
-}
-
+/* Category pill (card) and "Featured" tag */
 .ipg-card__category,
-.ipg-featured__category {
-    font-weight: 600;
-    color: var(--wp--preset--color--tnys-bermuda-dark);
+.ipg-featured__tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: var(--wp--preset--font-size--tnys-extra-small);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.ipg-card__category {
+    background: var(--wp--preset--color--tnys-bermuda-lighter);
+    color: var(--wp--preset--color--tnys-bay-of-many);
+}
+
+.ipg-featured__tag {
+    background: var(--wp--preset--color--tnys-bermuda);
+    color: var(--wp--preset--color--tnys-bay-of-many-darker);
+}
+
+.ipg-card__title,
+.ipg-featured__title {
+    margin: 0;
+    font-family: var(--wp--preset--font-family--dm-sans);
+    font-weight: 700;
+    color: var(--wp--preset--color--tnys-bay-of-many);
 }
 
 .ipg-card__title {
-    margin: 0;
-    font-family: var(--wp--preset--font-family--dm-sans);
     font-size: var(--wp--preset--font-size--tnys-heading-six);
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--wp--preset--color--tnys-bay-of-many);
+    line-height: 1.3;
 }
 
 /* theme.json gives every link Manrope, so the title links take the
@@ -158,53 +180,45 @@
 
 .ipg-card__title a:hover,
 .ipg-featured__title a:hover {
-    color: var(--wp--preset--color--tnys-bermuda-dark);
+    color: var(--wp--preset--color--tnys-bermuda-darker);
 }
 
 /* !important because the grid sits inside post content, where theme.json's
    paragraph colour is written at a specificity this rule cannot otherwise beat. */
-.ipg-card__excerpt {
+.ipg-card__excerpt,
+.ipg-featured__excerpt {
     margin: 0;
-    font-size: var(--wp--preset--font-size--tnys-medium);
     line-height: 1.5;
-    color: var(--wp--preset--color--tnys-neutral-dark) !important;
+    color: var(--wp--preset--color--tnys-bermuda-gray-dark) !important;
 }
 
-/* Read more: the design's text link with an arrow. `margin-top: auto` keeps
-   the links level across a row of cards with uneven text. */
-.ipg-card__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    align-self: flex-start;
+.ipg-card__excerpt {
+    font-size: var(--wp--preset--font-size--tnys-small);
+}
+
+.ipg-card__date,
+.ipg-featured__date {
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--wp--preset--color--tnys-bermuda-gray-dark);
+}
+
+/* The date sits at the bottom so dates line up across a row of cards. */
+.ipg-card__date {
     margin-top: auto;
-    padding-top: 4px;
-    font-size: var(--wp--preset--font-size--tnys-medium);
-    font-weight: 600;
-    line-height: 1.5;
-    color: var(--wp--preset--color--tnys-bermuda-dark);
-    text-decoration: none;
-}
-
-.ipg-card__link:hover {
-    color: var(--wp--preset--color--tnys-bermuda-darker);
-}
-
-.ipg-card__arrow {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.ipg-card__link:hover .ipg-card__arrow {
-    transform: translateX(3px);
+    font-size: var(--wp--preset--font-size--tnys-extra-small);
 }
 
 /* =============================================================================
-   Pagination
+   Pagination — 44px circles
    ============================================================================= */
 
 .ipg-pagination-wrap {
-    margin-top: 32px;
+    margin-top: 40px;
+}
+
+.ipg-pagination-wrap:empty {
+    display: none;
 }
 
 .ipg-pagination {
@@ -220,36 +234,40 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 40px;
-    padding: 0 6px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
     background: var(--wp--preset--color--tnys-white);
-    border: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
-    border-radius: 8px;
+    border: 0;
+    border-radius: 999px;
     color: var(--wp--preset--color--tnys-bay-of-many);
-    font-family: inherit;
-    font-size: var(--wp--preset--font-size--tnys-small);
-    font-weight: 600;
-    line-height: 1;
+    font-family: var(--wp--preset--font-family--manrope);
+    font-size: var(--wp--preset--font-size--tnys-medium);
+    font-weight: 700;
+    line-height: 1.5;
     transition:
         background-color 0.2s ease,
-        border-color 0.2s ease,
         color 0.2s ease;
 }
 
-.ipg-page-btn:hover:not(:disabled) {
-    border-color: var(--wp--preset--color--tnys-bay-of-many);
+.ipg-page-btn:not(.ipg-page-arrow):not(.active):hover {
+    background: var(--wp--preset--color--tnys-bermuda-lighter);
 }
 
-.ipg-page-btn.active {
+/* Current page, and the arrow you can still move towards. */
+.ipg-page-btn.active,
+.ipg-page-arrow:not(:disabled) {
     background: var(--wp--preset--color--tnys-bay-of-many);
-    border-color: var(--wp--preset--color--tnys-bay-of-many);
     color: var(--wp--preset--color--tnys-white);
+}
+
+.ipg-page-arrow:hover:not(:disabled) {
+    background: var(--wp--preset--color--tnys-bay-of-many-dark);
 }
 
 .ipg-page-btn:disabled {
     cursor: default;
-    opacity: 0.4;
 }
 
 .ipg-page-btn .ipg-arrow {
@@ -266,10 +284,10 @@
     align-items: center;
     justify-content: center;
     min-width: 24px;
-    height: 40px;
-    color: var(--wp--preset--color--tnys-neutral);
-    font-size: var(--wp--preset--font-size--tnys-small);
-    font-weight: 600;
+    height: 44px;
+    color: var(--wp--preset--color--tnys-bay-of-many);
+    font-size: var(--wp--preset--font-size--tnys-medium);
+    font-weight: 700;
     user-select: none;
 }
 
@@ -280,25 +298,17 @@
 .ipg-featured {
     display: flex;
     overflow: hidden;
-    background: var(--wp--preset--color--tnys-bermuda-lighter);
-    border: 1px solid var(--wp--preset--color--tnys-neutral-lighter);
-    border-radius: 24px;
+    background: var(--wp--preset--color--tnys-white);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(14, 28, 52, 0.06);
 }
 
-/* 660px of the 1280px card in the design */
+/* 640px of the 1200px card in the design */
 .ipg-featured__image {
     display: block;
-    flex: 0 0 51.5%;
+    flex: 0 0 53.33%;
     min-height: 400px;
     overflow: hidden;
-}
-
-.ipg-featured__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.35s ease;
 }
 
 .ipg-featured:hover .ipg-featured__image img {
@@ -311,35 +321,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 18px;
+    gap: 16px;
     min-width: 0;
     padding: 48px;
 }
 
-.ipg-featured__tag {
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: var(--wp--preset--color--tnys-bermuda-lighter);
-    color: var(--wp--preset--color--tnys-bermuda-dark);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.5;
-}
-
+/* heading-four is 36px on desktop and 26px on mobile, as in the design. */
 .ipg-featured__title {
-    margin: 0;
-    font-family: var(--wp--preset--font-family--dm-sans);
-    font-size: var(--wp--preset--font-size--tnys-heading-three);
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--wp--preset--color--tnys-bay-of-many);
+    font-size: var(--wp--preset--font-size--tnys-heading-four);
+    line-height: 1.16;
 }
 
 .ipg-featured__excerpt {
-    margin: 0;
-    font-size: var(--wp--preset--font-size--tnys-large);
-    line-height: 1.5;
-    color: var(--wp--preset--color--tnys-neutral-dark) !important;
+    font-size: var(--wp--preset--font-size--tnys-medium);
+}
+
+.ipg-featured__date {
+    font-size: var(--wp--preset--font-size--tnys-small);
 }
 
 /* The theme's primary button comes from `wp-element-button`; only spacing here. */
@@ -364,12 +362,24 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     .ipg-featured__image {
-        height: 240px;
+        height: 220px;
     }
 
     .ipg-featured__body {
-        padding: 24px;
+        padding: 24px 22px 28px;
+    }
+
+    .ipg-card__image {
+        height: 200px;
+    }
+
+    .ipg-nav {
+        margin-bottom: 28px;
+    }
+
+    .ipg-pagination-wrap {
+        margin-top: 28px;
     }
 }
