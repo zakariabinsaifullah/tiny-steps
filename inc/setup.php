@@ -3,24 +3,10 @@
  * Theme Setup
  *
  * Handles core theme setup tasks that run on the `after_setup_theme` hook:
- * post format support and editor stylesheet registration.
+ * editor stylesheet registration.
  *
  * @package Tiny_Steps
  */
-
-if ( ! function_exists( 'tnys_post_format_setup' ) ) :
-	/**
-	 * Declares support for the post formats used by this theme.
-	 */
-	function tnys_post_format_setup() {
-		add_theme_support(
-			'post-formats',
-			array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' )
-		);
-	}
-endif;
-add_action( 'after_setup_theme', 'tnys_post_format_setup' );
-
 
 if ( ! function_exists( 'tnys_editor_style' ) ) :
 	/**

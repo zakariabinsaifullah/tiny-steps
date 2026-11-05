@@ -13,14 +13,6 @@ if ( ! function_exists( 'tnys_block_styles' ) ) :
 	 */
 	function tnys_block_styles() {
 		register_block_style(
-			'core/group',
-			array(
-				'name'  => 'wrap-mobile',
-				'label' => __( 'Wrap Mobile', 'tiny-steps' ),
-			)
-		);
-
-		register_block_style(
 			'core/paragraph',
 			array(
 				'name'  => 'underline-links',

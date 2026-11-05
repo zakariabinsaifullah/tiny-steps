@@ -21,46 +21,11 @@ if ( ! function_exists( 'tnys_get_shortcodes' ) ) :
 	 * Each entry: label, tag, description, one or more copy-ready examples,
 	 * and an optional list of attributes (name => description).
 	 *
-	 * Examples run from the bare tag — every attribute is optional on both
-	 * shortcodes — to a form spelling out each attribute at its default.
+	 * Examples run from the bare tag — every attribute is optional on every
+	 * shortcode — to a form spelling out each attribute at its default.
 	 */
 	function tnys_get_shortcodes() {
 		return array(
-			array(
-				'title'       => __( 'Opening Roles', 'tiny-steps' ),
-				'tag'         => 'opening_roles',
-				'description' => __( 'Lists open roles as cards: job type, number of open positions, the role title and an Apply now link. Only roles switched on in the Active column of All Open Roles are listed. Add roles under <code>Open Roles</code> (each has Active, Vacancies and Apply Link) and their categories under <code>Open Roles &rarr; Job Types</code>.', 'tiny-steps' ),
-				'examples'    => array(
-					array(
-						'label' => __( 'Basic usage', 'tiny-steps' ),
-						'note'  => __( 'Every attribute is optional — this shows every active role, newest first, three per row.', 'tiny-steps' ),
-						'code'  => '[opening_roles]',
-					),
-					array(
-						'label' => __( 'One team only', 'tiny-steps' ),
-						'note'  => __( 'Limit to one or more Job Types by slug or ID.', 'tiny-steps' ),
-						'code'  => '[opening_roles job_type="tax"]',
-					),
-					array(
-						'label' => __( 'In the order you set', 'tiny-steps' ),
-						'note'  => __( 'Sort by title, or by date with <code>order="ASC"</code> for oldest first.', 'tiny-steps' ),
-						'code'  => '[opening_roles orderby="title" order="ASC"]',
-					),
-					array(
-						'label' => __( 'All optional attributes', 'tiny-steps' ),
-						'note'  => __( 'Each attribute shown at its default value.', 'tiny-steps' ),
-						'code'  => '[opening_roles columns="3" count="-1" job_type="" orderby="date" order="DESC" empty="There are no open roles right now."]',
-					),
-				),
-				'attrs'       => array(
-					array( 'name' => 'columns',  'default' => '3',    'desc' => __( 'Cards per row on desktop, 1&ndash;4. Tablet and mobile always show one per row.', 'tiny-steps' ) ),
-					array( 'name' => 'count',    'default' => '-1',   'desc' => __( 'How many roles to show. <code>-1</code> shows every active one.', 'tiny-steps' ) ),
-					array( 'name' => 'job_type', 'default' => '',     'desc' => __( 'Comma-separated Job Type slugs or IDs. Empty shows every type.', 'tiny-steps' ) ),
-					array( 'name' => 'orderby',  'default' => 'date', 'desc' => __( '<code>date</code> or <code>title</code>.', 'tiny-steps' ) ),
-					array( 'name' => 'order',    'default' => 'DESC', 'desc' => __( 'Sort direction &mdash; <code>ASC</code> or <code>DESC</code>.', 'tiny-steps' ) ),
-					array( 'name' => 'empty',    'default' => '',     'desc' => __( 'Message shown when no role is open. Set it to an empty value to show nothing.', 'tiny-steps' ) ),
-				),
-			),
 			array(
 				'title'       => __( 'Featured Post', 'tiny-steps' ),
 				'tag'         => 'tnys_featured_post',

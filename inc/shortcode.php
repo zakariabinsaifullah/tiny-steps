@@ -540,8 +540,6 @@ if ( ! function_exists( 'tnys_posts_grid_shortcode' ) ) :
 	}
 endif;
 add_shortcode( 'tnys_posts_grid', 'tnys_posts_grid_shortcode' );
-// Backwards-compatible alias: some content used the callback name as the tag.
-add_shortcode( 'tnys_posts_grid_shortcode', 'tnys_posts_grid_shortcode' );
 
 
 if ( ! function_exists( 'tnys_posts_tabs_shortcode' ) ) :

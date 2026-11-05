@@ -11,19 +11,18 @@
  */
 
 // ── Theme setup ────────────────────────────────────────────────────────────────
-require_once get_theme_file_path( 'inc/setup.php' );      // Post formats, editor style
+require_once get_theme_file_path( 'inc/setup.php' );      // Editor style
 
 // ── Asset enqueueing ───────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/enqueue.php' );    // Frontend & block styles
 
-// ── Content types ──────────────────────────────────────────────────────────────
-require_once get_theme_file_path( 'inc/post-types.php' );   // Open Role post type
+// ── Uploads ────────────────────────────────────────────────────────────────────
+require_once get_theme_file_path( 'inc/svg-upload.php' );   // Sanitised SVG uploads
 
 // ── Blocks ─────────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/blocks.php' );        // Custom block registration
 require_once get_theme_file_path( 'inc/block-styles.php' );  // Core block style variations
 require_once get_theme_file_path( 'inc/extensions.php' );    // Block editor extensions
-require_once get_theme_file_path( 'inc/arrows.php' );        // Story card connector artwork
 
 // ── Icon library ───────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/my-icons.php' );      // Site-wide saved SVG icons
@@ -31,16 +30,12 @@ require_once get_theme_file_path( 'inc/my-icons.php' );      // Site-wide saved 
 // ── Editor taxonomy ────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/categories.php' ); // Block & pattern categories
 
-// ── Block bindings ─────────────────────────────────────────────────────────────
-require_once get_theme_file_path( 'inc/bindings.php' );   // Dynamic block data sources
-
 // ── Form panel ─────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/form.php' );       // Slide-in form panel & settings
 require_once get_theme_file_path( 'inc/office-hours.php' ); // Office hours settings & {{placeholders}}
 
 // ── Shortcodes ─────────────────────────────────────────────────────────────────
-require_once get_theme_file_path( 'inc/shortcode.php' );         // Posts grid shortcode
-require_once get_theme_file_path( 'inc/shortcode-roles.php' );   // Opening roles shortcode
+require_once get_theme_file_path( 'inc/shortcode.php' );         // Posts grid, tabs, featured & related posts
 require_once get_theme_file_path( 'inc/shortcodes-page.php' );  // Appearance → Tiny Steps reference page
 
 
