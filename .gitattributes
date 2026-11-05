@@ -1,0 +1,15 @@
+# Paths left out of the GitHub zip that Deployer for Git installs on the live
+# site (git archive skips export-ignore paths), so only the built theme ships.
+# Keep in step with .distignore, which the release workflow uses.
+
+/src            export-ignore
+/.github        export-ignore
+/.vscode        export-ignore
+/.gitattributes export-ignore
+/.gitignore     export-ignore
+/.distignore    export-ignore
+/package.json      export-ignore
+/package-lock.json export-ignore
+*.md            export-ignore
+*.map           export-ignore
+.DS_Store       export-ignore
