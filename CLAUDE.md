@@ -182,6 +182,7 @@ The **Services** page (page **16**) adds inner-page sections; reuse these too:
 | `tnys-terms-s1` … (Terms, page **37**; Privacy, page **3**) | Legal page: title-only hero (no image column), then text sections (H2 left vertically centred, copy right), separated by a Kadence Spacer divider with 40px gaps | Legal and policy pages |
 | `tnys-faqpage-visit` … (FAQ, page **34**) | Several `tnys-ear-faq` sections in a row on one gray band (100/50 … 50/100 padding), each with its own anchor | Topic-grouped FAQs |
 | Resources (page **36**) | The posts page renders the DB override of the `home` template (header + sections + footer). Latest articles = shortcodes in the section's column (gap 40/40/28): `[tnys_posts_tabs for="articles" categories="…"]` → `[tnys_featured_post]` (newest sticky post) → `[tnys_posts_grid id="articles" per_page="9" exclude="featured" categories="…"]`; styles in `assets/css/shortcode.css` | Blog index |
+| Single post (DB override of the `single` template) | `tnys-single-hero` (`tnys-svc-hero` with dynamic blocks: "Resources" link, `core/post-title` H1, byline "By Tiny Steps Pediatric Urgent Care • date • time to read", `core/post-excerpt` lead, `core/post-featured-image` 6/5 radius 16) → `core/post-content` → `tnys-single-related` (gray band, `[tnys_related_posts count="3"]`) → `tnys-single-cta`. Post bodies use the `tnys-post-s1/s2/s3` sections (H2 left; text + H3 + tile grid / photo / tile grid right) | Blog posts |
 
 On inner pages, section H2s use **heading-three** (44 → 30px); the homepage uses heading-two.
 
