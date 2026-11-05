@@ -25,7 +25,6 @@ Pick blocks in this order, and move down a level only when the level above can't
 1. **Core WordPress blocks.** These are strongly preferred for all content: headings, paragraphs, buttons, images, lists, query loops and so on.
 2. **Custom blocks in the Tiny Steps inserter category** (`tnys/*`):
     - Icon
-    - Social Share
     - Carousel + Slide: any swipeable row of cards (slides per view, gap and slide min height per device; optional desktop grid, loop, autoplay). Slides take any blocks, plus an optional background photo with focal point and a dark bottom shade.
     - Carousel Arrows: remote prev/next buttons that control a Carousel by its HTML anchor (can sit anywhere, even inside a slide); per-device alignment and button size.
 3. Always use Tiny Steps **Icon** block where icon is used, always use SVG code and saved them under **My Icons** for future use.
@@ -76,14 +75,9 @@ Style blocks through the options they already have, in this order:
     - **Spacing:** the `tnys-*` spacing presets.
 3. **Registered block styles**, for example the button styles Alternative, Outline and Link, and the paragraph style **Underlined Links** (use it for any paragraph whose inline links are underlined in Figma; plain paragraph links are not underlined).
 4. **The theme's editor extensions:**
-    - Highlight
-    - Annotation
     - Hover Color
     - Iconic Button
-    - Read More Button
     - Text Max Width
-    - Group Full Height, Group Overlay Background and Group Global Hover
-    - Kadence Row Divider
 
 ## 5. No custom CSS or JS without permission
 

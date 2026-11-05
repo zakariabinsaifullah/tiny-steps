@@ -392,102 +392,6 @@ return array(
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
 	),
-	'social-share' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'tnys/social-share',
-		'version' => '0.0.1',
-		'title' => 'Social Share',
-		'category' => 'tnys',
-		'icon' => 'share',
-		'description' => 'Add social sharing buttons for the current post.',
-		'example' => array(
-			
-		),
-		'supports' => array(
-			'html' => false,
-			'align' => array(
-				'wide',
-				'full'
-			),
-			'spacing' => array(
-				'__experimentalSkipSerialization' => true,
-				'margin' => true,
-				'padding' => true,
-				'__experimentalDefaultControls' => array(
-					'margin' => false,
-					'padding' => false
-				)
-			)
-		),
-		'attributes' => array(
-			'showCopyLink' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'showLinkedIn' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'showTwitter' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'showFacebook' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'iconSize' => array(
-				'type' => 'string',
-				'default' => '24px'
-			),
-			'gap' => array(
-				'type' => 'string',
-				'default' => '12px'
-			),
-			'iconColor' => array(
-				'type' => 'string'
-			),
-			'iconBgColor' => array(
-				'type' => 'string'
-			),
-			'iconRadius' => array(
-				'type' => 'string'
-			),
-			'iconPadding' => array(
-				'type' => 'string'
-			),
-			'blockStyle' => array(
-				'type' => 'object'
-			),
-			'justifyContent' => array(
-				'type' => 'string'
-			)
-		),
-		'textdomain' => 'tiny-steps',
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js',
-		'render' => 'file:./render.php'
-	),
-	'group-full-height' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'tnys/group-full-height-extension',
-		'title' => 'Group Force Full Height Extension',
-		'editorScript' => 'file:./index.js',
-		'style' => 'file:./style-index.css'
-	),
-	'highlight' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'tnys/highlight-extension',
-		'title' => 'Highlight Extension',
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css'
-	),
 	'hover-color' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -503,22 +407,6 @@ return array(
 		'title' => 'Iconic Button Extension',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css'
-	),
-	'kadence-row-overlay' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'tnys/kadence-row-overlay-extension',
-		'title' => 'Kadence Row Overlay Extension',
-		'editorScript' => 'file:./index.js',
-		'style' => 'file:./style-index.css'
-	),
-	'read-more-button' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'tnys/read-more-button-extension',
-		'title' => 'Read More Button Extension',
-		'editorScript' => 'file:./index.js',
 		'style' => 'file:./style-index.css'
 	),
 	'text-max-width' => array(
