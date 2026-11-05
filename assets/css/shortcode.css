@@ -28,6 +28,11 @@
     margin-bottom: 40px;
 }
 
+/* Standalone pills ([tnys_posts_tabs]) sit in a stack whose gap already spaces them. */
+.ipg-tabs-remote .ipg-nav {
+    margin-bottom: 0;
+}
+
 .ipg-filter-btn {
     cursor: pointer;
     margin: 0;
