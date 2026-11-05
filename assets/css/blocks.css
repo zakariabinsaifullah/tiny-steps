@@ -28,8 +28,9 @@ p.wp-block-post-excerpt__excerpt {
     font-size: var(--wp--preset--font-size--tnys-heading-three);
 }
 
+/* Linked post titles (query loop cards) keep the heading's weight. */
 .wp-block-post-title a {
-    font-weight: 400;
+    font-weight: inherit;
 }
 
 .wp-block-post-excerpt__more-link {
